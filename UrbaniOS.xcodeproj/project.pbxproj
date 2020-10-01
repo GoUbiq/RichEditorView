@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C319D2523AC60003497FB /* CreatePost.storyboard */; };
+		0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */; };
+		0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */; };
+		0B7C31A62523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A52523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift */; };
+		0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A72523E8A3003497FB /* CreatePostActionCollectionViewCell.swift */; };
+		0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A9252503F3003497FB /* PostMedia.swift */; };
+		0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */; };
+		0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -30,6 +38,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B7C319D2523AC60003497FB /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
+		0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConfigurator.swift; sourceTree = "<group>"; };
+		0B7C31A52523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostMediaHolderTableViewCell.swift; sourceTree = "<group>"; };
+		0B7C31A72523E8A3003497FB /* CreatePostActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostActionCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C31A9252503F3003497FB /* PostMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMedia.swift; sourceTree = "<group>"; };
+		0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleTableViewCell.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +53,7 @@
 		0BD43D1A2522955D00177F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BD43D1D2522955D00177F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BD43D1F2522955D00177F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BD43D252522961500177F79 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		0BD43D252522961500177F79 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0BD43D2E2522A86B00177F79 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		0BD43D302522A8CB00177F79 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0BD43D322522A90E00177F79 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
@@ -68,6 +84,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7C31A32523BB68003497FB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31A42523BB71003497FB /* CreatePost */,
+				0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0B7C31A42523BB71003497FB /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31A52523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift */,
+				0B7C31A72523E8A3003497FB /* CreatePostActionCollectionViewCell.swift */,
+				0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */,
+				0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
 		0BD43D022522955900177F79 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +165,7 @@
 			children = (
 				0BD43D3A2522AABD00177F79 /* MediaSticker.swift */,
 				0BD43D3C2522AAFB00177F79 /* Product.swift */,
+				0B7C31A9252503F3003497FB /* PostMedia.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +184,7 @@
 			children = (
 				0BD43D302522A8CB00177F79 /* CameraViewController.swift */,
 				0BD43D3E2522ABD400177F79 /* CameraPreviewAndEditViewController.swift */,
+				0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -154,6 +192,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31A32523BB68003497FB /* Cells */,
 				0BD43D322522A90E00177F79 /* CircleImageView.swift */,
 				0BD43D342522A93300177F79 /* ConfigurationEnabilityButton.swift */,
 				0BD43D402522AD7400177F79 /* DragScaleAndRotateView.swift */,
@@ -165,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0BD43D2E2522A86B00177F79 /* Camera.storyboard */,
+				0B7C319D2523AC60003497FB /* CreatePost.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -251,6 +291,7 @@
 				0BD43D1B2522955D00177F79 /* Assets.xcassets in Resources */,
 				0BD43D262522961500177F79 /* Podfile in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
+				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,8 +361,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
+				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
+				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
+				0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */,
+				0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */,
 				0BD43D312522A8CB00177F79 /* CameraViewController.swift in Sources */,
 				0BD43D3F2522ABD400177F79 /* CameraPreviewAndEditViewController.swift in Sources */,
 				0BD43D3B2522AABD00177F79 /* MediaSticker.swift in Sources */,
@@ -332,6 +378,8 @@
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
 				0BD43D432522AE3D00177F79 /* FFMPEGManager.swift in Sources */,
+				0B7C31A62523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift in Sources */,
+				0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */,
 				0BD43D352522A93300177F79 /* ConfigurationEnabilityButton.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,

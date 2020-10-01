@@ -13,6 +13,11 @@ import AVKit
 import UICircularProgressRing
 import Photos
 
+protocol MediaManagementDelegate {
+    func didCreateMedia(media: PostMedia)
+    func didDeleteMedia(media: PostMedia)
+}
+
 class CameraViewController: UIViewController {
     private static let identifier = "CameraViewController"
     
@@ -33,20 +38,21 @@ class CameraViewController: UIViewController {
     @IBOutlet private weak var cameraPermButton: ConfigurableEnabilityButton!
     @IBOutlet private weak var micPermButton: ConfigurableEnabilityButton!
 
-    class func newInstance() -> CameraViewController {
+    class func newInstance(delegate: MediaManagementDelegate) -> CameraViewController {
         let instance = cameraStoryboard.instantiateViewController(withIdentifier: self.identifier) as! CameraViewController
         instance.modalPresentationStyle = .fullScreen
+        instance.delegate = delegate
         return instance
     }
     
     private var animationLongPress: UILongPressGestureRecognizer!
     private var cameraLongPress: UILongPressGestureRecognizer!
     private var tooltipShowed: Bool = false
-    private var mediaManager = MediaManager()
+    private var mediaManager = MediaManager.sharedInstance
     private var cameraManager = CameraManager()
     private var cameraOutput = AVCapturePhotoOutput()
     private var isRecording: Bool = false
-    
+    private var delegate: MediaManagementDelegate!
 
     private lazy var mediaPicker: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -282,7 +288,7 @@ class CameraViewController: UIViewController {
         self.cameraManager.stopVideoRecording({ (url, error) -> Void in
             guard let url = url else { return }
             DispatchQueue.main.async {
-                let vc = CameraPreviewAndEditViewController.newInstance(media: .video(url), delegate: self)
+                let vc = CameraPreviewAndEditViewController.newInstance(media: .video(url), cameraDelegate: self.delegate, delegate: self)
                 self.present(vc, animated: true, completion: nil)
                 self.resetCameraButton()
             }
@@ -388,7 +394,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         }
         let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: .right)
         
-        let vc = CameraPreviewAndEditViewController.newInstance(media: .picture(image), delegate: self)
+        let vc = CameraPreviewAndEditViewController.newInstance(media: .picture(image), cameraDelegate: self.delegate, delegate: self)
         self.present(vc, animated: true, completion: nil)
         self.resetCameraButton()
     }
@@ -421,7 +427,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         guard let media = media else { return }
         
-        let vc = CameraPreviewAndEditViewController.newInstance(media: media, delegate: self)
+        let vc = CameraPreviewAndEditViewController.newInstance(media: media, cameraDelegate: self.delegate, delegate: self)
         self.present(vc, animated: true, completion: nil)
     }
     

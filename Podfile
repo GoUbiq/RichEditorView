@@ -6,10 +6,10 @@ target 'UrbaniOS' do
   use_frameworks!
 
   # Pods for UrbaniOS
-    pod 'CameraManager'
-    pod 'UICircularProgressRing'
-    pod 'AFNetworking'
-    pod 'SDWebImageSwiftUI'
-    pod 'mobile-ffmpeg-https-gpl'
-    pod 'RichEditorView'
+  pod 'CameraManager'
+  pod 'UICircularProgressRing'
+  pod 'AFNetworking'
+  pod 'SDWebImageSwiftUI'
+  pod 'mobile-ffmpeg-https-gpl'
+  pod 'RichEditorView'
 end

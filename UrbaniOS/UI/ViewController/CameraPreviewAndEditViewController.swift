@@ -24,20 +24,21 @@ class CameraPreviewAndEditViewController: UIViewController {
     @IBOutlet private weak var circularProgress: UICircularProgressRing!
     @IBOutlet private weak var stickersButton: UIButton!
     
-    class func newInstance(media: CapturedMedia, delegate: CameraPreviewDelegate) -> CameraPreviewAndEditViewController {
+    class func newInstance(media: CapturedMedia, cameraDelegate: MediaManagementDelegate, delegate: CameraPreviewDelegate) -> CameraPreviewAndEditViewController {
         let instance = cameraStoryboard.instantiateViewController(withIdentifier: self.identifier) as! CameraPreviewAndEditViewController
         instance.modalPresentationStyle = .overFullScreen
         instance.modalTransitionStyle = .crossDissolve
         instance.media = media
         instance.delegate = delegate
+        instance.cameraDelegate = cameraDelegate
         return instance
     }
     
     private var editingTV: UITextView?
     private var product: Product!
     private var media: CapturedMedia!
-//    private let giphy = GiphyViewController()
     private var delegate: CameraPreviewDelegate!
+    private var cameraDelegate: MediaManagementDelegate!
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
     private var contentViews: [DragScaleAndRotateView] {
@@ -199,7 +200,9 @@ class CameraPreviewAndEditViewController: UIViewController {
 
 //            let hud = Utils.showMessageHud(message: "Processing video", onViewController: self)
             FFMPEGManager.sharedInstance.buildMedia(url: url, content: []) { vFile in
-                let result = URL(fileURLWithPath: vFile)
+                let url = URL(fileURLWithPath: vFile)
+                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: url.imageFromVideo(at: 0) ?? #imageLiteral(resourceName: "play-button")))
+                processDone()
 //                Utils.dismissMessageHud(hud)
             }
         default: return
@@ -207,7 +210,7 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
     
     @IBAction func overlayViewTap(_ sender: Any) {
-//        self.contentViews.forEach({ $0.clearSelection() })
+        self.contentViews.forEach({ $0.clearSelection() })
     }
 
     override var prefersStatusBarHidden: Bool {

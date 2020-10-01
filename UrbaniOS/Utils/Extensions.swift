@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 extension UIColor {
     convenience init(hexString: String) {
@@ -32,5 +33,48 @@ extension UIColor {
 extension UIViewController {
     func showSimpleAlertPopup(title: String? = nil, message: String, buttonTitle: String = "Ok", buttonAction: (DefaultBlock)? = nil) {
         Utils.showSimpleAlertView(withTitle: title, withText: message, withButtonTitle: buttonTitle, buttonAction: buttonAction, onViewController: self)
+    }
+}
+
+extension UITableView {
+    func appendRow(inSection section: Int = 0, count: Int = 1, with animation: UITableView.RowAnimation = .none) {
+        let nbRows = self.numberOfRows(inSection: section) - 1
+        let indices = (nbRows...(nbRows + count))
+        self.beginUpdates()
+        self.insertRows(at: indices.map({ IndexPath(row: $0, section: section) }), with: animation)
+        self.endUpdates()
+    }
+}
+
+extension UICollectionView {
+//    func appendItem(inSection section: Int = 0, count: Int = 1, with animation: ) {
+//        
+//    }
+}
+
+extension URL {
+    func imageFromVideo(at time: TimeInterval) -> UIImage? {
+        let asset = AVURLAsset(url: self)
+
+        let assetIG = AVAssetImageGenerator(asset: asset)
+        assetIG.appliesPreferredTrackTransform = true
+        assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
+
+        let cmTime = CMTime(seconds: time, preferredTimescale: 60)
+        let thumbnailImageRef: CGImage
+        do {
+            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+        } catch let error {
+            print("Error: \(error)")
+            return nil
+        }
+
+        return UIImage(cgImage: thumbnailImageRef)
+    }
+}
+
+extension IndexPath {
+    static var zero: IndexPath {
+        return IndexPath(row: 0, section: 0)
     }
 }
