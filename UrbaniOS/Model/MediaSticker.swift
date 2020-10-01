@@ -15,12 +15,12 @@ enum StickerType {
     case productTag
 }
 
-public struct TextInfo {
-    var img: UIImage? = nil
-    var imgUrl: URL? = nil
-    var text: String
-    var font: UIFont = .systemFont(ofSize: 50)
-}
+//public struct TextInfo {
+//    var img: UIImage? = nil
+//    var imgUrl: URL? = nil
+//    var text: String
+//    var font: UIFont = .systemFont(ofSize: 50)
+//}
 
 public struct MediaSticker {
     var id: UUID = UUID()
@@ -30,7 +30,6 @@ public struct MediaSticker {
     var rotation: Double = 0
     var scale: CGFloat = 1
     var type: StickerType
-    var textInfo: TextInfo = TextInfo(img: nil, imgUrl: nil, text: "Text")
     var gifUrl: URL? = nil
     var product: Product? = nil
 

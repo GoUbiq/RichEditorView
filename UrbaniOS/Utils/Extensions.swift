@@ -46,10 +46,19 @@ extension UITableView {
     }
 }
 
-extension UICollectionView {
-//    func appendItem(inSection section: Int = 0, count: Int = 1, with animation: ) {
-//        
-//    }
+extension String {
+    func sizeOfString(usingFont font: UIFont, maxWidth: CGFloat = .infinity, maxHeight: CGFloat = .infinity) -> CGSize {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font
+        ]
+        
+        let attributedText = NSAttributedString(string: self, attributes: attributes)
+        
+        let constraintBox = CGSize(width: maxWidth, height: maxHeight)
+        let rect = attributedText.boundingRect(with: constraintBox, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).integral
+        
+        return rect.size
+    }
 }
 
 extension URL {

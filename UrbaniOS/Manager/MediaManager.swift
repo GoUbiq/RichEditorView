@@ -74,9 +74,9 @@ class MediaManager {
         
         content.enumerated().forEach { idx, content in
             guard let url = content.gifUrl else {
-                if let img = content.textInfo.img, let url = self.saveImage(fileName: content.id.uuidString, image: img) {
-                    result[idx] = url
-                }
+//                if let img = content.textInfo.img, let url = self.saveImage(fileName: content.id.uuidString, image: img) {
+//                    result[idx] = url
+//                }
                 return
             }
             group.enter()

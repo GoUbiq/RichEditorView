@@ -44,6 +44,18 @@ class CameraPreviewAndEditViewController: UIViewController {
     private var contentViews: [DragScaleAndRotateView] {
         return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
     }
+    private var stickers: [MediaSticker] = []
+    
+    private var editingTxtViewId: UUID? = nil {
+        didSet {
+            if oldValue == nil, let id = self.editingTxtViewId, case .text(let textInfo) = self.contentViews.first(where: { $0.id == id })?.type {
+                let vc = TextStickerEditionViewController.newInstance(stickerId: id, textInfo: textInfo, delegate: self)
+                self.present(vc, animated: true)
+            }
+            
+            self.contentViews.forEach({ $0.isHidden = $0.id == self.editingTxtViewId })
+        }
+    }
     
     private var mediaManager: MediaManager {
         return MediaManager.sharedInstance
@@ -105,7 +117,7 @@ class CameraPreviewAndEditViewController: UIViewController {
 
         self.player = AVPlayer.init(url: url)
         self.playerLayer = AVPlayerLayer(player: self.player)
-        self.playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.playerLayer?.videoGravity = .resizeAspectFill
         self.playerLayer?.frame = view.layer.frame
 
         self.player?.actionAtItemEnd = .none
@@ -132,7 +144,6 @@ class CameraPreviewAndEditViewController: UIViewController {
         }
     }
     
-    
     //MARK: - IBActions
     
     @IBAction func exitButtonPressed(_ sender: Any) {
@@ -144,21 +155,10 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
     
     @IBAction func addTextButtonPressed(_ sender: Any) {
-//        let view = DragScaleAndRotateView(frame: .zero, currentScale: 1, delegate: self)
-//        self.overlayView.addSubview(view)
-//        view.center = self.view.center
-        let tv = UITextView()
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.font = .systemFont(ofSize: 30)
-        tv.backgroundColor = .clear
-        tv.textColor = .white
-        tv.returnKeyType = .done
-        tv.isScrollEnabled = false
-        tv.delegate = self
-        tv.isUserInteractionEnabled = false
-        self.overlayView.addSubview(tv)
-        
-        tv.becomeFirstResponder()
+        let view = DragScaleAndRotateView(frame: .zero, currentScale: 1, type: .text(.init(text: "Text")), delegate: self)
+        self.overlayView.addSubview(view)
+        view.center = self.view.center
+        self.editingTxtViewId = view.id
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {
@@ -218,72 +218,10 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
 }
 
-extension CameraPreviewAndEditViewController: UITextViewDelegate {
-    private func stopEditingTV(textView: UITextView) {
-//        textView.removeAllConstraints()
-//        if textView.text.isEmpty {
-//            textView.removeFromSuperview()
-//        } else {
-//            let textViewFrame = textView.frame.size
-//            textView.removeFromSuperview()
-//            let view = DragScaleAndRotateView(frame: CGRect(origin: .zero, size: textViewFrame), currentScale: 1, type: .text, delegate: self)
-//            self.overlayView.addSubview(view)
-//            view.backgroundColor = .black
-//            view.addSubview(textView)
-//            textView.snp.makeConstraints { $0.edges.equalTo(view) }
-//            view.center = self.view.center
-//        }
-    }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-//        if let sv = textView.superview as? DragScaleAndRotateView {
-//            textView.removeAllConstraints()
-//            sv.removeFromSuperview()
-//            textView.removeFromSuperview()
-//            self.overlayView.addSubview(textView)
-//        }
-//
-//        textView.snp.makeConstraints {
-//            $0.leading.leading.greaterThanOrEqualTo(self.overlayView).offset(30)
-//            $0.centerX.equalTo(self.overlayView)
-//            $0.bottom.equalTo(self.overlayView.snp.centerY)
-//        }
-        
-        return true
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if let sv = textView.superview as? DragScaleAndRotateView {
-////            sv.backgroundColor = .yellow
-//            print(sv.superview === self.overlayView)
-//            print(self.overlayView.subviews.count)
-//            textView.removeAllConstraints()
-//            sv.removeFromSuperview()
-//            print(self.overlayView.subviews.count)
-//
-////            sv.isHidden = true
-////            textView.removeFromSuperview()
-////            self.overlayView.addSubview(textView)
-//        }
-////        self.editingTV = textView
-//        textView.snp.makeConstraints {
-//            $0.leading.leading.equalTo(self.overlayView).offset(30)
-//            $0.centerX.equalTo(self.overlayView)
-//            $0.bottom.equalTo(self.overlayView.snp.centerY)
-//        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.stopEditingTV(textView: textView)
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-//            self.stopEditingTV(textView: textView)
-            return false
-        }
-        return true
+extension CameraPreviewAndEditViewController: TextStickerEditionDelegate {
+    func editingDoneWith(stickerId: UUID, newText: String) {
+        self.editingTxtViewId = nil
+        self.contentViews.first(where: { $0.id == stickerId })?.changeTextAndLoadImg(newText: newText)
     }
 }
 
@@ -313,22 +251,11 @@ extension CameraPreviewAndEditViewController: DragScalePositionDelegate {
         self.trashView.isHidden = true
     }
     
-    func viewWillSelect(view: DragScaleAndRotateView) {
-        switch view.type {
-        case .gif: break
-        case .text:
-            if view.isSelected {
-                (view.subviews.first(where: { $0 is UITextView }) as? UITextView)?.becomeFirstResponder()
-            }
-        }
-    }
-    
     func viewDidSelect(view: DragScaleAndRotateView) {
-//        switch view.type {
-//        case .gif: break
-//        case .text:
-//            (view.subviews.first(where: { $0 is UITextView }) as? UITextView)?.becomeFirstResponder()
-//        }
+        switch view.type {
+        case .text: self.editingTxtViewId = view.id
+        default: break
+        }
         self.contentViews.first(where: { $0 !== view && view.isSelected })?.clearSelection()
     }
 }

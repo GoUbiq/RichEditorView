@@ -15,6 +15,8 @@
 		0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A9252503F3003497FB /* PostMedia.swift */; };
 		0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */; };
 		0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */; };
+		0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AF25265DC9003497FB /* KeyboardLayoutConstraint.swift */; };
+		0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -46,6 +48,8 @@
 		0B7C31A9252503F3003497FB /* PostMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMedia.swift; sourceTree = "<group>"; };
 		0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleTableViewCell.swift; sourceTree = "<group>"; };
+		0B7C31AF25265DC9003497FB /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerEditionViewController.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				0BD43D362522A94F00177F79 /* Constant.swift */,
 				0BD43D442522B04A00177F79 /* Extensions.swift */,
 				0BD43D462522B0CA00177F79 /* Utils.swift */,
+				0B7C31AF25265DC9003497FB /* KeyboardLayoutConstraint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				0BD43D302522A8CB00177F79 /* CameraViewController.swift */,
 				0BD43D3E2522ABD400177F79 /* CameraPreviewAndEditViewController.swift */,
 				0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */,
+				0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -375,12 +381,14 @@
 				0BD43D472522B0CA00177F79 /* Utils.swift in Sources */,
 				0BD43D3D2522AAFB00177F79 /* Product.swift in Sources */,
 				0BD43D392522A9E600177F79 /* MediaManager.swift in Sources */,
+				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
 				0BD43D432522AE3D00177F79 /* FFMPEGManager.swift in Sources */,
 				0B7C31A62523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift in Sources */,
 				0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */,
 				0BD43D352522A93300177F79 /* ConfigurationEnabilityButton.swift in Sources */,
+				0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
 			);

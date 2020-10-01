@@ -376,7 +376,7 @@
                                             <constraint firstAttribute="width" secondItem="LEB-vS-a0v" secondAttribute="height" multiplier="1:1" id="fVC-o1-BgW"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <state key="normal" image="textIcon"/>
+                                        <state key="normal" image="emoji"/>
                                         <connections>
                                             <action selector="addTextButtonPressed:" destination="xoS-UR-i6G" eventType="touchUpInside" id="tTM-cO-oSd"/>
                                         </connections>
@@ -532,6 +532,49 @@
             </objects>
             <point key="canvasLocation" x="888" y="153"/>
         </scene>
+        <!--Text Sticker Edition View Controller-->
+        <scene sceneID="9jF-oF-tvH">
+            <objects>
+                <viewController storyboardIdentifier="TextStickerEditionViewController" id="nsI-we-vo6" customClass="TextStickerEditionViewController" customModule="UrbaniOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4be-XZ-fve">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-Z3-5VB">
+                                <rect key="frame" x="30" y="103" width="354" height="759"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNK-bE-cur">
+                                <rect key="frame" x="354" y="59" width="45" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="nsI-we-vo6" eventType="touchUpInside" id="8vS-Da-cev"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zUY-Xm-gNs" firstAttribute="trailing" secondItem="RNK-bE-cur" secondAttribute="trailing" constant="15" id="MIY-Ag-cAj"/>
+                            <constraint firstItem="RNK-bE-cur" firstAttribute="top" secondItem="zUY-Xm-gNs" secondAttribute="top" constant="15" id="cYu-bQ-Bdv"/>
+                            <constraint firstItem="tZI-Z3-5VB" firstAttribute="top" secondItem="RNK-bE-cur" secondAttribute="bottom" constant="10" id="rXh-9Z-uDg"/>
+                            <constraint firstItem="zUY-Xm-gNs" firstAttribute="bottom" secondItem="tZI-Z3-5VB" secondAttribute="bottom" id="rl0-In-LTn" customClass="KeyboardLayoutConstraint" customModule="UrbaniOS" customModuleProvider="target"/>
+                            <constraint firstItem="tZI-Z3-5VB" firstAttribute="centerX" secondItem="zUY-Xm-gNs" secondAttribute="centerX" id="sWW-ks-cp8"/>
+                            <constraint firstItem="tZI-Z3-5VB" firstAttribute="leading" secondItem="zUY-Xm-gNs" secondAttribute="leading" constant="30" id="ylg-Fe-lMw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zUY-Xm-gNs"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="tZI-Z3-5VB" id="kz0-Ma-jGz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6a-b3-zqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="153"/>
+        </scene>
     </scenes>
     <resources>
         <image name="close" width="32" height="32"/>
@@ -540,7 +583,6 @@
         <image name="flip" width="64" height="64"/>
         <image name="greenTriangle" width="41" height="38"/>
         <image name="instagramlogo" width="20" height="20"/>
-        <image name="textIcon" width="128" height="128"/>
         <image name="tiktoklogo" width="20" height="20"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="upload" width="32" height="32"/>

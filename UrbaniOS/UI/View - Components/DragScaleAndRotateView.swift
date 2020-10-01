@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SnapKit
 
 enum DragScaleViewType {
-    case text
+    case text(DragScaleAndRotateView.TextInfo)
     case gif
 }
 
@@ -18,13 +19,15 @@ protocol DragScalePositionDelegate: class {
     func viewPositionChanged(view: DragScaleAndRotateView, touchPoint: CGPoint)
     func viewDragEnded(view: DragScaleAndRotateView)
     func viewDidSelect(view: DragScaleAndRotateView)
-    func viewWillSelect(view: DragScaleAndRotateView)
 }
+
 
 class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
 
     private var lastLocation: CGPoint = .zero
-    private var currentRoatation: CGFloat = 0
+    private var currentRotation: CGFloat = 0
+
+    private(set) var id: UUID = UUID()
     private(set) var currentScale: CGFloat = 1
     private(set) var positionXRatio: CGFloat = 0.5
     private(set) var positionYRatio: CGFloat = 0.5
@@ -38,7 +41,7 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     private var delegate: DragScalePositionDelegate!
 
     var degreeRotation: CGFloat {
-        return (self.currentRoatation * (180 / .pi)).truncatingRemainder(dividingBy: 360)
+        return (self.currentRotation * (180 / .pi)).truncatingRemainder(dividingBy: 360)
     }
     
     override func awakeFromNib() {
@@ -91,6 +94,37 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         self.isSelected = false
     }
     
+    func changeTextAndLoadImg(newText: String) {
+        guard case .text(let textInfo) = type, let img = self.imageWith(textInfo: TextInfo(text: newText, font: textInfo.font)) else { return }
+        
+        self.bounds.size = img.size
+        print(self.frame)
+        self.subviews.forEach({ $0.removeFromSuperview() })
+        let imgView = UIImageView(image: img)
+        self.addSubview(imgView)
+        imgView.snp.makeConstraints({ $0.edges.equalToSuperview() })
+        self.type = .text(TextInfo(text: newText, font: textInfo.font, img: img))
+    }
+    
+    func imageWith(textInfo: TextInfo) -> UIImage? {
+        let frame = CGRect(origin: .zero, size: textInfo.text.sizeOfString(usingFont: textInfo.font, maxWidth: UIScreen.main.bounds.width - 100, maxHeight: .infinity))
+        print(frame)
+        let nameLabel = UILabel(frame: frame)
+        nameLabel.textAlignment = .center
+        nameLabel.backgroundColor = .clear
+        nameLabel.textColor = .white
+        nameLabel.numberOfLines = 0
+        nameLabel.font = textInfo.font
+        nameLabel.text = textInfo.text
+        UIGraphicsBeginImageContext(frame.size)
+        if let currentContext = UIGraphicsGetCurrentContext() {
+            nameLabel.layer.render(in: currentContext)
+            let nameImage = UIGraphicsGetImageFromCurrentImageContext()
+            return nameImage
+        }
+        return nil
+    }
+    
     @objc func didPinch(sender: UIPinchGestureRecognizer) {
         let scale = sender.scale
         let view = sender.view!
@@ -105,7 +139,7 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         let previousTransform = view.transform
         view.transform = previousTransform.rotated(by: rotation)
         sender.rotation = 0
-        self.currentRoatation += rotation
+        self.currentRotation += rotation
     }
     
     @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
@@ -128,7 +162,6 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     }
     
     @objc func detectTap(_ recognizer: UITapGestureRecognizer) {
-        self.delegate?.viewWillSelect(view: self)
         self.isSelected = true
         self.delegate?.viewDidSelect(view: self)
     }
@@ -145,3 +178,10 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
 
 }
 
+extension DragScaleAndRotateView {
+    struct TextInfo {
+        var text: String
+        var font: UIFont = .systemFont(ofSize: 50)
+        var img: UIImage?
+    }
+}
