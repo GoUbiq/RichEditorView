@@ -17,6 +17,8 @@
 		0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */; };
 		0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31AF25265DC9003497FB /* KeyboardLayoutConstraint.swift */; };
 		0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */; };
+		0B7C31B525268544003497FB /* ProductTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31B425268544003497FB /* ProductTagView.xib */; };
+		0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B62526A050003497FB /* ProductTagView.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -50,6 +52,8 @@
 		0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleTableViewCell.swift; sourceTree = "<group>"; };
 		0B7C31AF25265DC9003497FB /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerEditionViewController.swift; sourceTree = "<group>"; };
+		0B7C31B425268544003497FB /* ProductTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTagView.xib; sourceTree = "<group>"; };
+		0B7C31B62526A050003497FB /* ProductTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagView.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 				0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */,
 			);
 			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		0B7C31B325268524003497FB /* ProductTagView */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31B425268544003497FB /* ProductTagView.xib */,
+				0B7C31B62526A050003497FB /* ProductTagView.swift */,
+			);
+			path = ProductTagView;
 			sourceTree = "<group>";
 		};
 		0BD43D022522955900177F79 = {
@@ -198,6 +211,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31B325268524003497FB /* ProductTagView */,
 				0B7C31A32523BB68003497FB /* Cells */,
 				0BD43D322522A90E00177F79 /* CircleImageView.swift */,
 				0BD43D342522A93300177F79 /* ConfigurationEnabilityButton.swift */,
@@ -296,6 +310,7 @@
 				0BD43D1E2522955D00177F79 /* LaunchScreen.storyboard in Resources */,
 				0BD43D1B2522955D00177F79 /* Assets.xcassets in Resources */,
 				0BD43D262522961500177F79 /* Podfile in Resources */,
+				0B7C31B525268544003497FB /* ProductTagView.xib in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 			);
@@ -391,6 +406,7 @@
 				0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
+				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

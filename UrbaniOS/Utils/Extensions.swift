@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 import AVFoundation
 
+extension UIView {
+    @discardableResult
+    class func fromNib<T>() -> T where T: UIView {
+        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+}
+
 extension UIColor {
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

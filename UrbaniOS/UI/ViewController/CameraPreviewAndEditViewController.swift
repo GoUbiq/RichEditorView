@@ -70,8 +70,6 @@ class CameraPreviewAndEditViewController: UIViewController {
         self.trashView.isHidden = true
         self.progressHolderView.isHidden = true
         
-        self.stickersButton.isHidden = true
-        
         switch self.media {
             case .picture(let image):
                 self.previewImage.isHidden = false
@@ -151,7 +149,16 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
     
     @IBAction func emojiButtonPressed(_ sender: Any) {
-//        self.present(self.giphy, animated: true, completion: nil)
+        let view = DragScaleAndRotateView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)), currentScale: 1, type: .gif, delegate: self)
+        view.center = self.view.center
+        
+        let productView: ProductTagView = .fromNib()
+        productView.configureView(product: .init(id: "", title: "Product title lol lololooololololol"))
+        self.overlayView.addSubview(productView)
+        productView.center = self.view.center
+//        view.addSubview(productView)
+
+//        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
     }
     
     @IBAction func addTextButtonPressed(_ sender: Any) {
