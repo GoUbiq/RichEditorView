@@ -22,8 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.rootViewController = cameraStoryboard.instantiateInitialViewController()
 //        self.window?.makeKeyAndVisible()
         
+        self.defaultValueRegistration()
+        
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
@@ -84,5 +87,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    
+    //MARK: - Private
+    private func defaultValueRegistration() {
+        if let prefs = Bundle.main.path(forResource: devEnvironment.associatedPlistFileName, ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: prefs) as? [String: Any] {
+                userDefaults.register(defaults: dict)
+            }
+            userDefaults.synchronize()
+        }
+    }
 }
 

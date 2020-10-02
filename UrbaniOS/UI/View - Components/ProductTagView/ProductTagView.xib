@@ -9,23 +9,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductTagView" customModule="UrbaniOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="239"/>
+            <rect key="frame" x="0.0" y="0.0" width="248" height="102"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGq-Qb-jfc">
-                    <rect key="frame" x="15" y="15" width="125" height="52.5"/>
+                    <rect key="frame" x="10" y="10" width="238" height="52.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ECU-aM-gGl">
-                            <rect key="frame" x="10" y="5" width="65" height="42.5"/>
+                            <rect key="frame" x="10" y="5" width="178" height="42.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9af-QG-wb2">
-                                    <rect key="frame" x="0.0" y="0.0" width="65" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="178" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garnier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-UJ-hpi">
-                                    <rect key="frame" x="0.0" y="25.5" width="65" height="17"/>
+                                    <rect key="frame" x="0.0" y="25.5" width="178" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                             </subviews>
                         </stackView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QcY-3H-LRm">
-                            <rect key="frame" x="85" y="11.5" width="30" height="30"/>
+                            <rect key="frame" x="198" y="11.5" width="30" height="30"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Zo8-W5-Bti"/>
@@ -55,29 +55,30 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJ8-25-Ejq" customClass="CircleImageView" customModule="UrbaniOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="6On-lg-6qc"/>
                         <constraint firstAttribute="width" secondItem="OJ8-25-Ejq" secondAttribute="height" multiplier="1:1" id="osw-3i-N6d"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tGq-Qb-jfc" secondAttribute="bottom" id="1ZV-wX-85g"/>
+                <constraint firstItem="tGq-Qb-jfc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Fro-oQ-h8H"/>
                 <constraint firstItem="OJ8-25-Ejq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HI7-4e-wUl"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tGq-Qb-jfc" secondAttribute="trailing" id="IEN-IF-naM"/>
-                <constraint firstItem="tGq-Qb-jfc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="LDY-c1-FzH"/>
+                <constraint firstAttribute="trailing" secondItem="tGq-Qb-jfc" secondAttribute="trailing" id="dNd-3b-yYH"/>
                 <constraint firstItem="OJ8-25-Ejq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i4t-VF-r5X"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tGq-Qb-jfc" secondAttribute="bottom" id="meg-2N-Usv"/>
-                <constraint firstItem="tGq-Qb-jfc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="o02-5o-tpF"/>
+                <constraint firstItem="tGq-Qb-jfc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kvs-V1-5vO"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="productName" destination="9af-QG-wb2" id="DyQ-Af-fsh"/>
+                <outlet property="stackContainerView" destination="tGq-Qb-jfc" id="jBV-26-dzi"/>
             </connections>
-            <point key="canvasLocation" x="-373.1884057971015" y="108.81696428571428"/>
+            <point key="canvasLocation" x="-339.13043478260875" y="107.8125"/>
         </view>
     </objects>
     <resources>

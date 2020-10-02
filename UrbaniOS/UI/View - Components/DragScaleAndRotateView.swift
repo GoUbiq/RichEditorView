@@ -12,6 +12,14 @@ import SnapKit
 enum DragScaleViewType {
     case text(DragScaleAndRotateView.TextInfo)
     case gif
+    case productTag
+    
+    var canRotateAndScale: Bool {
+        switch self {
+        case .productTag: return true
+        default: return false
+        }
+    }
 }
 
 protocol DragScalePositionDelegate: class {
@@ -69,13 +77,15 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func configureGesture() {
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.didPinch(sender:)))
-        pinch.delegate = self
-        self.addGestureRecognizer(pinch)
-        
-        let rotation = UIRotationGestureRecognizer(target: self, action: #selector(self.didRotate(sender:)))
-        rotation.delegate = self
-        self.addGestureRecognizer(rotation)
+        if self.type.canRotateAndScale {
+            let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.didPinch(sender:)))
+            pinch.delegate = self
+            self.addGestureRecognizer(pinch)
+            
+            let rotation = UIRotationGestureRecognizer(target: self, action: #selector(self.didRotate(sender:)))
+            rotation.delegate = self
+            self.addGestureRecognizer(rotation)
+        }
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.detectPan))
         pan.delegate = self

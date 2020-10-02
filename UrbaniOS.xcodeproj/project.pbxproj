@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,12 @@
 		0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */; };
 		0B7C31B525268544003497FB /* ProductTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31B425268544003497FB /* ProductTagView.xib */; };
 		0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B62526A050003497FB /* ProductTagView.swift */; };
+		0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */; };
+		0B7C31BC2527AFC8003497FB /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BB2527AFC8003497FB /* Apollo */; };
+		0B7C31BE2527AFC8003497FB /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BD2527AFC8003497FB /* ApolloCore */; };
+		0B7C31C02527AFC8003497FB /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BF2527AFC8003497FB /* ApolloWebSocket */; };
+		0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31C32527B4A4003497FB /* devSettings.plist */; };
+		0B7C31C62527B696003497FB /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31C52527B696003497FB /* schema.json */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -54,6 +60,9 @@
 		0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerEditionViewController.swift; sourceTree = "<group>"; };
 		0B7C31B425268544003497FB /* ProductTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTagView.xib; sourceTree = "<group>"; };
 		0B7C31B62526A050003497FB /* ProductTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagView.swift; sourceTree = "<group>"; };
+		0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerViewController.swift; sourceTree = "<group>"; };
+		0B7C31C32527B4A4003497FB /* devSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devSettings.plist; sourceTree = "<group>"; };
+		0B7C31C52527B696003497FB /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +95,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7500660D210B524510E48532 /* Pods_UrbaniOS.framework in Frameworks */,
+				0B7C31C02527AFC8003497FB /* ApolloWebSocket in Frameworks */,
+				0B7C31BC2527AFC8003497FB /* Apollo in Frameworks */,
+				0B7C31BE2527AFC8003497FB /* ApolloCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +133,14 @@
 			path = ProductTagView;
 			sourceTree = "<group>";
 		};
+		0B7C31C22527B1F2003497FB /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31C52527B696003497FB /* schema.json */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		0BD43D022522955900177F79 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +162,7 @@
 		0BD43D0D2522955900177F79 /* UrbaniOS */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31C22527B1F2003497FB /* GraphQL */,
 				0BD43D2A252297FD00177F79 /* Manager */,
 				0BD43D29252297F700177F79 /* Model */,
 				0BD43D28252297F300177F79 /* Utils */,
@@ -153,6 +174,7 @@
 				0BD43D1F2522955D00177F79 /* Info.plist */,
 				0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */,
 				0BD43D252522961500177F79 /* Podfile */,
+				0B7C31C32527B4A4003497FB /* devSettings.plist */,
 			);
 			path = UrbaniOS;
 			sourceTree = "<group>";
@@ -204,6 +226,7 @@
 				0BD43D3E2522ABD400177F79 /* CameraPreviewAndEditViewController.swift */,
 				0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */,
 				0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */,
+				0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -253,6 +276,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BD43D222522955D00177F79 /* Build configuration list for PBXNativeTarget "UrbaniOS" */;
 			buildPhases = (
+				0B7C31C12527B1A5003497FB /* Apollo CLI */,
 				60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */,
 				01700A99E3EC39D2B03265E8 /* [CP] Prepare Artifacts */,
 				0BD43D072522955900177F79 /* Sources */,
@@ -265,6 +289,11 @@
 			dependencies = (
 			);
 			name = UrbaniOS;
+			packageProductDependencies = (
+				0B7C31BB2527AFC8003497FB /* Apollo */,
+				0B7C31BD2527AFC8003497FB /* ApolloCore */,
+				0B7C31BF2527AFC8003497FB /* ApolloWebSocket */,
+			);
 			productName = UrbaniOS;
 			productReference = 0BD43D0B2522955900177F79 /* UrbaniOS.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +322,9 @@
 				Base,
 			);
 			mainGroup = 0BD43D022522955900177F79;
+			packageReferences = (
+				0B7C31BA2527AFC8003497FB /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 0BD43D0C2522955900177F79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,6 +343,8 @@
 				0BD43D1B2522955D00177F79 /* Assets.xcassets in Resources */,
 				0BD43D262522961500177F79 /* Podfile in Resources */,
 				0B7C31B525268544003497FB /* ProductTagView.xib in Resources */,
+				0B7C31C62527B696003497FB /* schema.json in Resources */,
+				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 			);
@@ -335,6 +369,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		0B7C31C12527B1A5003497FB /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" GraphQL/API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://heer-api-dev.goubiq.com/graphql\" \n\n\n";
 		};
 		60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -383,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
+				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
 				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
@@ -600,6 +653,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B7C31BA2527AFC8003497FB /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.34.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B7C31BB2527AFC8003497FB /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7C31BA2527AFC8003497FB /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		0B7C31BD2527AFC8003497FB /* ApolloCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7C31BA2527AFC8003497FB /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCore;
+		};
+		0B7C31BF2527AFC8003497FB /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7C31BA2527AFC8003497FB /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */ = {

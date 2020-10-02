@@ -16,11 +16,11 @@ enum Environment {
     var associatedPlistFileName: String {
         switch self {
         case .localDebug:
-            return "devLocalSettings"
+            return "devSettings"
         case .remoteDebug:
             return "devSettings"
         case .production:
-            return "productionSettings"
+            return "devSettings"
         }
     }
     
@@ -44,6 +44,8 @@ enum Environment {
         }
     }
 }
+
+let userDefaults = UserDefaults.standard
 
 #if LOCAL
     var devEnvironment: Environment = .localDebug

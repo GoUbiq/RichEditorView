@@ -1,0 +1,3 @@
+[submodule "GraphQL/GraphQLInterface"]
+	path = GraphQL/GraphQLInterface
+	url = https://github.com/GoUbiq/urbangraphql

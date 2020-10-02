@@ -149,16 +149,17 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
     
     @IBAction func emojiButtonPressed(_ sender: Any) {
-        let view = DragScaleAndRotateView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)), currentScale: 1, type: .gif, delegate: self)
-        view.center = self.view.center
+        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .gif, delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         let productView: ProductTagView = .fromNib()
-        productView.configureView(product: .init(id: "", title: "Product title lol lololooololololol"))
-        self.overlayView.addSubview(productView)
-        productView.center = self.view.center
-//        view.addSubview(productView)
-
-//        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
+        productView.configureView(product: .init(id: "", title: "Product owkodkqwokodkow kokokodko dkoqdwkow dqkowd koq dkowqdw kowdqok qwdko "))
+        view.addSubview(productView)
+        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
+        
+        self.overlayView.addSubview(view)
+        view.center = self.overlayView.center
     }
     
     @IBAction func addTextButtonPressed(_ sender: Any) {

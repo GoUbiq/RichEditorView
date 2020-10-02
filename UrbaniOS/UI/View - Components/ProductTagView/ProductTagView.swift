@@ -12,13 +12,16 @@ class ProductTagView: UIView {
     static let identifier = "ProductTagView"
     
     @IBOutlet private weak var productName: UILabel!
+    @IBOutlet private weak var stackContainerView: UIView!
     
     private var product: Product!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.translatesAutoresizingMaskIntoConstraints = true
+        self.stackContainerView.layer.borderColor = UIColor.white.cgColor
+        self.stackContainerView.layer.borderWidth = 1
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
