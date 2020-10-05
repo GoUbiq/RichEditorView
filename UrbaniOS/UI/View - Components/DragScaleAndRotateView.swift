@@ -16,8 +16,8 @@ enum DragScaleViewType {
     
     var canRotateAndScale: Bool {
         switch self {
-        case .productTag: return true
-        default: return false
+        case .productTag: return false
+        default: return true
         }
     }
 }

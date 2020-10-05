@@ -229,14 +229,13 @@ extension CameraPreviewAndEditViewController: TextStickerEditionDelegate {
 
 extension CameraPreviewAndEditViewController: ProductTagPickerDelegate {
     func didSelect(product: Product) {
-        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .gif, delegate: self)
+        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .productTag, delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         let productView: ProductTagView = .fromNib()
         productView.configureView(product: product)
         view.addSubview(productView)
-        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
+        productView.snp.makeConstraints({ $0.edges.equalToSuperview() } )
         
         self.overlayView.addSubview(view)
         view.center = self.overlayView.center

@@ -24,8 +24,6 @@ class ProductTagView: UIView {
         self.stackContainerView.layer.borderColor = UIColor.white.cgColor
         self.stackContainerView.layer.borderWidth = 1
         self.stackContainerView.roundedCorners(corners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner], radius: 10)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     required init?(coder aDecoder: NSCoder) {
