@@ -25,6 +25,15 @@
 		0B7C31C02527AFC8003497FB /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BF2527AFC8003497FB /* ApolloWebSocket */; };
 		0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31C32527B4A4003497FB /* devSettings.plist */; };
 		0B7C31C62527B696003497FB /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31C52527B696003497FB /* schema.json */; };
+		0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31C72527C034003497FB /* ApolloClientManager.swift */; };
+		0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31CA2527C6EF003497FB /* Login.graphql */; };
+		0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31CB2527C6EF003497FB /* Fragment.graphql */; };
+		0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31CC2527C6EF003497FB /* Product.graphql */; };
+		0B7C31D12527C8EB003497FB /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D02527C8EB003497FB /* ProductManager.swift */; };
+		0B7C31D32527C986003497FB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D22527C986003497FB /* API.swift */; };
+		0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */; };
+		0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31D6252B907E003497FB /* ProductRatingView.xib */; };
+		0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D9252B9230003497FB /* ProductRatingView.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -63,6 +72,15 @@
 		0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerViewController.swift; sourceTree = "<group>"; };
 		0B7C31C32527B4A4003497FB /* devSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devSettings.plist; sourceTree = "<group>"; };
 		0B7C31C52527B696003497FB /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		0B7C31C72527C034003497FB /* ApolloClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClientManager.swift; sourceTree = "<group>"; };
+		0B7C31CA2527C6EF003497FB /* Login.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		0B7C31CB2527C6EF003497FB /* Fragment.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.graphql; sourceTree = "<group>"; };
+		0B7C31CC2527C6EF003497FB /* Product.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product.graphql; sourceTree = "<group>"; };
+		0B7C31D02527C8EB003497FB /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
+		0B7C31D22527C986003497FB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerTableViewCell.swift; sourceTree = "<group>"; };
+		0B7C31D6252B907E003497FB /* ProductRatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductRatingView.xib; sourceTree = "<group>"; };
+		0B7C31D9252B9230003497FB /* ProductRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRatingView.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +127,7 @@
 			children = (
 				0B7C31A42523BB71003497FB /* CreatePost */,
 				0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */,
+				0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -136,9 +155,30 @@
 		0B7C31C22527B1F2003497FB /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31D22527C986003497FB /* API.swift */,
+				0B7C31C92527C6EF003497FB /* GraphQLInterface */,
 				0B7C31C52527B696003497FB /* schema.json */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		0B7C31C92527C6EF003497FB /* GraphQLInterface */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31CA2527C6EF003497FB /* Login.graphql */,
+				0B7C31CB2527C6EF003497FB /* Fragment.graphql */,
+				0B7C31CC2527C6EF003497FB /* Product.graphql */,
+			);
+			path = GraphQLInterface;
+			sourceTree = "<group>";
+		};
+		0B7C31D8252B9084003497FB /* ProductRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31D6252B907E003497FB /* ProductRatingView.xib */,
+				0B7C31D9252B9230003497FB /* ProductRatingView.swift */,
+			);
+			path = ProductRatingView;
 			sourceTree = "<group>";
 		};
 		0BD43D022522955900177F79 = {
@@ -215,6 +255,8 @@
 			children = (
 				0BD43D382522A9E600177F79 /* MediaManager.swift */,
 				0BD43D422522AE3D00177F79 /* FFMPEGManager.swift */,
+				0B7C31C72527C034003497FB /* ApolloClientManager.swift */,
+				0B7C31D02527C8EB003497FB /* ProductManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -234,6 +276,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31D8252B9084003497FB /* ProductRatingView */,
 				0B7C31B325268524003497FB /* ProductTagView */,
 				0B7C31A32523BB68003497FB /* Cells */,
 				0BD43D322522A90E00177F79 /* CircleImageView.swift */,
@@ -344,9 +387,13 @@
 				0BD43D262522961500177F79 /* Podfile in Resources */,
 				0B7C31B525268544003497FB /* ProductTagView.xib in Resources */,
 				0B7C31C62527B696003497FB /* schema.json in Resources */,
+				0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */,
 				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
+				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
+				0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
+				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" GraphQL/API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://heer-api-dev.goubiq.com/graphql\" \n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://heer-api-dev.goubiq.com/graphql\" \n\n\n";
 		};
 		60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -448,14 +495,19 @@
 				0BD43D372522A94F00177F79 /* Constant.swift in Sources */,
 				0BD43D472522B0CA00177F79 /* Utils.swift in Sources */,
 				0BD43D3D2522AAFB00177F79 /* Product.swift in Sources */,
+				0B7C31D32527C986003497FB /* API.swift in Sources */,
 				0BD43D392522A9E600177F79 /* MediaManager.swift in Sources */,
 				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
+				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
+				0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
+				0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */,
 				0BD43D432522AE3D00177F79 /* FFMPEGManager.swift in Sources */,
 				0B7C31A62523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift in Sources */,
 				0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */,
 				0BD43D352522A93300177F79 /* ConfigurationEnabilityButton.swift in Sources */,
+				0B7C31D12527C8EB003497FB /* ProductManager.swift in Sources */,
 				0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
@@ -660,7 +712,7 @@
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.34.1;
+				minimumVersion = 0.33.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

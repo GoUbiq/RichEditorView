@@ -57,6 +57,10 @@ class CameraPreviewAndEditViewController: UIViewController {
         }
     }
     
+    private lazy var productPickerVC: ProductTagPickerViewController = {
+        return .newInstance(delegate: self)
+    }()
+    
     private var mediaManager: MediaManager {
         return MediaManager.sharedInstance
     }
@@ -149,17 +153,7 @@ class CameraPreviewAndEditViewController: UIViewController {
     }
     
     @IBAction func emojiButtonPressed(_ sender: Any) {
-        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .gif, delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        let productView: ProductTagView = .fromNib()
-        productView.configureView(product: .init(id: "", title: "Product owkodkqwokodkow kokokodko dkoqdwkow dqkowd koq dkowqdw kowdqok qwdko "))
-        view.addSubview(productView)
-        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
-        
-        self.overlayView.addSubview(view)
-        view.center = self.overlayView.center
+        self.present(self.productPickerVC, animated: true)
     }
     
     @IBAction func addTextButtonPressed(_ sender: Any) {
@@ -233,6 +227,21 @@ extension CameraPreviewAndEditViewController: TextStickerEditionDelegate {
     }
 }
 
+extension CameraPreviewAndEditViewController: ProductTagPickerDelegate {
+    func didSelect(product: Product) {
+        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .gif, delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        let productView: ProductTagView = .fromNib()
+        productView.configureView(product: product)
+        view.addSubview(productView)
+        productView.snp.makeConstraints({ $0.edges.equalToSuperview() })
+        
+        self.overlayView.addSubview(view)
+        view.center = self.overlayView.center
+    }
+}
 
 extension CameraPreviewAndEditViewController: DragScalePositionDelegate {
     func viewDragStarted(view: DragScaleAndRotateView) {

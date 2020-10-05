@@ -13,30 +13,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGq-Qb-jfc">
-                    <rect key="frame" x="10" y="10" width="238" height="52.5"/>
+                    <rect key="frame" x="10" y="10" width="170" height="74.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ECU-aM-gGl">
-                            <rect key="frame" x="10" y="5" width="178" height="42.5"/>
+                            <rect key="frame" x="10" y="5" width="120" height="64.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9af-QG-wb2">
-                                    <rect key="frame" x="0.0" y="0.0" width="178" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garnier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-UJ-hpi">
-                                    <rect key="frame" x="0.0" y="25.5" width="178" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="0.0" y="21" width="120" height="13.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZO-pB-9KE" customClass="ProductRatingView" customModule="UrbaniOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="39.5" width="120" height="25"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="bae-rb-Nas"/>
+                                        <constraint firstAttribute="height" constant="25" id="cRr-ct-6oO"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QcY-3H-LRm">
-                            <rect key="frame" x="198" y="11.5" width="30" height="30"/>
+                            <rect key="frame" x="140" y="27.5" width="20" height="20"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Zo8-W5-Bti"/>
+                                <constraint firstAttribute="height" constant="20" id="Zo8-W5-Bti"/>
                                 <constraint firstAttribute="width" secondItem="QcY-3H-LRm" secondAttribute="height" multiplier="1:1" id="tnx-V7-ZeK"/>
                             </constraints>
                         </imageView>
@@ -50,7 +58,7 @@
                         <constraint firstItem="ECU-aM-gGl" firstAttribute="top" secondItem="tGq-Qb-jfc" secondAttribute="top" constant="5" id="eWQ-6h-IIW"/>
                         <constraint firstItem="ECU-aM-gGl" firstAttribute="leading" secondItem="tGq-Qb-jfc" secondAttribute="leading" constant="10" id="fCl-2P-uPg"/>
                         <constraint firstAttribute="trailing" secondItem="QcY-3H-LRm" secondAttribute="trailing" constant="10" id="w6P-Bi-uVZ"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="xMB-cJ-nae"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="xMB-cJ-nae"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJ8-25-Ejq" customClass="CircleImageView" customModule="UrbaniOS" customModuleProvider="target">
@@ -67,7 +75,7 @@
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tGq-Qb-jfc" secondAttribute="bottom" id="1ZV-wX-85g"/>
                 <constraint firstItem="tGq-Qb-jfc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Fro-oQ-h8H"/>
                 <constraint firstItem="OJ8-25-Ejq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HI7-4e-wUl"/>
-                <constraint firstAttribute="trailing" secondItem="tGq-Qb-jfc" secondAttribute="trailing" id="dNd-3b-yYH"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tGq-Qb-jfc" secondAttribute="trailing" id="dNd-3b-yYH"/>
                 <constraint firstItem="OJ8-25-Ejq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i4t-VF-r5X"/>
                 <constraint firstItem="tGq-Qb-jfc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kvs-V1-5vO"/>
             </constraints>
@@ -76,9 +84,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="productName" destination="9af-QG-wb2" id="DyQ-Af-fsh"/>
+                <outlet property="productRatingView" destination="xZO-pB-9KE" id="6NM-DH-5Mj"/>
+                <outlet property="rightArrow" destination="QcY-3H-LRm" id="xDz-Uh-QQd"/>
                 <outlet property="stackContainerView" destination="tGq-Qb-jfc" id="jBV-26-dzi"/>
             </connections>
-            <point key="canvasLocation" x="-339.13043478260875" y="107.8125"/>
+            <point key="canvasLocation" x="-230" y="107"/>
         </view>
     </objects>
     <resources>

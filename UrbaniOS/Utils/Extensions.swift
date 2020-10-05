@@ -10,10 +10,32 @@ import Foundation
 import UIKit
 import AVFoundation
 
+enum ViewCorners {
+    case topRight
+    case topLeft
+    case bottomRight
+    case bottomLeft
+    
+    var corner: CACornerMask {
+        switch self {
+        case .topRight: return .layerMaxXMaxYCorner
+        case .topLeft: return .layerMinXMaxYCorner
+        case .bottomLeft: return .layerMinXMinYCorner
+        case .bottomRight: return .layerMaxXMaxYCorner
+        }
+    }
+}
+
+
 extension UIView {
     @discardableResult
     class func fromNib<T>() -> T where T: UIView {
         return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+    
+    func roundedCorners(corners: CACornerMask, radius: CGFloat) {
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = corners
     }
 }
 

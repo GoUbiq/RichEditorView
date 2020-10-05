@@ -13,6 +13,8 @@ class ProductTagView: UIView {
     
     @IBOutlet private weak var productName: UILabel!
     @IBOutlet private weak var stackContainerView: UIView!
+    @IBOutlet private weak var rightArrow: UIImageView!
+    @IBOutlet private weak var productRatingView: ProductRatingView!
     
     private var product: Product!
     
@@ -21,6 +23,7 @@ class ProductTagView: UIView {
         
         self.stackContainerView.layer.borderColor = UIColor.white.cgColor
         self.stackContainerView.layer.borderWidth = 1
+        self.stackContainerView.roundedCorners(corners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner], radius: 10)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
@@ -36,5 +39,10 @@ class ProductTagView: UIView {
     func configureView(product: Product) {
         self.product = product
         self.productName.text = product.title
+        self.productRatingView.isHidden = true
+        if let rating = product.rating {
+            self.productRatingView.isHidden = false
+            self.productRatingView.configureView(rating: rating)
+        }
     }
 }
