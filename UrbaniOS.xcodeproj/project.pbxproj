@@ -34,6 +34,9 @@
 		0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */; };
 		0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31D6252B907E003497FB /* ProductRatingView.xib */; };
 		0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31D9252B9230003497FB /* ProductRatingView.swift */; };
+		0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31DB252BD0D3003497FB /* Template.storyboard */; };
+		0B7C31DE252CD43A003497FB /* TemplateMediaPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */; };
+		0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -81,6 +84,9 @@
 		0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerTableViewCell.swift; sourceTree = "<group>"; };
 		0B7C31D6252B907E003497FB /* ProductRatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductRatingView.xib; sourceTree = "<group>"; };
 		0B7C31D9252B9230003497FB /* ProductRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRatingView.swift; sourceTree = "<group>"; };
+		0B7C31DB252BD0D3003497FB /* Template.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Template.storyboard; sourceTree = "<group>"; };
+		0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerViewController.swift; sourceTree = "<group>"; };
+		0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				0B7C31A42523BB71003497FB /* CreatePost */,
 				0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */,
 				0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */,
+				0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -269,6 +276,7 @@
 				0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */,
 				0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */,
 				0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */,
+				0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 			children = (
 				0BD43D2E2522A86B00177F79 /* Camera.storyboard */,
 				0B7C319D2523AC60003497FB /* CreatePost.storyboard */,
+				0B7C31DB252BD0D3003497FB /* Template.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -382,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */,
 				0BD43D1E2522955D00177F79 /* LaunchScreen.storyboard in Resources */,
 				0BD43D1B2522955D00177F79 /* Assets.xcassets in Resources */,
 				0BD43D262522961500177F79 /* Podfile in Resources */,
@@ -508,7 +518,9 @@
 				0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */,
 				0BD43D352522A93300177F79 /* ConfigurationEnabilityButton.swift in Sources */,
 				0B7C31D12527C8EB003497FB /* ProductManager.swift in Sources */,
+				0B7C31DE252CD43A003497FB /* TemplateMediaPickerViewController.swift in Sources */,
 				0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */,
+				0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
 				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,

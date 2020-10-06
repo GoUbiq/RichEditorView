@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import Photos
 
 enum ViewCorners {
     case topRight
@@ -36,6 +37,22 @@ extension UIView {
     func roundedCorners(corners: CACornerMask, radius: CGFloat) {
         self.layer.cornerRadius = radius
         self.layer.maskedCorners = corners
+    }
+}
+
+extension UIImageView {
+    
+    func fetchImage(asset: PHAsset, contentMode: PHImageContentMode, targetSize: CGSize) {
+        PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: contentMode, options: nil) { image, _ in
+            guard let image = image else { return }
+            switch contentMode {
+            case .aspectFill:
+                self.contentMode = .scaleAspectFill
+            default:
+                self.contentMode = .scaleAspectFit
+            }
+            self.image = image
+        }
     }
 }
 

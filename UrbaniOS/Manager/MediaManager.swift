@@ -66,6 +66,28 @@ class MediaManager {
         
     }
     
+    func fetchAllLibraryPhotos(completion: @escaping (PHFetchResult<PHAsset>?) -> ()) {
+        var assets: PHFetchResult<PHAsset>? = nil {
+            didSet {
+                DispatchQueue.main.async {
+                    completion(assets)
+                }
+            }
+        }
+        PHPhotoLibrary.requestAuthorization() { permission in
+            guard permission == .authorized else {
+                assets = nil
+                return
+            }
+    
+            DispatchQueue.global(qos: .background).async {
+                let option: PHFetchOptions = .init()
+                option.sortDescriptors = [.init(key: "creationDate", ascending: false)]
+                assets = PHAsset.fetchAssets(with: .image, options: option)
+            }
+        }
+    }
+    
     func downloadReactionContentMedias(content: [MediaSticker], completionHandler:  @escaping ([URL]) -> ()) {
         let session = AFURLSessionManager(sessionConfiguration: .default)
         let group = DispatchGroup()

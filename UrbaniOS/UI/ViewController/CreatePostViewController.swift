@@ -45,7 +45,7 @@ class CreatePostViewController: UIViewController {
             .action(.init(
                 image: #imageLiteral(resourceName: "flashOn"),
                 title: "Template",
-                action: { self.showCameraView() }))
+                action: { self.showTemplate()}))
         ]
 
         self.cells = [
@@ -62,6 +62,11 @@ class CreatePostViewController: UIViewController {
     
     private func showCameraView() {
         self.present(self.cameraVC, animated: true)
+    }
+    
+    private func showTemplate() {
+        let vc = TemplateMediaPickerViewController.newInstance()
+        self.present(vc, animated: true)
     }
 }
 
