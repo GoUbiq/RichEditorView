@@ -44,7 +44,6 @@ class CameraPreviewAndEditViewController: UIViewController {
     private var contentViews: [DragScaleAndRotateView] {
         return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
     }
-    private var stickers: [MediaSticker] = []
     
     private var editingTxtViewId: UUID? = nil {
         didSet {

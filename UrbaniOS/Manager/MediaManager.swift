@@ -63,7 +63,12 @@ class MediaManager {
                 image = nil
             }
         }
-        
+    }
+    
+    func fetchImage(asset: PHAsset, completion: @escaping (UIImage) -> ()) {
+        PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil) { result, _ in
+             completion(result ?? UIImage())
+        }
     }
     
     func fetchAllLibraryPhotos(completion: @escaping (PHFetchResult<PHAsset>?) -> ()) {

@@ -20,6 +20,13 @@ enum DragScaleViewType {
         default: return true
         }
     }
+    
+    var isGestureEnabled: Bool {
+        switch self {
+        case .text(let textInfo): return !textInfo.isTitle
+        default: return true
+        }
+    }
 }
 
 protocol DragScalePositionDelegate: class {
@@ -41,12 +48,12 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     private(set) var positionYRatio: CGFloat = 0.5
     private(set) var isSelected: Bool = false {
         didSet {
-            self.layer.borderWidth = self.isSelected ? 3 : 0
+//            self.layer.borderWidth = self.isSelected ? 3 : 0
         }
     }
     private(set) var type: DragScaleViewType = .gif
     
-    private var delegate: DragScalePositionDelegate!
+    private var delegate: DragScalePositionDelegate?
 
     var degreeRotation: CGFloat {
         return (self.currentRotation * (180 / .pi)).truncatingRemainder(dividingBy: 360)
@@ -58,7 +65,7 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         self.configureGesture()
     }
     
-    init(frame: CGRect, currentScale: CGFloat, type: DragScaleViewType, delegate: DragScalePositionDelegate) {
+    init(frame: CGRect, currentScale: CGFloat, type: DragScaleViewType, delegate: DragScalePositionDelegate?) {
         super.init(frame: frame)
         
         self.layer.borderColor = UIColor.white.cgColor
@@ -77,6 +84,8 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func configureGesture() {
+        guard self.type.isGestureEnabled else { return }
+        
         if self.type.canRotateAndScale {
             let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.didPinch(sender:)))
             pinch.delegate = self
@@ -113,10 +122,10 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         let imgView = UIImageView(image: img)
         self.addSubview(imgView)
         imgView.snp.makeConstraints({ $0.edges.equalToSuperview() })
-        self.type = .text(TextInfo(text: newText, font: textInfo.font, img: img))
+        self.type = .text(TextInfo(text: newText, font: textInfo.font, img: img, isTitle: textInfo.isTitle))
     }
     
-    func imageWith(textInfo: TextInfo) -> UIImage? {
+    private func imageWith(textInfo: TextInfo) -> UIImage? {
         let frame = CGRect(origin: .zero, size: textInfo.text.sizeOfString(usingFont: textInfo.font, maxWidth: UIScreen.main.bounds.width - 100, maxHeight: .infinity))
         print(frame)
         let nameLabel = UILabel(frame: frame)
@@ -157,14 +166,14 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         if recognizer.state == .began {
             self.superview?.bringSubviewToFront(self)
             self.lastLocation = self.center
-            self.delegate.viewDragStarted(view: self)
+            self.delegate?.viewDragStarted(view: self)
         }
 
         self.center = CGPoint(x: self.lastLocation.x + translation.x, y: self.lastLocation.y + translation.y)
         let screen = UIScreen.main
         self.positionXRatio = self.center.x / screen.bounds.width
         self.positionYRatio = self.center.y / screen.bounds.height
-        self.delegate.viewPositionChanged(view: self, touchPoint: recognizer.location(in: self.superview))
+        self.delegate?.viewPositionChanged(view: self, touchPoint: recognizer.location(in: self.superview))
         
         if recognizer.state == .ended {
             self.delegate?.viewDragEnded(view: self)
@@ -193,5 +202,6 @@ extension DragScaleAndRotateView {
         var text: String
         var font: UIFont = .systemFont(ofSize: 50)
         var img: UIImage?
+        var isTitle: Bool = false
     }
 }

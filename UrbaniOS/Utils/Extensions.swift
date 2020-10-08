@@ -41,8 +41,7 @@ extension UIView {
 }
 
 extension UIImageView {
-    
-    func fetchImage(asset: PHAsset, contentMode: PHImageContentMode, targetSize: CGSize) {
+    func fetchImage(asset: PHAsset, contentMode: PHImageContentMode, targetSize: CGSize = PHImageManagerMaximumSize) {
         PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: contentMode, options: nil) { image, _ in
             guard let image = image else { return }
             switch contentMode {
@@ -53,6 +52,75 @@ extension UIImageView {
             }
             self.image = image
         }
+    }
+}
+
+extension Collection where Iterator.Element == UIImage {
+    func combineLeftToRight() -> UIImage? {
+        var dimensions = CGSize(width: 0.0, height: 0.0)
+        for image in self {
+            dimensions.width += Swift.max(dimensions.width, image.size.width)
+            dimensions.height = Swift.max(dimensions.height, image.size.height)
+        }
+
+        UIGraphicsBeginImageContext(dimensions)
+
+        var lastX = CGFloat(0.0)
+        for image in self {
+            image.draw(in: CGRect(x: lastX, y: 0, width: image.size.width, height: dimensions.height))
+            lastX += image.size.width
+        }
+
+        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return finalImage
+    }
+}
+
+extension UIImage {
+    func crop(rect: CGRect) -> UIImage? {
+        guard let cgImage = self.cgImage, let ref = cgImage.cropping(to: rect) else { return nil }
+        return UIImage(cgImage: ref)
+    }
+    
+     func resizeImage(targetSize: CGSize) -> UIImage {
+        let size = self.size
+
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
+}
+
+extension Collection {
+    subscript (safe index: Index) -> Element? {
+        return self.indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension UIScrollView {
+    var visibleRect: CGRect {
+        let scale = 1 / self.zoomScale
+        return CGRect(x: self.contentOffset.x * scale, y: self.contentOffset.y * scale, width: self.bounds.size.width * scale, height: self.bounds.size.height * scale)
     }
 }
 

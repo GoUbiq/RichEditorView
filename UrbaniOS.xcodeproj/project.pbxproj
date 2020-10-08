@@ -37,6 +37,7 @@
 		0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31DB252BD0D3003497FB /* Template.storyboard */; };
 		0B7C31DE252CD43A003497FB /* TemplateMediaPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */; };
 		0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */; };
+		0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -87,6 +88,7 @@
 		0B7C31DB252BD0D3003497FB /* Template.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Template.storyboard; sourceTree = "<group>"; };
 		0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerViewController.swift; sourceTree = "<group>"; };
 		0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditingViewController.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */,
 				0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */,
 				0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */,
+				0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -328,8 +331,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BD43D222522955D00177F79 /* Build configuration list for PBXNativeTarget "UrbaniOS" */;
 			buildPhases = (
-				0B7C31C12527B1A5003497FB /* Apollo CLI */,
 				60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */,
+				0B7C31C12527B1A5003497FB /* Apollo CLI */,
 				01700A99E3EC39D2B03265E8 /* [CP] Prepare Artifacts */,
 				0BD43D072522955900177F79 /* Sources */,
 				0BD43D082522955900177F79 /* Frameworks */,
@@ -492,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
+				0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */,
 				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
 				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
