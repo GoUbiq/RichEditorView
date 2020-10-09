@@ -25,6 +25,7 @@ PODS:
     - SDWebImage (~> 5.7)
   - SnapKit (5.0.1)
   - UICircularProgressRing (7.0.0)
+  - ZSSRichTextEditor (0.5.2.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SDWebImageSwiftUI
   - SnapKit (~> 5.0.0)
   - UICircularProgressRing
+  - ZSSRichTextEditor
 
 SPEC REPOS:
   trunk:
@@ -47,6 +49,7 @@ SPEC REPOS:
     - SDWebImageSwiftUI
     - SnapKit
     - UICircularProgressRing
+    - ZSSRichTextEditor
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -58,7 +61,8 @@ SPEC CHECKSUMS:
   SDWebImageSwiftUI: 43687ffe232ddd33fe0659498b7ca9884fdd6b35
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
+  ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
-PODFILE CHECKSUM: b645ef779d33578e49793f80b12aba162b0ca255
+PODFILE CHECKSUM: f786d164a33b88d982b8206b5cb3d280b082e15b
 
 COCOAPODS: 1.9.3

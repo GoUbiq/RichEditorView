@@ -14,5 +14,6 @@ target 'UrbaniOS' do
   pod 'RichEditorView'
   pod 'SnapKit', '~> 5.0.0'
   pod 'ImageScrollView'
+  pod 'ZSSRichTextEditor'
 
 end

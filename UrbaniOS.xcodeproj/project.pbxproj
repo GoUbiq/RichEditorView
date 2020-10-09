@@ -38,6 +38,8 @@
 		0B7C31DE252CD43A003497FB /* TemplateMediaPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */; };
 		0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */; };
 		0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */; };
+		0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31E42530C68D003497FB /* PostBodyTableViewCell.swift */; };
+		0B7C31E9253100E8003497FB /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31E8253100E8003497FB /* index.html */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -89,6 +91,8 @@
 		0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerViewController.swift; sourceTree = "<group>"; };
 		0B7C31DF252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMediaPickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditingViewController.swift; sourceTree = "<group>"; };
+		0B7C31E42530C68D003497FB /* PostBodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyTableViewCell.swift; sourceTree = "<group>"; };
+		0B7C31E8253100E8003497FB /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				0B7C31A72523E8A3003497FB /* CreatePostActionCollectionViewCell.swift */,
 				0B7C31AB25251366003497FB /* PostMediaCollectionViewCell.swift */,
 				0B7C31AD25252401003497FB /* PostTitleTableViewCell.swift */,
+				0B7C31E42530C68D003497FB /* PostBodyTableViewCell.swift */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				0BD43D1F2522955D00177F79 /* Info.plist */,
 				0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */,
 				0BD43D252522961500177F79 /* Podfile */,
+				0B7C31E8253100E8003497FB /* index.html */,
 				0B7C31C32527B4A4003497FB /* devSettings.plist */,
 			);
 			path = UrbaniOS;
@@ -401,6 +407,7 @@
 				0B7C31B525268544003497FB /* ProductTagView.xib in Resources */,
 				0B7C31C62527B696003497FB /* schema.json in Resources */,
 				0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */,
+				0B7C31E9253100E8003497FB /* index.html in Resources */,
 				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
 				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
@@ -514,6 +521,7 @@
 				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
 				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
+				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,
 				0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
 				0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */,

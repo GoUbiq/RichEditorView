@@ -56,6 +56,7 @@ class CreatePostViewController: UIViewController {
         ]
         
         self.cells.append(TitleCell(item: ""))
+        self.cells.append(BodyCell(item: ""))
         
         self.tableView.reloadData()
     }
@@ -74,6 +75,7 @@ class CreatePostViewController: UIViewController {
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     typealias MediaActionsCell = TableCellConfigurator<CreatePostMediaHolderTableViewCell, [CreatePostMediaHolderTableViewCell.MediaHolderType]>
     typealias TitleCell = TableCellConfigurator<PostTitleTableViewCell, String>
+    typealias BodyCell = TableCellConfigurator<PostBodyTableViewCell, String>
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cells.count

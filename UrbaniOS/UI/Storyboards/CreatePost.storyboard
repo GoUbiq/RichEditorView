@@ -11,7 +11,6 @@
         <!--Navigation Controller-->
         <scene sceneID="m3H-HU-zGa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-xq-CTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="CA5-6p-9kP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Bi-sb-ntO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -21,6 +20,7 @@
                         <segue destination="lLd-w1-AQK" kind="relationship" relationship="rootViewController" id="axj-Zm-f2O"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eM-xq-CTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1493" y="133"/>
         </scene>
@@ -205,13 +205,44 @@
                                             <outlet property="textField" destination="tIE-YH-Wgi" id="XHo-Bk-ill"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="224" id="3ac-k9-Ukb">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="224"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostBodyTableViewCell" rowHeight="441" id="3ac-k9-Ukb" customClass="PostBodyTableViewCell" customModule="UrbaniOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="188" width="414" height="441"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ac-k9-Ukb" id="5et-5t-iX2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcU-AY-LVv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jew-2T-eWt" customClass="RichEditorView" customModule="RichEditorView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="J07-4s-pjf"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Jew-2T-eWt" secondAttribute="bottom" id="C8Y-9o-dLi"/>
+                                                <constraint firstItem="NcU-AY-LVv" firstAttribute="top" secondItem="5et-5t-iX2" secondAttribute="top" id="GlE-66-HRC"/>
+                                                <constraint firstAttribute="bottom" secondItem="NcU-AY-LVv" secondAttribute="bottom" id="I4I-dJ-A4X"/>
+                                                <constraint firstItem="Jew-2T-eWt" firstAttribute="top" secondItem="5et-5t-iX2" secondAttribute="top" id="LDQ-HD-rVL"/>
+                                                <constraint firstItem="Jew-2T-eWt" firstAttribute="leading" secondItem="5et-5t-iX2" secondAttribute="leading" id="QtM-PW-umW"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jew-2T-eWt" secondAttribute="trailing" id="T0e-A3-e6O"/>
+                                                <constraint firstAttribute="trailing" secondItem="NcU-AY-LVv" secondAttribute="trailing" id="Vce-Fp-d73"/>
+                                                <constraint firstItem="NcU-AY-LVv" firstAttribute="leading" secondItem="5et-5t-iX2" secondAttribute="leading" id="mOq-wY-8dG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="richText" destination="Jew-2T-eWt" id="zmO-in-c3x"/>
+                                            <outlet property="webView" destination="NcU-AY-LVv" id="V0f-W7-xNW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
