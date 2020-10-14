@@ -11,18 +11,21 @@ import ZSSRichTextEditor
 import WebKit
 import RichEditorView
 
+protocol PostBodyCellDelegate: class {
+    func didPressAddProductTag(cell: PostBodyTableViewCell)
+}
+
 class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     static let identifier = "PostBodyTableViewCell"
-    
     
     @IBOutlet private weak var richText: RichEditorView!
     @IBOutlet private weak var webView: WKWebView!
     
+    private var info: CellInfo!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.richText. = "Enter body stp"
-
         self.richText.delegate = self
         self.richText.isEditingEnabled = true
 //
@@ -32,29 +35,48 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
         toolBar.delegate = self
         
         let item = RichEditorOptionItem(image: nil, title: "Tag") { toolbar in
-            toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
+            self.info.delegate.didPressAddProductTag(cell: self)
         }
         
-//        toolBar.options = [item]
+        let hideKB = RichEditorOptionItem(image: nil, title: "Hide") { toolbar in
+            toolbar.editor?.endEditing(true)
+        }
+        
+        toolBar.options = [item, hideKB]
 
         self.richText.inputAccessoryView = toolBar
     }
     
-    func configure(data: String) {
-        
-        if let filepath = Bundle.main.path(forResource: "index", ofType: "html") {
-            do {
-                let contents = try String(contentsOfFile: filepath)
-                print(contents)
-                self.richText.html = contents
-            } catch {
-                // contents could not be loaded
-            }
-        } else {
-            // example.txt not found!
-        }
+    func addProductTag(product: Product) {
+        self.richText.runJS("RE.insertProductTag(\"\(product.title)\", \"www.google.com\", \"\(product.rating ?? 1)\");")
+    }
+    
+//    private func convertSpecialCharacters(string: String) -> String {
+//            var newString = string
+//            let char_dictionary = [
+//                "&amp;" : "&",
+//                "&lt;" : "<",
+//                "&gt;" : ">",
+//                "&quot;" : "\"",
+//                "&apos;" : "'"
+//            ];
+//            for (escaped_char, unescaped_char) in char_dictionary {
+//                newString = newString.replacingOccurrences(of: escaped_char, with: unescaped_char, options: NSString.CompareOptions.literal, range: nil)
+//            }
+//            return newString
+//    }
+
+    func configure(data: CellInfo) {
+        self.info = data
     }
 }
+
+extension PostBodyTableViewCell {
+    struct CellInfo {
+        var delegate: PostBodyCellDelegate
+    }
+}
+
 extension PostBodyTableViewCell: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, shouldInteractWith url: URL) -> Bool {
         print(url.absoluteString)

@@ -224,7 +224,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="400" id="J07-4s-pjf"/>
+                                                        <constraint firstAttribute="height" constant="250" id="J07-4s-pjf"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

@@ -15,6 +15,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - Properties
+    private var selectingCell: PostBodyTableViewCell? = nil
     private var cells: [CellConfigurator] = []
     private var postingMedia: [PostMedia] = []
     private lazy var cameraVC: CameraViewController = {
@@ -31,12 +32,19 @@ class CreatePostViewController: UIViewController {
         self.navigationItem.title = "Create Post"
         
         self.configureCells()
+        
+        self.tableView.isScrollEnabled = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - Private
-    private func configureCells() {
-        self.cells = []
-         
+    private func configuredMediaCell() -> MediaActionsCell {
         let holderType: [CreatePostMediaHolderTableViewCell.MediaHolderType] = [
             .action(.init(
                 image: #imageLiteral(resourceName: "add-camera"),
@@ -48,15 +56,19 @@ class CreatePostViewController: UIViewController {
                 action: { self.showTemplate()}))
         ]
 
-        self.cells = [
-            MediaActionsCell(
-                item: holderType +
-                    self.postingMedia.map({ value -> (CreatePostMediaHolderTableViewCell.MediaHolderType) in .media(value, self) })
-            )
-        ]
+        return MediaActionsCell(
+            item: holderType +
+                self.postingMedia.map({ value -> (CreatePostMediaHolderTableViewCell.MediaHolderType) in .media(value, self) })
+        )
+    }
+    
+    private func configureCells() {
+        self.cells = []
+
+        self.cells = [self.configuredMediaCell()]
         
         self.cells.append(TitleCell(item: ""))
-        self.cells.append(BodyCell(item: ""))
+        self.cells.append(BodyCell(item: .init(delegate: self)))
         
         self.tableView.reloadData()
     }
@@ -69,13 +81,32 @@ class CreatePostViewController: UIViewController {
         let vc = TemplateMediaPickerViewController.newInstance()
         self.present(vc, animated: true)
     }
+    
+    // MARK: Notification
+    @objc func keyboardWillShowNotification(_ notification: Notification) {
+        if self.cells.first is MediaActionsCell {
+            self.cells.remove(at: 0)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRows(at: [.zero], with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
+    
+    @objc func keyboardWillHideNotification(_ notification: NSNotification) {
+        if !(self.cells.first is MediaActionsCell) {
+            self.cells.insert(self.configuredMediaCell(), at: 0)
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: [.zero], with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
 }
 
 //MARK: - TableViewDelegate
 extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
     typealias MediaActionsCell = TableCellConfigurator<CreatePostMediaHolderTableViewCell, [CreatePostMediaHolderTableViewCell.MediaHolderType]>
     typealias TitleCell = TableCellConfigurator<PostTitleTableViewCell, String>
-    typealias BodyCell = TableCellConfigurator<PostBodyTableViewCell, String>
+    typealias BodyCell = TableCellConfigurator<PostBodyTableViewCell, PostBodyTableViewCell.CellInfo>
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cells.count
@@ -88,6 +119,18 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
         item.configure(cell: cell)
         
         return cell
+    }
+}
+
+extension CreatePostViewController: PostBodyCellDelegate, ProductTagPickerDelegate {
+    func didPressAddProductTag(cell: PostBodyTableViewCell) {
+        self.selectingCell = cell
+        let vc = ProductTagPickerViewController.newInstance(delegate: self)
+        self.present(vc, animated: true)
+    }
+    
+    func didSelect(product: Product) {
+        self.selectingCell?.addProductTag(product: product)
     }
 }
 
