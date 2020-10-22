@@ -40,7 +40,17 @@
 		0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */; };
 		0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31E42530C68D003497FB /* PostBodyTableViewCell.swift */; };
 		0B7C31E9253100E8003497FB /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31E8253100E8003497FB /* index.html */; };
-		0B7C31EB25367DEF003497FB /* add.html in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31EA25367DEF003497FB /* add.html */; };
+		0B7C31EF253A3339003497FB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31EE253A3338003497FB /* Home.storyboard */; };
+		0B7C31F1253A4234003497FB /* Critique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31F0253A4234003497FB /* Critique.swift */; };
+		0B7C31F3253A43B6003497FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31F2253A43B6003497FB /* User.swift */; };
+		0B7C31F5253A46AA003497FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31F4253A46AA003497FB /* HomeViewController.swift */; };
+		0B7C31F72540D567003497FB /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31F62540D567003497FB /* Post.storyboard */; };
+		0B7C31FA2540D71E003497FB /* HomeCritiqueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31F92540D71E003497FB /* HomeCritiqueCollectionViewCell.swift */; };
+		0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31FC2540D99C003497FB /* PinterestLayout.swift */; };
+		0B7C320025410547003497FB /* PostPagePicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31FF25410547003497FB /* PostPagePicturesCollectionViewCell.swift */; };
+		0B7C3202254107BC003497FB /* PostBodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */; };
+		0B7C32042541E8D4003497FB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C32032541E8D4003497FB /* PostViewController.swift */; };
+		0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -94,7 +104,17 @@
 		0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditingViewController.swift; sourceTree = "<group>"; };
 		0B7C31E42530C68D003497FB /* PostBodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyTableViewCell.swift; sourceTree = "<group>"; };
 		0B7C31E8253100E8003497FB /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		0B7C31EA25367DEF003497FB /* add.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = add.html; sourceTree = "<group>"; };
+		0B7C31EE253A3338003497FB /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		0B7C31F0253A4234003497FB /* Critique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Critique.swift; sourceTree = "<group>"; };
+		0B7C31F2253A43B6003497FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0B7C31F4253A46AA003497FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0B7C31F62540D567003497FB /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
+		0B7C31F92540D71E003497FB /* HomeCritiqueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCritiqueCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C31FC2540D99C003497FB /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		0B7C31FF25410547003497FB /* PostPagePicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPagePicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C32032541E8D4003497FB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +159,8 @@
 		0B7C31A32523BB68003497FB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31FE254104F4003497FB /* Post */,
+				0B7C31F82540D70F003497FB /* Home */,
 				0B7C31A42523BB71003497FB /* CreatePost */,
 				0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */,
 				0B7C31D42527CC57003497FB /* ProductTagPickerTableViewCell.swift */,
@@ -197,6 +219,32 @@
 			path = ProductRatingView;
 			sourceTree = "<group>";
 		};
+		0B7C31F82540D70F003497FB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31F92540D71E003497FB /* HomeCritiqueCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0B7C31FB2540D983003497FB /* PinterestLayout */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31FC2540D99C003497FB /* PinterestLayout.swift */,
+			);
+			path = PinterestLayout;
+			sourceTree = "<group>";
+		};
+		0B7C31FE254104F4003497FB /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C31FF25410547003497FB /* PostPagePicturesCollectionViewCell.swift */,
+				0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */,
+				0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		0BD43D022522955900177F79 = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +280,6 @@
 				0BD43D252522961500177F79 /* Podfile */,
 				0B7C31E8253100E8003497FB /* index.html */,
 				0B7C31C32527B4A4003497FB /* devSettings.plist */,
-				0B7C31EA25367DEF003497FB /* add.html */,
 			);
 			path = UrbaniOS;
 			sourceTree = "<group>";
@@ -264,6 +311,8 @@
 				0BD43D3A2522AABD00177F79 /* MediaSticker.swift */,
 				0BD43D3C2522AAFB00177F79 /* Product.swift */,
 				0B7C31A9252503F3003497FB /* PostMedia.swift */,
+				0B7C31F0253A4234003497FB /* Critique.swift */,
+				0B7C31F2253A43B6003497FB /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +338,8 @@
 				0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */,
 				0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */,
 				0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */,
+				0B7C31F4253A46AA003497FB /* HomeViewController.swift */,
+				0B7C32032541E8D4003497FB /* PostViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -296,6 +347,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C31FB2540D983003497FB /* PinterestLayout */,
 				0B7C31D8252B9084003497FB /* ProductRatingView */,
 				0B7C31B325268524003497FB /* ProductTagView */,
 				0B7C31A32523BB68003497FB /* Cells */,
@@ -312,6 +364,8 @@
 				0BD43D2E2522A86B00177F79 /* Camera.storyboard */,
 				0B7C319D2523AC60003497FB /* CreatePost.storyboard */,
 				0B7C31DB252BD0D3003497FB /* Template.storyboard */,
+				0B7C31EE253A3338003497FB /* Home.storyboard */,
+				0B7C31F62540D567003497FB /* Post.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -405,7 +459,6 @@
 			files = (
 				0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */,
 				0BD43D1E2522955D00177F79 /* LaunchScreen.storyboard in Resources */,
-				0B7C31EB25367DEF003497FB /* add.html in Resources */,
 				0BD43D1B2522955D00177F79 /* Assets.xcassets in Resources */,
 				0BD43D262522961500177F79 /* Podfile in Resources */,
 				0B7C31B525268544003497FB /* ProductTagView.xib in Resources */,
@@ -418,6 +471,8 @@
 				0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
+				0B7C31F72540D567003497FB /* Post.storyboard in Resources */,
+				0B7C31EF253A3339003497FB /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
+				0B7C320025410547003497FB /* PostPagePicturesCollectionViewCell.swift in Sources */,
 				0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */,
 				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
 				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
@@ -514,32 +570,40 @@
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
 				0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */,
 				0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */,
+				0B7C32042541E8D4003497FB /* PostViewController.swift in Sources */,
 				0BD43D312522A8CB00177F79 /* CameraViewController.swift in Sources */,
 				0BD43D3F2522ABD400177F79 /* CameraPreviewAndEditViewController.swift in Sources */,
 				0BD43D3B2522AABD00177F79 /* MediaSticker.swift in Sources */,
 				0BD43D372522A94F00177F79 /* Constant.swift in Sources */,
 				0BD43D472522B0CA00177F79 /* Utils.swift in Sources */,
 				0BD43D3D2522AAFB00177F79 /* Product.swift in Sources */,
+				0B7C3202254107BC003497FB /* PostBodyCollectionViewCell.swift in Sources */,
 				0B7C31D32527C986003497FB /* API.swift in Sources */,
 				0BD43D392522A9E600177F79 /* MediaManager.swift in Sources */,
 				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
 				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
+				0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */,
 				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,
+				0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */,
+				0B7C31F5253A46AA003497FB /* HomeViewController.swift in Sources */,
 				0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
+				0B7C31F3253A43B6003497FB /* User.swift in Sources */,
 				0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */,
 				0BD43D432522AE3D00177F79 /* FFMPEGManager.swift in Sources */,
 				0B7C31A62523BE44003497FB /* CreatePostMediaHolderTableViewCell.swift in Sources */,
 				0B7C31AE25252401003497FB /* PostTitleTableViewCell.swift in Sources */,
 				0BD43D352522A93300177F79 /* ConfigurationEnabilityButton.swift in Sources */,
 				0B7C31D12527C8EB003497FB /* ProductManager.swift in Sources */,
+				0B7C31FA2540D71E003497FB /* HomeCritiqueCollectionViewCell.swift in Sources */,
 				0B7C31DE252CD43A003497FB /* TemplateMediaPickerViewController.swift in Sources */,
 				0B7C31B025265DC9003497FB /* KeyboardLayoutConstraint.swift in Sources */,
 				0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
 				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,
+				0B7C31F1253A4234003497FB /* Critique.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

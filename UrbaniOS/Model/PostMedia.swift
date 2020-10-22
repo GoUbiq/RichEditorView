@@ -8,6 +8,15 @@
 
 import UIKit
 
+
+struct Media {
+    var id: String
+    var position: Int?
+    var url: String
+    var width: CGFloat
+    var height: CGFloat
+}
+
 struct PostMedia {
     var id: UUID = UUID()
     var url: URL

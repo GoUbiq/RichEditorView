@@ -201,3 +201,38 @@ extension IndexPath {
         return IndexPath(row: 0, section: 0)
     }
 }
+
+public extension UIImage {
+    /**
+     Calculates the best height of the image for available width.
+     */
+    public func height(forWidth width: CGFloat) -> CGFloat {
+        let boundingRect = CGRect(
+            x: 0,
+            y: 0,
+            width: width,
+            height: CGFloat(MAXFLOAT)
+        )
+        let rect = AVMakeRect(
+            aspectRatio: size,
+            insideRect: boundingRect
+        )
+        return rect.size.height
+    }
+}
+
+
+public extension String {
+    /**
+     Calculates the best height of the text for available width and font used.
+     */
+    public func heightForWidth(width: CGFloat, font: UIFont) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(
+            with: CGSize(width: width, height: CGFloat(MAXFLOAT)),
+            options: .usesLineFragmentOrigin,
+            attributes: [NSAttributedString.Key.font: font],
+            context: nil
+        )
+        return ceil(rect.height)
+    }
+}

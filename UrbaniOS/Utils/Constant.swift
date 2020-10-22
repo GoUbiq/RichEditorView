@@ -67,4 +67,6 @@ let stripeKeyKey = "stripeKey"
 //MARK: - Storyboards
 let cameraStoryboard = UIStoryboard(name: "Camera", bundle: nil)
 let templateStoryboard = UIStoryboard(name: "Template", bundle: nil)
+let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
 

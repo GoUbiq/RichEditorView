@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ZSSRichTextEditor
 import WebKit
 import RichEditorView
 
@@ -30,11 +29,10 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
         self.richText.isEditingEnabled = true
 //
         let toolBar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-        toolBar.options = RichEditorDefaultOption.all
         toolBar.editor = self.richText
         toolBar.delegate = self
         
-        let item = RichEditorOptionItem(image: nil, title: "Tag") { toolbar in
+        let item = RichEditorOptionItem(image: nil, title: "Product") { toolbar in
             self.info.delegate.didPressAddProductTag(cell: self)
         }
         
@@ -42,7 +40,7 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
             toolbar.editor?.endEditing(true)
         }
         
-        toolBar.options = [item, hideKB]
+        toolBar.options = [item, hideKB, RichEditorDefaultOption.unorderedList, RichEditorDefaultOption.bold, RichEditorDefaultOption.italic]
 
         self.richText.inputAccessoryView = toolBar
     }
@@ -50,21 +48,6 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     func addProductTag(product: Product) {
         self.richText.runJS("RE.insertProductTag(\"\(product.title)\", \"www.google.com\", \"\(product.rating ?? 1)\");")
     }
-    
-//    private func convertSpecialCharacters(string: String) -> String {
-//            var newString = string
-//            let char_dictionary = [
-//                "&amp;" : "&",
-//                "&lt;" : "<",
-//                "&gt;" : ">",
-//                "&quot;" : "\"",
-//                "&apos;" : "'"
-//            ];
-//            for (escaped_char, unescaped_char) in char_dictionary {
-//                newString = newString.replacingOccurrences(of: escaped_char, with: unescaped_char, options: NSString.CompareOptions.literal, range: nil)
-//            }
-//            return newString
-//    }
 
     func configure(data: CellInfo) {
         self.info = data
@@ -81,6 +64,10 @@ extension PostBodyTableViewCell: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, shouldInteractWith url: URL) -> Bool {
         print(url.absoluteString)
         return true
+    }
+    
+    func richEditor(_ editor: RichEditorView, contentDidChange content: String) {
+        print(editor.contentHTML)
     }
 }
 

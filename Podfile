@@ -9,11 +9,12 @@ target 'UrbaniOS' do
   pod 'CameraManager'
   pod 'UICircularProgressRing'
   pod 'AFNetworking'
-  pod 'SDWebImageSwiftUI'
+  pod 'SDWebImage'
   pod 'mobile-ffmpeg-https-gpl'
   pod 'RichEditorView'
   pod 'SnapKit', '~> 5.0.0'
   pod 'ImageScrollView'
-  pod 'ZSSRichTextEditor'
+  pod 'ImageSlideshow'
+  pod 'ImageSlideshow/SDWebImage'
 
 end
