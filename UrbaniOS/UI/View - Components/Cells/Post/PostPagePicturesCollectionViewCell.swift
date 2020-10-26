@@ -26,6 +26,8 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         let pageIndicator = UIPageControl()
+        pageIndicator.pageIndicatorTintColor = UIColor.systemGray3
+        pageIndicator.currentPageIndicatorTintColor = UIColor.label
         self.imageSlide.pageIndicatorPosition = .init(horizontal: .center, vertical: .customUnder(padding: 10))
         self.imageSlide.contentScaleMode = .scaleAspectFill
         self.imageSlide.pageIndicator = pageIndicator

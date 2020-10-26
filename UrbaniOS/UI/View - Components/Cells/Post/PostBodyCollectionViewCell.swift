@@ -9,19 +9,16 @@
 import UIKit
 import RichEditorView
 
-protocol PostBodyDelegate: class {
-//    func contentSizeDidChange
-}
-
 class PostBodyCollectionViewCell: UICollectionViewCell {
     static let identifier = "PostBodyCollectionViewCell"
     
-    @IBOutlet dynamic private weak var richView: RichEditorView!
+    @IBOutlet private weak var richView: RichEditorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.richView.isEditingEnabled = false
+        self.richView.isScrollEnabled = false
     }
     
     func configureCell(contentHTML: String, delegate: RichEditorDelegate) {

@@ -17,6 +17,8 @@ struct Critique {
     var author: User
     var media: [Media] = []
     var defaultMedia: Media
+    var createdAt: Date = Date()
+    var comments: [Comment] = Comment.mockedComments
 }
 
 extension Critique {
@@ -38,6 +40,6 @@ extension Critique {
         let string = try! String(contentsOfFile: path!, encoding: String.Encoding.utf8)
         
         
-        return (0...10).compactMap({ Critique(id: "", title: (($0 % 2) == 1) ? title : longTitle, shortDescription: "short", descriptionHTML: string, author: .init(id: "", imageUrl: "https://shoptogether.s3.amazonaws.com/assets/shoptogethermodernlogo.png", name: "Michel", decription: "Oui"), media: medias, defaultMedia: medias.randomElement()!) })
+        return (0...10).compactMap({ Critique(id: "", title: (($0 % 2) == 1) ? title : longTitle, shortDescription: "short", descriptionHTML: string, author: .mockedUser, media: medias, defaultMedia: medias.randomElement()!) })
     }
 }

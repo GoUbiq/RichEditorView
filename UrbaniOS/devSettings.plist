@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>hostUrl</key>
-	<string>https://heer-api-dev.goubiq.com/graphql</string>
+	<string>https://4661715277dc.ngrok.io/graphql</string>
 	<key>socketUrl</key>
-	<string>wss://heer-api-dev.goubiq.com/graphql</string>
+	<string>wss://4661715277dc.ngrok.io/graphql</string>
 </dict>
 </plist>

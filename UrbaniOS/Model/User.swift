@@ -14,3 +14,9 @@ struct User {
     var name: String
     var decription: String
 }
+
+extension User {
+    static var mockedUser: User {
+        return .init(id: "", imageUrl: "https://shoptogether.s3.amazonaws.com/assets/shoptogethermodernlogo.png", name: "Michel", decription: "Oui")
+    }
+}

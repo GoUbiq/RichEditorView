@@ -51,6 +51,11 @@
 		0B7C3202254107BC003497FB /* PostBodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */; };
 		0B7C32042541E8D4003497FB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C32032541E8D4003497FB /* PostViewController.swift */; };
 		0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */; };
+		0B7C320925432EB8003497FB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C320825432EB8003497FB /* Localizable.stringsdict */; };
+		0B7C320B25432EFB003497FB /* PostDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320A25432EFB003497FB /* PostDateCollectionViewCell.swift */; };
+		0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */; };
+		0B7C320F25435145003497FB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320E25435145003497FB /* Comment.swift */; };
+		0B7C32122543753E003497FB /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -115,6 +120,11 @@
 		0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C32032541E8D4003497FB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C320825432EB8003497FB /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		0B7C320A25432EFB003497FB /* PostDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountAndPostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B7C320E25435145003497FB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,8 +251,19 @@
 				0B7C31FF25410547003497FB /* PostPagePicturesCollectionViewCell.swift */,
 				0B7C3201254107BC003497FB /* PostBodyCollectionViewCell.swift */,
 				0B7C320525422EB6003497FB /* PostTitleCollectionViewCell.swift */,
+				0B7C320A25432EFB003497FB /* PostDateCollectionViewCell.swift */,
+				0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */,
+				0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		0B7C320725432E9E003497FB /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C320825432EB8003497FB /* Localizable.stringsdict */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		0BD43D022522955900177F79 = {
@@ -266,6 +287,7 @@
 		0BD43D0D2522955900177F79 /* UrbaniOS */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C320725432E9E003497FB /* Strings */,
 				0B7C31C22527B1F2003497FB /* GraphQL */,
 				0BD43D2A252297FD00177F79 /* Manager */,
 				0BD43D29252297F700177F79 /* Model */,
@@ -313,6 +335,7 @@
 				0B7C31A9252503F3003497FB /* PostMedia.swift */,
 				0B7C31F0253A4234003497FB /* Critique.swift */,
 				0B7C31F2253A43B6003497FB /* User.swift */,
+				0B7C320E25435145003497FB /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +494,7 @@
 				0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
+				0B7C320925432EB8003497FB /* Localizable.stringsdict in Resources */,
 				0B7C31F72540D567003497FB /* Post.storyboard in Resources */,
 				0B7C31EF253A3339003497FB /* Home.storyboard in Resources */,
 			);
@@ -512,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://heer-api-dev.goubiq.com/graphql\" \n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://4661715277dc.ngrok.io/graphql\" \n\n\n";
 		};
 		60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -561,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
+				0B7C320F25435145003497FB /* Comment.swift in Sources */,
 				0B7C320025410547003497FB /* PostPagePicturesCollectionViewCell.swift in Sources */,
 				0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */,
 				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
@@ -568,6 +593,7 @@
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
+				0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */,
 				0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */,
 				0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */,
 				0B7C32042541E8D4003497FB /* PostViewController.swift in Sources */,
@@ -588,6 +614,7 @@
 				0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */,
 				0B7C31F5253A46AA003497FB /* HomeViewController.swift in Sources */,
 				0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */,
+				0B7C32122543753E003497FB /* PostCommentCollectionViewCell.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
 				0B7C31F3253A43B6003497FB /* User.swift in Sources */,
 				0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */,
@@ -604,6 +631,7 @@
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
 				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,
 				0B7C31F1253A4234003497FB /* Critique.swift in Sources */,
+				0B7C320B25432EFB003497FB /* PostDateCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

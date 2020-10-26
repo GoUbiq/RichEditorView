@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>day.%d</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@nb_days@%</string>
+		<key>nb_days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d day ago</string>
+			<key>zero</key>
+			<string>%d day ago</string>
+			<key>other</key>
+			<string>%d days ago</string>
+		</dict>
+	</dict>
+	<key>hour.%d</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@nb_hr@%</string>
+		<key>nb_hr</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d hr ago</string>
+			<key>zero</key>
+			<string>%d hr ago</string>
+			<key>other</key>
+			<string>%d hrs ago</string>
+		</dict>
+	</dict>
+	<key>minute.%d</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@nb_mn@%</string>
+		<key>nb_mn</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d min ago</string>
+			<key>zero</key>
+			<string>%d min ago</string>
+			<key>other</key>
+			<string>%d mins ago</string>
+		</dict>
+	</dict>
+	<key>second.%d</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@nb_sec@%</string>
+		<key>nb_sec</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d sec ago</string>
+			<key>zero</key>
+			<string>%d sec ago</string>
+			<key>other</key>
+			<string>%d secs ago</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
