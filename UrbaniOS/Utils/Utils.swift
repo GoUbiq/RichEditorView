@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 typealias DefaultBlock = () -> ()
 
 class Utils {
+    
+    static private var currentHud: MBProgressHUD? = nil
     
     static func showSimpleAlertView(withTitle title: String? = nil, withText text: String, withButtonTitle buttonTitle: String = "Ok", buttonAction: (DefaultBlock)? = nil, onViewController vc: UIViewController) {
         let alertContoller = UIAlertController(title: title, message: text, preferredStyle: .alert)
@@ -25,5 +28,23 @@ class Utils {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             block()
         }
+    }
+    
+    @discardableResult
+    static func showMessageHud(message: String = "", mode: MBProgressHUDMode = .indeterminate, isUserInteractionEnabled: Bool = true, onViewController vc: UIViewController) -> MBProgressHUD? {
+        let view = vc.view!
+        
+        self.currentHud?.hide(animated: false)
+        self.currentHud = MBProgressHUD.showAdded(to: view, animated: true)
+        self.currentHud?.mode = mode
+        self.currentHud?.isUserInteractionEnabled = isUserInteractionEnabled
+        self.currentHud?.label.text = message
+        self.currentHud?.label.numberOfLines = 0
+        
+        return self.currentHud
+    }
+    
+    static func dismissMessageHud(_ hud: MBProgressHUD?) {
+        hud?.hide(animated: true)
     }
 }

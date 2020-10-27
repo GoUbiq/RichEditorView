@@ -202,7 +202,7 @@ class CameraPreviewAndEditViewController: UIViewController {
 //            let hud = Utils.showMessageHud(message: "Processing video", onViewController: self)
             FFMPEGManager.sharedInstance.buildMedia(url: url, content: []) { vFile in
                 let url = URL(fileURLWithPath: vFile)
-                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: url.imageFromVideo(at: 0) ?? #imageLiteral(resourceName: "play-button")))
+                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: url.imageFromVideo(at: 0) ?? #imageLiteral(resourceName: "play-button"), mediaType: .video))
                 processDone()
 //                Utils.dismissMessageHud(hud)
             }

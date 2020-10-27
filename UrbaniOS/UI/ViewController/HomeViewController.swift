@@ -18,7 +18,10 @@ class HomeViewController: UIViewController {
         return homeStoryboard.instantiateViewController(withIdentifier: self.identifier) as! HomeViewController
     }
     
-    private var critiques = Critique.MockedList
+    private var critiques: [Critique] = []
+    private var critiqueManager: CritiqueManager {
+        return .sharedInstance
+    }
     
     private struct Constant {
         static var titleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
@@ -26,11 +29,20 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
         
-//        (self.collectionView.collectionViewLayout as! ).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
         self.setupLayout()
-        self.collectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.critiqueManager.getHomeCritiques() { result in
+            self.critiques = result ?? []
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            self.collectionView.reloadData()
+        }
     }
     
     private func setupLayout() {
@@ -47,6 +59,13 @@ class HomeViewController: UIViewController {
         layout.delegate = self
         layout.cellPadding = 5
         layout.numberOfColumns = 2
+    }
+    
+    //MARK: - IBAction
+    @objc private func createButtonPressed() {
+        let vc = CreatePostViewController.newInstance()
+        self.present(vc, animated: true)
+        
     }
 }
 

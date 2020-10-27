@@ -17,7 +17,7 @@ class ProductManager {
                 completion(nil)
                 return
             }
-            
+
             completion(result.map({ Product(product: $0.node.fragments.graphQlProduct) }))
         }
     }

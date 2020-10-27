@@ -154,7 +154,7 @@ class MediaManager {
         return finalImage
     }
     
-    private func saveImage(fileName: String, image: UIImage) -> URL? {
+    func saveImage(fileName: String, image: UIImage) -> URL? {
         guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
             return nil
         }
@@ -189,7 +189,23 @@ class MediaManager {
         return UIImage(cgImage: thumbnailImageRef)
     }
     
-    //MARK: - Download
+    func upload(postMedia: PostMedia, completionHandler: @escaping (String?) -> ()) {
+        self.getPresignedUrl(mediaType: postMedia.mediaType, fileExt: postMedia.mediaType.fileExt) { presigned, newUrl in
+            guard let data: Data = try? .init(contentsOf: postMedia.url), let presignedUrl = presigned else { return completionHandler(nil) }
+            self.upload(data: data, urlString: presignedUrl, mimeType: postMedia.mediaType.mimeType) { success, error in
+                completionHandler(success ? newUrl : nil)
+            }
+        }
+    }
+    
+    //MARK: - Upload
+    private func getPresignedUrl(mediaType: MediaType, fileExt: MediaFileExtension, completionHandler: @escaping (String?, String?) -> ()) {
+        apollo.fetch(query: PresignedUrlQuery(input: .init(type: mediaType, fileType: fileExt))) { result, erorr in
+            guard let presignedUrl = result?.data?.presignedUrl.presignedUrl, let newUrl = result?.data?.presignedUrl.newUrl else { return completionHandler(nil, nil) }
+            completionHandler(presignedUrl, newUrl)
+        }
+    }
+    
     private func upload(data: Data, urlString: String, mimeType: String, completion: @escaping (Bool, Error?) -> Void) {
         let requestURL = URL(string: urlString)!
         let session = AFURLSessionManager(sessionConfiguration: .default)
@@ -201,7 +217,7 @@ class MediaManager {
         }).resume()
     }
     
-    private func upload(image: UIImage, urlString: String, mimeType: String = "image/jpeg", completion: @escaping (Bool, Error?) -> Void) {
+    func upload(image: UIImage, urlString: String, mimeType: String = "image/jpeg", completion: @escaping (Bool, Error?) -> Void) {
         let data = image.jpegData(compressionQuality: 0.9)!
         self.upload(data: data, urlString: urlString, mimeType: mimeType, completion: completion)
     }
@@ -230,6 +246,24 @@ class MediaManager {
             AVCaptureDevice.requestAccess(for: mediaType, completionHandler: completion)
         default:
             completion(false)
+        }
+    }
+}
+
+extension MediaType {
+    var fileExt: MediaFileExtension {
+        switch self {
+        case .image: return .png
+        case .video: return .mp4
+        case .__unknown(_): return .png
+        }
+    }
+    
+    var mimeType: String {
+        switch self {
+        case .image: return "image/jpeg"
+        case .video: return "video/mp4"
+        case .__unknown(_): return ""
         }
     }
 }

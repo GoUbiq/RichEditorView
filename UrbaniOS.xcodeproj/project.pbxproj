@@ -56,6 +56,9 @@
 		0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */; };
 		0B7C320F25435145003497FB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320E25435145003497FB /* Comment.swift */; };
 		0B7C32122543753E003497FB /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */; };
+		0BD2EDF725473C64006283C6 /* Critique.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF625473C64006283C6 /* Critique.graphql */; };
+		0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF92547458E006283C6 /* CritiqueManager.swift */; };
+		0BD2EE002548829E006283C6 /* Media.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDFF2548829E006283C6 /* Media.graphql */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -125,6 +128,9 @@
 		0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountAndPostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C320E25435145003497FB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BD2EDF625473C64006283C6 /* Critique.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Critique.graphql; sourceTree = "<group>"; };
+		0BD2EDF92547458E006283C6 /* CritiqueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritiqueManager.swift; sourceTree = "<group>"; };
+		0BD2EDFF2548829E006283C6 /* Media.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Media.graphql; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +222,8 @@
 				0B7C31CA2527C6EF003497FB /* Login.graphql */,
 				0B7C31CB2527C6EF003497FB /* Fragment.graphql */,
 				0B7C31CC2527C6EF003497FB /* Product.graphql */,
+				0BD2EDF625473C64006283C6 /* Critique.graphql */,
+				0BD2EDFF2548829E006283C6 /* Media.graphql */,
 			);
 			path = GraphQLInterface;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				0BD43D422522AE3D00177F79 /* FFMPEGManager.swift */,
 				0B7C31C72527C034003497FB /* ApolloClientManager.swift */,
 				0B7C31D02527C8EB003497FB /* ProductManager.swift */,
+				0BD2EDF92547458E006283C6 /* CritiqueManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -419,7 +428,6 @@
 			buildPhases = (
 				60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */,
 				0B7C31C12527B1A5003497FB /* Apollo CLI */,
-				01700A99E3EC39D2B03265E8 /* [CP] Prepare Artifacts */,
 				0BD43D072522955900177F79 /* Sources */,
 				0BD43D082522955900177F79 /* Frameworks */,
 				0BD43D092522955900177F79 /* Resources */,
@@ -489,12 +497,14 @@
 				0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */,
 				0B7C31E9253100E8003497FB /* index.html in Resources */,
 				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
+				0BD2EE002548829E006283C6 /* Media.graphql in Resources */,
 				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
 				0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
 				0B7C320925432EB8003497FB /* Localizable.stringsdict in Resources */,
+				0BD2EDF725473C64006283C6 /* Critique.graphql in Resources */,
 				0B7C31F72540D567003497FB /* Post.storyboard in Resources */,
 				0B7C31EF253A3339003497FB /* Home.storyboard in Resources */,
 			);
@@ -503,23 +513,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01700A99E3EC39D2B03265E8 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0B7C31C12527B1A5003497FB /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -536,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://4661715277dc.ngrok.io/graphql\" \n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://4661715277dc.ngrok.io/graphql\" \n\n\n";
 		};
 		60193BD68E7646CB276EF902 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -608,6 +601,7 @@
 				0BD43D392522A9E600177F79 /* MediaManager.swift in Sources */,
 				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
 				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
+				0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
 				0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */,
 				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,

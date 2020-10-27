@@ -17,8 +17,7 @@ protocol PostBodyCellDelegate: class {
 class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     static let identifier = "PostBodyTableViewCell"
     
-    @IBOutlet private weak var richText: RichEditorView!
-    @IBOutlet private weak var webView: WKWebView!
+    @IBOutlet private(set) weak var richText: RichEditorView!
     
     private var info: CellInfo!
     

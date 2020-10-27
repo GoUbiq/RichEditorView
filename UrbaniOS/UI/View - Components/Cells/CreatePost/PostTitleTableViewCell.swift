@@ -10,7 +10,7 @@ import UIKit
 
 class PostTitleTableViewCell: UITableViewCell, ConfigurableCell {
     
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private(set) weak var textField: UITextField!
     @IBOutlet private weak var characterLimit: UILabel!
     
     override func awakeFromNib() {

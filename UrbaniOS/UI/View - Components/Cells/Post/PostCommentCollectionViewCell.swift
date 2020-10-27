@@ -18,7 +18,7 @@ class PostCommentCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var likeCount: UILabel!
     
     func configureCell(comment: Comment) {
-        self.userImg.sd_setImage(with: URL(string: comment.author.imageUrl))
+        self.userImg.sd_setImage(with: URL(string: comment.author.imageUrl ?? ""))
         self.userName.text = comment.author.name
         self.comment.text = comment.body
         self.timeAgoLabel.text = comment.createdAt.timeAgoDisplay()

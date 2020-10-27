@@ -16,9 +16,10 @@ class TemplateMediaPickerViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet var imgPreviews: [ImageScrollView]!
 
-    class func newInstance() -> UINavigationController {
+    class func newInstance(delegate: MediaManagementDelegate) -> UINavigationController {
         let navigation = UINavigationController()
         let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! TemplateMediaPickerViewController
+        instance.delegate = delegate
         navigation.modalPresentationStyle = .overFullScreen
         navigation.navigationBar.tintColor = .darkGray
         navigation.setViewControllers([instance], animated: false)
@@ -27,6 +28,7 @@ class TemplateMediaPickerViewController: UIViewController {
     
     private var nextBarButton: UIBarButtonItem? = nil
     private var photos: PHFetchResult<PHAsset> = .init()
+    private var delegate: MediaManagementDelegate? = nil
     private var mediaManager: MediaManager {
         return MediaManager.sharedInstance
     }
@@ -51,7 +53,7 @@ class TemplateMediaPickerViewController: UIViewController {
         self.collectionView.allowsMultipleSelection = true
         self.navigationItem.title = "Select medias"
         self.nextBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(self.nextButtonPressed))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "close"), style: .plain, target: self, action: #selector(self.dismissView))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "nav-close"), style: .plain, target: self, action: #selector(self.dismissView))
         self.navigationItem.rightBarButtonItem = self.nextBarButton
     }
     
@@ -99,7 +101,7 @@ class TemplateMediaPickerViewController: UIViewController {
     //MARK: - IBActions
     @objc func nextButtonPressed() {
         guard let img = self.mergeImages() else { return }
-        let vc = TemplateEditingViewController.newInstance(img: img)
+        let vc = TemplateEditingViewController.newInstance(img: img, delegate: self.delegate!)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

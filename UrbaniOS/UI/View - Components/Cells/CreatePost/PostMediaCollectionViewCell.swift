@@ -29,6 +29,7 @@ class PostMediaCollectionViewCell: UICollectionViewCell {
         self.media = data
         self.delegate = delegate
         self.img.image = data.preview
+        self.videoIndicator.isHidden = data.mediaType != .video
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {

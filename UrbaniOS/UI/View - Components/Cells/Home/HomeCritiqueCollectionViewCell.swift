@@ -29,6 +29,6 @@ class HomeCritiqueCollectionViewCell: UICollectionViewCell {
         self.preview.sd_setImage(with: URL(string: critique.defaultMedia.url))
         self.productTitle.text = critique.title
         self.userName.text = critique.author.name
-        self.userImg.sd_setImage(with: URL(string: critique.author.imageUrl))
+        self.userImg.sd_setImage(with: URL(string: critique.author.imageUrl ?? ""))
     }
 }

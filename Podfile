@@ -16,5 +16,6 @@ target 'UrbaniOS' do
   pod 'ImageScrollView'
   pod 'ImageSlideshow'
   pod 'ImageSlideshow/SDWebImage'
+  pod 'MBProgressHUD'
 
 end
