@@ -19,10 +19,20 @@ class CritiqueManager {
     }
     
     func createCritique(title: String, descriptionHTML: String, mediaUrls: [String], defaultMediaUrl: String, completionHandler: @escaping (Critique?) -> ()) {
-        let input: CritiqueCreateInput = .init(title: title, descriptionHtml: descriptionHTML, style: .review, mediaUrls: mediaUrls, defaultMediaUrl: defaultMediaUrl, categories: [])
+        let input: CritiqueCreateInput = .init(title: title, descriptionHtml: descriptionHTML, style: .review, mediaUrls: mediaUrls, defaultMediaUrl: defaultMediaUrl, tags: [], categories: [])
         apollo.perform(mutation: CreateCritiqueMutation(input: input)) { result, error in
             guard let result = result?.data?.createCritique.fragments.graphQlCritique else { return completionHandler(nil) }
             completionHandler(.init(critique: result))
+        }
+    }
+    
+    //MARK: - Comment
+    
+    func postComment(critiqueId: String, text: String, completionHandler: @escaping (Comment?) -> ()) {
+        let mutation: PostCommentMutation = .init(input: .init(body: text, associatedCritiqueId: critiqueId))
+        apollo.perform(mutation: mutation) { result, error in
+            guard let result = result?.data?.addComment?.fragments.graphQlComment else { return completionHandler(nil) }
+            completionHandler(.init(comment: result))
         }
     }
 }

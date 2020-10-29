@@ -18,9 +18,9 @@ var apollo: ApolloClientManager {
 class ApolloClientManager {
     static let sharedInstance = ApolloClientManager()
     
-//    fileprivate var loginManager: STLoginManager {
-//        return STLoginManager.sharedInstance
-//    }
+    fileprivate var loginManager: STLoginManager {
+        return STLoginManager.sharedInstance
+    }
     
     private lazy var apolloClient: ApolloClient = ApolloClient(networkTransport: self.splitNetworkTransport)
     
@@ -37,7 +37,7 @@ class ApolloClientManager {
         
         var headers = [String: String]()
         // Add any new headers you need
-//        headers["X-Session"] = self.loginManager.currentSession?.id ?? ""
+        headers["X-Session"] = "0185d03a-141f-46e4-8816-3f8adc86a664"//self.loginManager.currentSession?.id ?? ""
         headers["X-App-Version"] = "\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "")"
         
         let transport = WebSocketTransport(request: request, connectingPayload: headers)
@@ -136,7 +136,7 @@ class ApolloClientManager {
     func updateWSPayload() {
         var headers = [String: String]()
         // Add any new headers you need
-//        headers["X-Session"] = self.loginManager.currentSession?.id ?? ""
+        headers["X-Session"] = self.loginManager.currentSession?.id ?? ""
         headers["X-App-Version"] = "\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "")"
         
         self.webSocketTransport.updateConnectingPayload(headers)
@@ -155,8 +155,8 @@ extension ApolloClientManager: HTTPNetworkTransportPreflightDelegate {
         var headers = request.allHTTPHeaderFields ?? [String: String]()
         
         // Add any new headers you need
-//        headers["X-Session"] = self.loginManager.currentSession?.id ?? ""
-//        headers["X-App-Version"] = "\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "")"
+        headers["X-Session"] = self.loginManager.currentSession?.id ?? ""
+        headers["X-App-Version"] = "\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "")"
         
         // Re-assign the updated headers to the request.
         request.allHTTPHeaderFields = headers

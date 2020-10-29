@@ -14,15 +14,14 @@ struct Comment {
     var likeCountStr: String
     var userHasLiked: Bool
     var author: User
-    var createdAt: Date = Date()
-}
-
-extension Comment {
-    static var mockedComment: Comment {
-        return .init(id: "", body: "THIS IS A COMMENT YO", likeCountStr: "1.2k", userHasLiked: false, author: .mockedUser)
-    }
+    var createdAt: Date
     
-    static var mockedComments: [Comment] {
-        return (0...10).map({ _ in .mockedComment })
+    init(comment: GraphQlComment) {
+        self.id = comment.id
+        self.body = comment.body
+        self.likeCountStr = comment.likeCount
+        self.userHasLiked = comment.userHasLiked
+        self.author = .init(user: comment.author.fragments.graphQlUser)
+        self.createdAt = DateFormatter.iso8601WithMilliseconds.date(from: comment.createdAt) ?? Date()
     }
 }

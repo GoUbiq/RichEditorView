@@ -253,6 +253,11 @@ public extension UIImage {
 
 
 public extension String {
+    subscript (safe index: Int) -> Character? {
+        let index = Index(encodedOffset: index)
+        return self.indices.contains(index) ? self[index] : nil
+    }
+    
     /**
      Calculates the best height of the text for available width and font used.
      */
@@ -264,5 +269,31 @@ public extension String {
             context: nil
         )
         return ceil(rect.height)
+    }
+}
+
+extension DateFormatter {
+    static var iso8601Full: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxx"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }
+    
+    static var iso8601WithMilliseconds: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSxxxx"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }
+    
+    static var iso8601WithoutTime: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
     }
 }

@@ -59,6 +59,21 @@
 		0BD2EDF725473C64006283C6 /* Critique.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF625473C64006283C6 /* Critique.graphql */; };
 		0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF92547458E006283C6 /* CritiqueManager.swift */; };
 		0BD2EE002548829E006283C6 /* Media.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDFF2548829E006283C6 /* Media.graphql */; };
+		0BD2EE1B2548BE56006283C6 /* STLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EE1A2548BE56006283C6 /* STLoginManager.swift */; };
+		0BD2EE372548C9A7006283C6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EE362548C9A7006283C6 /* Login.storyboard */; };
+		0BD2EE3A2548CA9E006283C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EE392548CA9E006283C6 /* LoginViewController.swift */; };
+		0BD2EEC72548D5E3006283C6 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EEC62548D5E3006283C6 /* Session+CoreDataClass.swift */; };
+		0BD2EECA2548D607006283C6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EEC92548D607006283C6 /* Session+CoreDataProperties.swift */; };
+		0BD2EF07254A1083006283C6 /* PostCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF06254A1083006283C6 /* PostCommentViewController.swift */; };
+		0BD2EF0A254A16B1006283C6 /* Comment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EF09254A16B1006283C6 /* Comment.graphql */; };
+		0BD2EF5D254B356A006283C6 /* PhoneNumberLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF5C254B356A006283C6 /* PhoneNumberLoginViewController.swift */; };
+		0BD2EF75254B36C6006283C6 /* PhoneNumberKeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF74254B36C6006283C6 /* PhoneNumberKeyboardInputView.swift */; };
+		0BD2EF78254B3789006283C6 /* PhoneNumberKeyboardInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EF77254B3789006283C6 /* PhoneNumberKeyboardInputView.xib */; };
+		0BD2EF7B254B3B30006283C6 /* PhoneOTPVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF7A254B3B30006283C6 /* PhoneOTPVerificationViewController.swift */; };
+		0BD2EF7E254B3B7B006283C6 /* LoginNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF7D254B3B7B006283C6 /* LoginNavigationBar.swift */; };
+		0BD2EF81254B50A8006283C6 /* ProfileCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */; };
+		0BD2EF84254B50D8006283C6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF83254B50D8006283C6 /* ImagePicker.swift */; };
+		0BD2EF87254B5207006283C6 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EF86254B5207006283C6 /* User.graphql */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -131,6 +146,21 @@
 		0BD2EDF625473C64006283C6 /* Critique.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Critique.graphql; sourceTree = "<group>"; };
 		0BD2EDF92547458E006283C6 /* CritiqueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritiqueManager.swift; sourceTree = "<group>"; };
 		0BD2EDFF2548829E006283C6 /* Media.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Media.graphql; sourceTree = "<group>"; };
+		0BD2EE1A2548BE56006283C6 /* STLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STLoginManager.swift; sourceTree = "<group>"; };
+		0BD2EE362548C9A7006283C6 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		0BD2EE392548CA9E006283C6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0BD2EEC62548D5E3006283C6 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0BD2EEC92548D607006283C6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0BD2EF06254A1083006283C6 /* PostCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentViewController.swift; sourceTree = "<group>"; };
+		0BD2EF09254A16B1006283C6 /* Comment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Comment.graphql; sourceTree = "<group>"; };
+		0BD2EF5C254B356A006283C6 /* PhoneNumberLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberLoginViewController.swift; sourceTree = "<group>"; };
+		0BD2EF74254B36C6006283C6 /* PhoneNumberKeyboardInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberKeyboardInputView.swift; sourceTree = "<group>"; };
+		0BD2EF77254B3789006283C6 /* PhoneNumberKeyboardInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneNumberKeyboardInputView.xib; sourceTree = "<group>"; };
+		0BD2EF7A254B3B30006283C6 /* PhoneOTPVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOTPVerificationViewController.swift; sourceTree = "<group>"; };
+		0BD2EF7D254B3B7B006283C6 /* LoginNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationBar.swift; sourceTree = "<group>"; };
+		0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompletionViewController.swift; sourceTree = "<group>"; };
+		0BD2EF83254B50D8006283C6 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		0BD2EF86254B5207006283C6 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +254,8 @@
 				0B7C31CC2527C6EF003497FB /* Product.graphql */,
 				0BD2EDF625473C64006283C6 /* Critique.graphql */,
 				0BD2EDFF2548829E006283C6 /* Media.graphql */,
+				0BD2EF09254A16B1006283C6 /* Comment.graphql */,
+				0BD2EF86254B5207006283C6 /* User.graphql */,
 			);
 			path = GraphQLInterface;
 			sourceTree = "<group>";
@@ -272,6 +304,24 @@
 				0B7C320825432EB8003497FB /* Localizable.stringsdict */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		0BD2EE2F2548C168006283C6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0BD2EEC62548D5E3006283C6 /* Session+CoreDataClass.swift */,
+				0BD2EEC92548D607006283C6 /* Session+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0BD2EF73254B36B9006283C6 /* PhoneNumberKeyboardInputView */ = {
+			isa = PBXGroup;
+			children = (
+				0BD2EF74254B36C6006283C6 /* PhoneNumberKeyboardInputView.swift */,
+				0BD2EF77254B3789006283C6 /* PhoneNumberKeyboardInputView.xib */,
+			);
+			path = PhoneNumberKeyboardInputView;
 			sourceTree = "<group>";
 		};
 		0BD43D022522955900177F79 = {
@@ -338,6 +388,7 @@
 		0BD43D29252297F700177F79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0BD2EE2F2548C168006283C6 /* CoreData */,
 				0BD43D3A2522AABD00177F79 /* MediaSticker.swift */,
 				0BD43D3C2522AAFB00177F79 /* Product.swift */,
 				0B7C31A9252503F3003497FB /* PostMedia.swift */,
@@ -356,6 +407,7 @@
 				0B7C31C72527C034003497FB /* ApolloClientManager.swift */,
 				0B7C31D02527C8EB003497FB /* ProductManager.swift */,
 				0BD2EDF92547458E006283C6 /* CritiqueManager.swift */,
+				0BD2EE1A2548BE56006283C6 /* STLoginManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -372,6 +424,11 @@
 				0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */,
 				0B7C31F4253A46AA003497FB /* HomeViewController.swift */,
 				0B7C32032541E8D4003497FB /* PostViewController.swift */,
+				0BD2EE392548CA9E006283C6 /* LoginViewController.swift */,
+				0BD2EF06254A1083006283C6 /* PostCommentViewController.swift */,
+				0BD2EF5C254B356A006283C6 /* PhoneNumberLoginViewController.swift */,
+				0BD2EF7A254B3B30006283C6 /* PhoneOTPVerificationViewController.swift */,
+				0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -379,6 +436,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0BD2EF73254B36B9006283C6 /* PhoneNumberKeyboardInputView */,
 				0B7C31FB2540D983003497FB /* PinterestLayout */,
 				0B7C31D8252B9084003497FB /* ProductRatingView */,
 				0B7C31B325268524003497FB /* ProductTagView */,
@@ -386,6 +444,8 @@
 				0BD43D322522A90E00177F79 /* CircleImageView.swift */,
 				0BD43D342522A93300177F79 /* ConfigurationEnabilityButton.swift */,
 				0BD43D402522AD7400177F79 /* DragScaleAndRotateView.swift */,
+				0BD2EF7D254B3B7B006283C6 /* LoginNavigationBar.swift */,
+				0BD2EF83254B50D8006283C6 /* ImagePicker.swift */,
 			);
 			path = "View - Components";
 			sourceTree = "<group>";
@@ -398,6 +458,7 @@
 				0B7C31DB252BD0D3003497FB /* Template.storyboard */,
 				0B7C31EE253A3338003497FB /* Home.storyboard */,
 				0B7C31F62540D567003497FB /* Post.storyboard */,
+				0BD2EE362548C9A7006283C6 /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -496,10 +557,14 @@
 				0B7C31C62527B696003497FB /* schema.json in Resources */,
 				0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */,
 				0B7C31E9253100E8003497FB /* index.html in Resources */,
+				0BD2EF0A254A16B1006283C6 /* Comment.graphql in Resources */,
+				0BD2EE372548C9A7006283C6 /* Login.storyboard in Resources */,
+				0BD2EF78254B3789006283C6 /* PhoneNumberKeyboardInputView.xib in Resources */,
 				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
 				0BD2EE002548829E006283C6 /* Media.graphql in Resources */,
 				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
+				0BD2EF87254B5207006283C6 /* User.graphql in Resources */,
 				0B7C31CD2527C6EF003497FB /* Login.graphql in Resources */,
 				0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */,
 				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
@@ -579,13 +644,19 @@
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
 				0B7C320F25435145003497FB /* Comment.swift in Sources */,
+				0BD2EEC72548D5E3006283C6 /* Session+CoreDataClass.swift in Sources */,
 				0B7C320025410547003497FB /* PostPagePicturesCollectionViewCell.swift in Sources */,
+				0BD2EF7B254B3B30006283C6 /* PhoneOTPVerificationViewController.swift in Sources */,
+				0BD2EECA2548D607006283C6 /* Session+CoreDataProperties.swift in Sources */,
 				0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */,
 				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
 				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
+				0BD2EE1B2548BE56006283C6 /* STLoginManager.swift in Sources */,
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
+				0BD2EF07254A1083006283C6 /* PostCommentViewController.swift in Sources */,
+				0BD2EF5D254B356A006283C6 /* PhoneNumberLoginViewController.swift in Sources */,
 				0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */,
 				0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */,
 				0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */,
@@ -600,16 +671,19 @@
 				0B7C31D32527C986003497FB /* API.swift in Sources */,
 				0BD43D392522A9E600177F79 /* MediaManager.swift in Sources */,
 				0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */,
+				0BD2EE3A2548CA9E006283C6 /* LoginViewController.swift in Sources */,
 				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
 				0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
 				0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */,
 				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,
+				0BD2EF7E254B3B7B006283C6 /* LoginNavigationBar.swift in Sources */,
 				0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */,
 				0B7C31F5253A46AA003497FB /* HomeViewController.swift in Sources */,
 				0B7C31D52527CC57003497FB /* ProductTagPickerTableViewCell.swift in Sources */,
 				0B7C32122543753E003497FB /* PostCommentCollectionViewCell.swift in Sources */,
 				0BD43D452522B04A00177F79 /* Extensions.swift in Sources */,
+				0BD2EF81254B50A8006283C6 /* ProfileCompletionViewController.swift in Sources */,
 				0B7C31F3253A43B6003497FB /* User.swift in Sources */,
 				0B7C31C82527C034003497FB /* ApolloClientManager.swift in Sources */,
 				0BD43D432522AE3D00177F79 /* FFMPEGManager.swift in Sources */,
@@ -623,7 +697,9 @@
 				0B7C31E0252D0788003497FB /* TemplateMediaPickerCollectionViewCell.swift in Sources */,
 				0BD43D332522A90E00177F79 /* CircleImageView.swift in Sources */,
 				0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */,
+				0BD2EF75254B36C6006283C6 /* PhoneNumberKeyboardInputView.swift in Sources */,
 				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,
+				0BD2EF84254B50D8006283C6 /* ImagePicker.swift in Sources */,
 				0B7C31F1253A4234003497FB /* Critique.swift in Sources */,
 				0B7C320B25432EFB003497FB /* PostDateCollectionViewCell.swift in Sources */,
 			);

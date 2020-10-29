@@ -44,7 +44,7 @@ class PostViewController: UIViewController {
         }
     }
     
-    private var cells: [[PostCells]] = [[.images, .title, .body, .date], [.commentCount, .comments]]
+    private var cells: [[PostCells]] = [[.images, .title, .body, .date]]
     private var critique: Critique!
     private var comments: [Comment] {
         return self.critique.comments
@@ -61,6 +61,14 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupLayout()
+        self.loadContent()
+    }
+    
+    private func loadContent() {
+        if !self.comments.isEmpty, !(self.cells[safe: 1]?.contains(.comments) ?? false) {
+            self.cells.insert([.commentCount, .comments], at: 1)
+        }
+        
         self.collectionView.collectionViewLayout.invalidateLayout()
         self.collectionView.reloadData()
     }
@@ -73,6 +81,7 @@ class PostViewController: UIViewController {
             let layout = PinterestLayout()
 
             self.collectionView?.collectionViewLayout = layout
+            self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 
             return layout
         }()
@@ -107,6 +116,10 @@ class PostViewController: UIViewController {
         case 1: return self.cells[safe: section]?[safe: row] ?? PostCells.comments
         default: return self.cells[section][row]
         }
+    }
+    
+    @IBAction func commentButtonPressed(_ sender: Any) {
+        self.commentButtonPressed()
     }
 }
 
@@ -149,7 +162,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.configureCell(date: self.critique.createdAt)
             return cell
         } else if let cell = cell as? CommentCountAndPostCommentCollectionViewCell {
-            cell.configureCell(nbComment: 3, delegate: self)
+            cell.configureCell(nbComment: self.comments.count, delegate: self)
             return cell
         } else if let cell = cell as? PostCommentCollectionViewCell {
             cell.configureCell(comment: self.comments[indexPath.row - 1])
@@ -168,5 +181,14 @@ extension PostViewController: RichEditorDelegate {
 
 extension PostViewController: CommentCellsDelegate {
     func commentButtonPressed() {
+        let vc = PostCommentViewController.newInstance(critiqueId: self.critique.id, delegate: self)
+        self.present(vc, animated: false)
+    }
+}
+
+extension PostViewController: PostCommentDelegate {
+    func didPostComment(comment: Comment) {
+        self.critique.comments.insert(comment, at: 0)
+        self.loadContent()
     }
 }

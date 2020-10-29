@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="QXL-G6-aKP" customClass="PhoneNumberKeyboardInputView" customModule="ShopTogether" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xy-uW-Esi">
+                    <rect key="frame" x="10" y="5" width="334" height="87"/>
+                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins Medium" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-zu-8Rb">
+                    <rect key="frame" x="354" y="23.5" width="50" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="D9A-Rt-QzW"/>
+                        <constraint firstAttribute="width" secondItem="dpL-zu-8Rb" secondAttribute="height" multiplier="1:1" id="jWw-Ho-DHK"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="uPG-kx-Laf"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="right-arrow"/>
+                    <connections>
+                        <action selector="actionButtonPressed:" destination="QXL-G6-aKP" eventType="touchUpInside" id="SQR-z9-Z86"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="aZY-TG-y24"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dpL-zu-8Rb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QXL-G6-aKP" secondAttribute="top" constant="5" id="JJ5-r3-tTP"/>
+                <constraint firstItem="dpL-zu-8Rb" firstAttribute="leading" secondItem="4Xy-uW-Esi" secondAttribute="trailing" constant="10" id="Kpb-5X-QEQ"/>
+                <constraint firstAttribute="trailing" secondItem="dpL-zu-8Rb" secondAttribute="trailing" constant="10" id="MTf-44-Jet"/>
+                <constraint firstItem="dpL-zu-8Rb" firstAttribute="centerY" secondItem="QXL-G6-aKP" secondAttribute="centerY" id="YZA-bQ-spS"/>
+                <constraint firstItem="4Xy-uW-Esi" firstAttribute="centerY" secondItem="QXL-G6-aKP" secondAttribute="centerY" id="ZNV-GW-c6e"/>
+                <constraint firstItem="4Xy-uW-Esi" firstAttribute="top" secondItem="QXL-G6-aKP" secondAttribute="top" constant="5" id="a3I-os-fnq"/>
+                <constraint firstItem="4Xy-uW-Esi" firstAttribute="leading" secondItem="QXL-G6-aKP" secondAttribute="leading" constant="10" id="nNL-rG-kXS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionButton" destination="dpL-zu-8Rb" id="TvG-C4-dYw"/>
+                <outlet property="toolTipText" destination="4Xy-uW-Esi" id="TFY-dF-CTd"/>
+            </connections>
+            <point key="canvasLocation" x="-249.27536231884059" y="-161.71875"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="right-arrow" width="32" height="32"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -158,7 +158,7 @@ class MediaManager {
         guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
             return nil
         }
-        guard let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).png") else {
+        guard let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).jpg") else {
             return nil
         }
         do {
@@ -198,6 +198,22 @@ class MediaManager {
         }
     }
     
+    func uploadImage(image: UIImage, completionHandler: @escaping (Bool) -> ()) {
+        self.getPresignedUrl(mediaType: .image, fileExt: .jpeg) { presigned, newUrl in
+            guard let preSignedUrl = presigned, let newUrl = newUrl else { return completionHandler(false) }
+
+            self.upload(image: image, urlString: preSignedUrl, completion: { isSuccess, _ in
+                if isSuccess {
+                    STLoginManager.sharedInstance.updateUserInfos(imageUrl: newUrl, completionHandler: { session in
+                        completionHandler(session != nil)
+                    })
+                } else {
+                    completionHandler(false)
+                }
+            })
+        }
+    }
+    
     //MARK: - Upload
     private func getPresignedUrl(mediaType: MediaType, fileExt: MediaFileExtension, completionHandler: @escaping (String?, String?) -> ()) {
         apollo.fetch(query: PresignedUrlQuery(input: .init(type: mediaType, fileType: fileExt))) { result, erorr in
@@ -213,11 +229,12 @@ class MediaManager {
         request.httpMethod = "PUT"
         request.setValue(mimeType, forHTTPHeaderField: "Content-Type")
         session.uploadTask(with: request, from: data, progress: nil, completionHandler: { response, obj, error in
+            print(error?.localizedDescription)
             completion(error == nil, error)
         }).resume()
     }
-    
-    func upload(image: UIImage, urlString: String, mimeType: String = "image/jpeg", completion: @escaping (Bool, Error?) -> Void) {
+
+    private func upload(image: UIImage, urlString: String, mimeType: String = "image/jpeg", completion: @escaping (Bool, Error?) -> Void) {
         let data = image.jpegData(compressionQuality: 0.9)!
         self.upload(data: data, urlString: urlString, mimeType: mimeType, completion: completion)
     }
@@ -253,7 +270,7 @@ class MediaManager {
 extension MediaType {
     var fileExt: MediaFileExtension {
         switch self {
-        case .image: return .png
+        case .image: return .jpeg
         case .video: return .mp4
         case .__unknown(_): return .png
         }

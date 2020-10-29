@@ -23,6 +23,12 @@ class HomeViewController: UIViewController {
         return .sharedInstance
     }
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(self.refreshTriggered(sender:)), for: .valueChanged)
+        return refresher
+    }()
+    
     private struct Constant {
         static var titleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
     }
@@ -32,16 +38,38 @@ class HomeViewController: UIViewController {
 
         self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
         
+        self.collectionView.refreshControl = self.refreshControl
         self.setupLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if STLoginManager.sharedInstance.currentSession?.id == nil {
+            let vc = LoginNavigationController.newInstance()
+            self.present(vc, animated: true)
+        } else {
+            self.checkIfProfileComplete()
+        }
+        
+        self.loadContent()
+    }
+    
+    private func checkIfProfileComplete() {
+        guard let session = STLoginManager.sharedInstance.currentSession else { return }
+        
+        if !session.isProfileComplete {
+            let vc = ProfileCompletionViewController.newInstance()
+            self.present(vc, animated: true)
+        }
+    }
+    
+    private func loadContent() {
         self.critiqueManager.getHomeCritiques() { result in
             self.critiques = result ?? []
             self.collectionView.collectionViewLayout.invalidateLayout()
             self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -65,7 +93,10 @@ class HomeViewController: UIViewController {
     @objc private func createButtonPressed() {
         let vc = CreatePostViewController.newInstance()
         self.present(vc, animated: true)
-        
+    }
+    
+    @objc func refreshTriggered(sender: UIRefreshControl) {
+        self.loadContent()
     }
 }
 

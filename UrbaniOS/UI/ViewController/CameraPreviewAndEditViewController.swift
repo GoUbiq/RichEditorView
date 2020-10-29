@@ -206,6 +206,10 @@ class CameraPreviewAndEditViewController: UIViewController {
                 processDone()
 //                Utils.dismissMessageHud(hud)
             }
+        case .picture(let img):
+            guard let url = self.mediaManager.saveImage(fileName: UUID().uuidString, image: img) else { return }
+            self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image))
+            processDone()
         default: return
         }
     }

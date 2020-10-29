@@ -17,5 +17,10 @@ target 'UrbaniOS' do
   pod 'ImageSlideshow'
   pod 'ImageSlideshow/SDWebImage'
   pod 'MBProgressHUD'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'UITextView+Placeholder'
+  pod 'PhoneNumberKit'
 
 end

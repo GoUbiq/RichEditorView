@@ -130,8 +130,8 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc private func createPost() {
-        guard let title = self.titleField?.text, !title.isEmpty, let body = self.richText?.contentHTML, !body.isEmpty else {
-            self.showSimpleAlertPopup(message: "Atleast a title and body is required!")
+        guard let title = self.titleField?.text, !title.isEmpty, let body = self.richText?.contentHTML, !body.isEmpty, !self.postingMedia.isEmpty else {
+            self.showSimpleAlertPopup(message: "Atleast a title, body and atleast one media is required!")
             return
         }
         
@@ -144,22 +144,24 @@ class CreatePostViewController: UIViewController {
             MediaManager.sharedInstance.upload(postMedia: media, completionHandler: { url in
                 defer {
                     group.leave()
-                    Utils.dismissMessageHud(hud)
                 }
                 
                 guard let url = url else { return }
                 
                 urls[idx] = url
-                group.leave()
             })
         }
         
         group.notify(queue: .main) {
-            guard !urls.isEmpty else { return }
+            guard !urls.isEmpty else {
+                Utils.dismissMessageHud(hud)
+                return
+            }
 
             let sortedDict = urls.sorted(by: { $0.0 < $1.0 }).map({ $0.value })
 
             self.critiqueManager.createCritique(title: title, descriptionHTML: body, mediaUrls: sortedDict, defaultMediaUrl: sortedDict.first!) { result in
+                Utils.dismissMessageHud(hud)
                 self.navigationController?.dismiss(animated: true)
             }
         }
