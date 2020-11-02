@@ -11,6 +11,20 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>ApolloMacPlayground (Playground) 10.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>58</integer>
+		</dict>
+		<key>ApolloMacPlayground (Playground) 11.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>59</integer>
+		</dict>
 		<key>ApolloMacPlayground (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,21 +58,28 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>29</integer>
 		</dict>
 		<key>ApolloMacPlayground (Playground) 7.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>30</integer>
 		</dict>
 		<key>ApolloMacPlayground (Playground) 8.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>51</integer>
+			<integer>31</integer>
+		</dict>
+		<key>ApolloMacPlayground (Playground) 9.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>57</integer>
 		</dict>
 		<key>ApolloMacPlayground (Playground).xcscheme</key>
 		<dict>
@@ -73,6 +94,20 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>9</integer>
+		</dict>
+		<key>SQLite (Playground) 10.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>55</integer>
+		</dict>
+		<key>SQLite (Playground) 11.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>56</integer>
 		</dict>
 		<key>SQLite (Playground) 2.xcscheme</key>
 		<dict>
@@ -107,21 +142,28 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>26</integer>
 		</dict>
 		<key>SQLite (Playground) 7.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>27</integer>
 		</dict>
 		<key>SQLite (Playground) 8.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>28</integer>
+		</dict>
+		<key>SQLite (Playground) 9.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>54</integer>
 		</dict>
 		<key>SQLite (Playground).xcscheme</key>
 		<dict>
@@ -136,6 +178,20 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+		<key>Spectre (Playground) 10.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>52</integer>
+		</dict>
+		<key>Spectre (Playground) 11.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>53</integer>
 		</dict>
 		<key>Spectre (Playground) 2.xcscheme</key>
 		<dict>
@@ -170,21 +226,28 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>23</integer>
 		</dict>
 		<key>Spectre (Playground) 7.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>24</integer>
 		</dict>
 		<key>Spectre (Playground) 8.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>25</integer>
+		</dict>
+		<key>Spectre (Playground) 9.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>51</integer>
 		</dict>
 		<key>Spectre (Playground).xcscheme</key>
 		<dict>

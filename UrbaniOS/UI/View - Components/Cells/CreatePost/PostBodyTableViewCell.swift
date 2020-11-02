@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-import RichEditorView
 
 protocol PostBodyCellDelegate: class {
     func didPressAddProductTag(cell: PostBodyTableViewCell)
@@ -24,12 +23,20 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let tap: UITapGestureRecognizer = .init(target: self, action: #selector(self.viewTap(_:)))
+        tap.delegate = self
+        self.richText.webView.addGestureRecognizer(tap)
+        self.configureRichTxt()
+    }
+    
+    func configureRichTxt() {
         self.richText.delegate = self
-        self.richText.isEditingEnabled = true
-//
+        self.richText.editingEnabled = true
+        self.richText.placeholder = "Critq content"
+
         let toolBar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
         toolBar.editor = self.richText
-        toolBar.delegate = self
+//        toolBar.delegate = self
         
         let item = RichEditorOptionItem(image: nil, title: "Product") { toolbar in
             self.info.delegate.didPressAddProductTag(cell: self)
@@ -45,11 +52,19 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     }
     
     func addProductTag(product: Product) {
-        self.richText.runJS("RE.insertProductTag(\"\(product.title)\", \"www.google.com\", \"\(product.rating ?? 1)\");")
+        self.richText.runJS("RE.insertProductTag(\"\(product.title)\", \"\(product.url)\", \"\(product.rating ?? 1)\");")
     }
 
     func configure(data: CellInfo) {
         self.info = data
+    }
+    
+    @objc func viewTap(_ sender: UITapGestureRecognizer) {
+        _ = self.richText.becomeFirstResponder()
+    }
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 
@@ -68,43 +83,12 @@ extension PostBodyTableViewCell: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, contentDidChange content: String) {
         print(editor.contentHTML)
     }
-}
-
-extension PostBodyTableViewCell: RichEditorToolbarDelegate {
-
-    fileprivate func randomColor() -> UIColor {
-        let colors: [UIColor] = [
-            .red,
-            .orange,
-            .yellow,
-            .green,
-            .blue,
-            .purple
-        ]
-        
-        let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-        return color
-    }
-
-    func richEditorToolbarChangeTextColor(_ toolbar: RichEditorToolbar) {
-        let color = randomColor()
-        toolbar.editor?.setTextColor(color)
-    }
-
-    func richEditorToolbarChangeBackgroundColor(_ toolbar: RichEditorToolbar) {
-        let color = randomColor()
-        toolbar.editor?.setTextBackgroundColor(color)
-    }
-
-    func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
-        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
-    }
-
-    func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
-        // Can only add links to selected text, so make sure there is a range selection first
-//        if toolbar.editor?.hasRangeSelection == true {
-//            toolbar.editor?.insertLink(href: "http://github.com/cjwirth/RichEditorView", text: "Github Link")
-//        }
+    
+    func richEditorTookFocus(_ editor: RichEditorView) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            editor.focus()
+            editor.becomeFirstResponder()
+            editor.webView.becomeFirstResponder()
+        }
     }
 }
-

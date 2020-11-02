@@ -11,7 +11,6 @@ target 'UrbaniOS' do
   pod 'AFNetworking'
   pod 'SDWebImage'
   pod 'mobile-ffmpeg-https-gpl'
-  pod 'RichEditorView'
   pod 'SnapKit', '~> 5.0.0'
   pod 'ImageScrollView'
   pod 'ImageSlideshow'

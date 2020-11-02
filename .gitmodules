@@ -1,3 +1,6 @@
 [submodule "UrbaniOS/GraphQL/GraphQLInterface"]
 	path = UrbaniOS/GraphQL/GraphQLInterface
 	url = https://github.com/GoUbiq/urbangraphql
+[submodule "UrbaniOS/RichText"]
+	path = UrbaniOS/RichText
+	url = https://github.com/phuocqb/RichEditorView.git

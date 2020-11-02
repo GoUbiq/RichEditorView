@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RichEditorView
 
 class PostBodyCollectionViewCell: UICollectionViewCell {
     static let identifier = "PostBodyCollectionViewCell"
@@ -17,7 +16,7 @@ class PostBodyCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.richView.isEditingEnabled = false
+        self.richView.editingEnabled = false
         self.richView.isScrollEnabled = false
     }
     

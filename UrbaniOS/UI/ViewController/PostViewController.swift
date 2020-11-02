@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RichEditorView
 
 protocol CommentCellsDelegate: class {
     func commentButtonPressed()
@@ -189,7 +188,8 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension PostViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, heightDidChange height: Int) {
-        self.bodyHeight = CGFloat(height)
+        print("client height \(height)")
+        self.bodyHeight = CGFloat(height) + 100
     }
 }
 

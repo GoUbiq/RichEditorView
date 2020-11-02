@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RichEditorView
 
 class CreatePostViewController: UIViewController {
     private static let identifier = "CreatePostViewController"

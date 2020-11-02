@@ -85,7 +85,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-Gn-9bw" customClass="RichEditorView" customModule="RichEditorView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-Gn-9bw" customClass="RichEditorView" customModule="UrbaniOS" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
