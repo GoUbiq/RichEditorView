@@ -74,6 +74,8 @@
 		0BD2EF81254B50A8006283C6 /* ProfileCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */; };
 		0BD2EF84254B50D8006283C6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF83254B50D8006283C6 /* ImagePicker.swift */; };
 		0BD2EF87254B5207006283C6 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EF86254B5207006283C6 /* User.graphql */; };
+		0BD2EF8A254B616A006283C6 /* ProductTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EF89254B616A006283C6 /* ProductTag.swift */; };
+		0BD2EFB8254C82CB006283C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EFB7254C82CB006283C6 /* Localizable.strings */; };
 		0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D0E2522955900177F79 /* AppDelegate.swift */; };
 		0BD43D112522955900177F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D102522955900177F79 /* SceneDelegate.swift */; };
 		0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BD43D172522955900177F79 /* UrbaniOS.xcdatamodeld */; };
@@ -161,6 +163,8 @@
 		0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompletionViewController.swift; sourceTree = "<group>"; };
 		0BD2EF83254B50D8006283C6 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0BD2EF86254B5207006283C6 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
+		0BD2EF89254B616A006283C6 /* ProductTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTag.swift; sourceTree = "<group>"; };
+		0BD2EFB7254C82CB006283C6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0BD43D0B2522955900177F79 /* UrbaniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbaniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD43D0E2522955900177F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BD43D102522955900177F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				0B7C320825432EB8003497FB /* Localizable.stringsdict */,
+				0BD2EFB7254C82CB006283C6 /* Localizable.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				0B7C31F0253A4234003497FB /* Critique.swift */,
 				0B7C31F2253A43B6003497FB /* User.swift */,
 				0B7C320E25435145003497FB /* Comment.swift */,
+				0BD2EF89254B616A006283C6 /* ProductTag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				0BD2EF78254B3789006283C6 /* PhoneNumberKeyboardInputView.xib in Resources */,
 				0B7C31C42527B4A4003497FB /* devSettings.plist in Resources */,
 				0BD2EE002548829E006283C6 /* Media.graphql in Resources */,
+				0BD2EFB8254C82CB006283C6 /* Localizable.strings in Resources */,
 				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
 				0BD43D2F2522A86B00177F79 /* Camera.storyboard in Resources */,
 				0BD2EF87254B5207006283C6 /* User.graphql in Resources */,
@@ -702,6 +709,7 @@
 				0BD2EF84254B50D8006283C6 /* ImagePicker.swift in Sources */,
 				0B7C31F1253A4234003497FB /* Critique.swift in Sources */,
 				0B7C320B25432EFB003497FB /* PostDateCollectionViewCell.swift in Sources */,
+				0BD2EF8A254B616A006283C6 /* ProductTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RB94U223YP;
 				INFOPLIST_FILE = UrbaniOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -846,6 +855,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -859,6 +869,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RB94U223YP;
 				INFOPLIST_FILE = UrbaniOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -866,6 +877,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

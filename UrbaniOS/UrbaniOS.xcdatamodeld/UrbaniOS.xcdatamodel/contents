@@ -6,11 +6,12 @@
         <attribute name="userCredit" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
         <attribute name="userFirstName" optional="YES" attributeType="String"/>
+        <attribute name="userHandle" optional="YES" attributeType="String"/>
         <attribute name="userId" optional="YES" attributeType="String"/>
         <attribute name="userImgUrl" optional="YES" attributeType="URI"/>
         <attribute name="userLastName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Session" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Session" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

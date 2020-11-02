@@ -15,6 +15,7 @@ struct Media {
     var width: Double
     var height: Double
     var type: MediaType
+    var productTags: [ProductTag] = [.init(productTag: .init(id: UUID().uuidString, rating: 3, positionX: 0.5, positionY: 0.5))]
     
     init(media: GraphQlMedia) {
         self.id = media.id
@@ -23,6 +24,7 @@ struct Media {
         self.width = media.width
         self.height = media.height
         self.type = media.mediaType
+//        self.productTags = media.tags.compactMap({ .init(productTag: $0.fragments.graphQlProductTag) })
     }
 }
 

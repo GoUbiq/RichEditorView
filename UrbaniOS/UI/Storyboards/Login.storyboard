@@ -366,7 +366,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAx-JA-jAO">
-                                        <rect key="frame" x="0.0" y="107" width="414" height="125"/>
+                                        <rect key="frame" x="0.0" y="82" width="414" height="125"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IQ-ZZ-y1J" customClass="CircleImageView" customModule="ShopTogether" customModuleProvider="target">
                                                 <rect key="frame" x="144.5" y="0.0" width="125" height="125"/>
@@ -414,10 +414,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMT-vg-n3V">
-                                        <rect key="frame" x="0.0" y="304" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="254" width="414" height="140"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-8g-cgI">
-                                                <rect key="frame" x="30" y="0.0" width="354" height="90"/>
+                                                <rect key="frame" x="30" y="0.0" width="354" height="140"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nBk-LP-SWO">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
@@ -431,6 +431,14 @@
                                                         <rect key="frame" x="0.0" y="50" width="354" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="JdO-8P-LRE"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="@username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="klw-ib-ePL">
+                                                        <rect key="frame" x="0.0" y="100" width="354" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="ILu-Ij-qyg"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
@@ -487,6 +495,7 @@
                         <outlet property="closeButton" destination="8o6-n7-leL" id="ijL-e3-0SJ"/>
                         <outlet property="errorLabel" destination="87p-md-F9z" id="Rqi-JC-Mz4"/>
                         <outlet property="firstNameField" destination="nBk-LP-SWO" id="E37-dR-Q6s"/>
+                        <outlet property="handleField" destination="klw-ib-ePL" id="7fT-pj-35f"/>
                         <outlet property="lastNameField" destination="3vk-my-ejL" id="Hp9-ii-U96"/>
                         <outlet property="userImage" destination="3wx-6o-nFL" id="eix-9O-O9S"/>
                     </connections>

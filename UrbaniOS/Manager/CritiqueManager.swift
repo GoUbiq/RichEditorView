@@ -11,10 +11,10 @@ import Foundation
 class CritiqueManager {
     static let sharedInstance = CritiqueManager()
     
-    func getHomeCritiques(completionHandler: @escaping ([Critique]?) -> ()) {
-        apollo.fetch(query: HomeCritiqueQuery()) { result, error in
-            guard let result = result?.data?.critiques.edges else { return completionHandler(nil) }
-            completionHandler(result.map({ .init(critique: $0.node.fragments.graphQlCritique) }))
+    func getHomeCritiques(after: String? = nil, completionHandler: @escaping ([Critique]?, Bool) -> ()) {
+        apollo.fetch(query: HomeCritiqueQuery(after: after)) { result, error in
+            guard let result = result?.data?.critiques else { return completionHandler(nil, false) }
+            completionHandler(result.edges.map({ .init(critique: $0.node.fragments.graphQlCritique) }), result.pageInfo.hasNextPage)
         }
     }
     
@@ -32,6 +32,20 @@ class CritiqueManager {
         let mutation: PostCommentMutation = .init(input: .init(body: text, associatedCritiqueId: critiqueId))
         apollo.perform(mutation: mutation) { result, error in
             guard let result = result?.data?.addComment?.fragments.graphQlComment else { return completionHandler(nil) }
+            completionHandler(.init(comment: result))
+        }
+    }
+    
+    func likeComment(commentId: String, completionHandler: @escaping (Comment?) -> ()) {
+        apollo.perform(mutation: LikeCommentMutation(id: commentId)) { result, error in
+            guard let result = result?.data?.likeComment?.fragments.graphQlComment else { return completionHandler(nil) }
+            completionHandler(.init(comment: result))
+        }
+    }
+    
+    func unlikeComment(commentId: String, completionHandler: @escaping (Comment?) -> ()) {
+        apollo.perform(mutation: UnlikeCommentMutation(id: commentId)) { result, error in
+            guard let result = result?.data?.unlikeComment?.fragments.graphQlComment else { return completionHandler(nil) }
             completionHandler(.init(comment: result))
         }
     }

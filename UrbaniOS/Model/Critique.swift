@@ -19,6 +19,7 @@ struct Critique {
     var defaultMedia: Media
     var createdAt: Date
     var comments: [Comment] = []
+    var productTags: [ProductTag] = []
     
     init(critique: GraphQlCritique) {
         self.id = critique.id
@@ -30,6 +31,7 @@ struct Critique {
         self.defaultMedia = .init(media: critique.defaultMedia.fragments.graphQlMedia)
         self.createdAt = DateFormatter.iso8601WithMilliseconds.date(from: critique.createdAt) ?? Date()
         self.comments = critique.comments.map({ .init(comment: $0.fragments.graphQlComment) })
+//        self.productTags = critique.tags.compactMap({ .init(productTag: $0.fragments.graphQlProductTag) })
     }
 }
 

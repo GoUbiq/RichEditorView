@@ -54,7 +54,7 @@ public struct CritiqueCreateInput: GraphQLMapConvertible {
   ///   - defaultMediaUrl
   ///   - tags
   ///   - categories
-  public init(title: String, descriptionHtml: String, style: CritiqueStyle, mediaUrls: [String], defaultMediaUrl: String, tags: Swift.Optional<[TagCreateInput]?> = nil, categories: [String]) {
+  public init(title: String, descriptionHtml: String, style: CritiqueStyle, mediaUrls: [String], defaultMediaUrl: String, tags: [TagCreateInput], categories: [String]) {
     graphQLMap = ["title": title, "descriptionHtml": descriptionHtml, "style": style, "mediaUrls": mediaUrls, "defaultMediaUrl": defaultMediaUrl, "tags": tags, "categories": categories]
   }
 
@@ -103,9 +103,9 @@ public struct CritiqueCreateInput: GraphQLMapConvertible {
     }
   }
 
-  public var tags: Swift.Optional<[TagCreateInput]?> {
+  public var tags: [TagCreateInput] {
     get {
-      return graphQLMap["tags"] as? Swift.Optional<[TagCreateInput]?> ?? Swift.Optional<[TagCreateInput]?>.none
+      return graphQLMap["tags"] as! [TagCreateInput]
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "tags")
@@ -979,13 +979,17 @@ public final class HomeCritiqueQuery: GraphQLQuery {
             ...GraphQLCritique
           }
         }
+        pageInfo {
+          __typename
+          hasNextPage
+        }
       }
     }
     """
 
   public let operationName: String = "HomeCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var after: GraphQLID?
 
@@ -1032,6 +1036,7 @@ public final class HomeCritiqueQuery: GraphQLQuery {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("edges", type: .nonNull(.list(.nonNull(.object(Edge.selections))))),
+          GraphQLField("pageInfo", type: .nonNull(.object(PageInfo.selections))),
         ]
       }
 
@@ -1041,8 +1046,8 @@ public final class HomeCritiqueQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(edges: [Edge]) {
-        self.init(unsafeResultMap: ["__typename": "CritiqueConnection", "edges": edges.map { (value: Edge) -> ResultMap in value.resultMap }])
+      public init(edges: [Edge], pageInfo: PageInfo) {
+        self.init(unsafeResultMap: ["__typename": "CritiqueConnection", "edges": edges.map { (value: Edge) -> ResultMap in value.resultMap }, "pageInfo": pageInfo.resultMap])
       }
 
       public var __typename: String {
@@ -1060,6 +1065,15 @@ public final class HomeCritiqueQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue.map { (value: Edge) -> ResultMap in value.resultMap }, forKey: "edges")
+        }
+      }
+
+      public var pageInfo: PageInfo {
+        get {
+          return PageInfo(unsafeResultMap: resultMap["pageInfo"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "pageInfo")
         }
       }
 
@@ -1163,6 +1177,46 @@ public final class HomeCritiqueQuery: GraphQLQuery {
           }
         }
       }
+
+      public struct PageInfo: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["PageInfo"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("hasNextPage", type: .nonNull(.scalar(Bool.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(hasNextPage: Bool) {
+          self.init(unsafeResultMap: ["__typename": "PageInfo", "hasNextPage": hasNextPage])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// Indicates if there are more pages to fetch.
+        public var hasNextPage: Bool {
+          get {
+            return resultMap["hasNextPage"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "hasNextPage")
+          }
+        }
+      }
     }
   }
 }
@@ -1181,7 +1235,7 @@ public final class GetCritiqueByIdQuery: GraphQLQuery {
 
   public let operationName: String = "GetCritiqueById"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var id: GraphQLID
 
@@ -1289,7 +1343,7 @@ public final class CreateCritiqueMutation: GraphQLMutation {
 
   public let operationName: String = "CreateCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var input: CritiqueCreateInput
 
@@ -1393,17 +1447,15 @@ public final class LoginMutation: GraphQLMutation {
         sessionId
         user {
           __typename
-          id
-          firstName
-          lastName
-          imageUrl
-          email
+          ...GraphQLUser
         }
       }
     }
     """
 
   public let operationName: String = "Login"
+
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlUser.fragmentDefinition) }
 
   public var code: String
   public var metadata: UserMetadataInput?
@@ -1503,11 +1555,7 @@ public final class LoginMutation: GraphQLMutation {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-            GraphQLField("firstName", type: .scalar(String.self)),
-            GraphQLField("lastName", type: .scalar(String.self)),
-            GraphQLField("imageUrl", type: .scalar(String.self)),
-            GraphQLField("email", type: .scalar(String.self)),
+            GraphQLFragmentSpread(GraphQlUser.self),
           ]
         }
 
@@ -1517,8 +1565,8 @@ public final class LoginMutation: GraphQLMutation {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, firstName: String? = nil, lastName: String? = nil, imageUrl: String? = nil, email: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl, "email": email])
+        public init(id: GraphQLID, imageUrl: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, name: String? = nil, handle: String? = nil, description: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "firstName": firstName, "lastName": lastName, "email": email, "name": name, "handle": handle, "description": description])
         }
 
         public var __typename: String {
@@ -1530,48 +1578,29 @@ public final class LoginMutation: GraphQLMutation {
           }
         }
 
-        public var id: GraphQLID {
+        public var fragments: Fragments {
           get {
-            return resultMap["id"]! as! GraphQLID
+            return Fragments(unsafeResultMap: resultMap)
           }
           set {
-            resultMap.updateValue(newValue, forKey: "id")
+            resultMap += newValue.resultMap
           }
         }
 
-        public var firstName: String? {
-          get {
-            return resultMap["firstName"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "firstName")
-          }
-        }
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
 
-        public var lastName: String? {
-          get {
-            return resultMap["lastName"] as? String
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
           }
-          set {
-            resultMap.updateValue(newValue, forKey: "lastName")
-          }
-        }
 
-        public var imageUrl: String? {
-          get {
-            return resultMap["imageUrl"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "imageUrl")
-          }
-        }
-
-        public var email: String? {
-          get {
-            return resultMap["email"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "email")
+          public var graphQlUser: GraphQlUser {
+            get {
+              return GraphQlUser(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
           }
         }
       }
@@ -2085,15 +2114,14 @@ public final class UpdateUserMutation: GraphQLMutation {
     mutation UpdateUser($userInput: UserUpdateInput!) {
       updateUser(input: $userInput) {
         __typename
-        email
-        firstName
-        lastName
-        imageUrl
+        ...GraphQLUser
       }
     }
     """
 
   public let operationName: String = "UpdateUser"
+
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlUser.fragmentDefinition) }
 
   public var userInput: UserUpdateInput
 
@@ -2139,10 +2167,7 @@ public final class UpdateUserMutation: GraphQLMutation {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("email", type: .scalar(String.self)),
-          GraphQLField("firstName", type: .scalar(String.self)),
-          GraphQLField("lastName", type: .scalar(String.self)),
-          GraphQLField("imageUrl", type: .scalar(String.self)),
+          GraphQLFragmentSpread(GraphQlUser.self),
         ]
       }
 
@@ -2152,8 +2177,8 @@ public final class UpdateUserMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, imageUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "email": email, "firstName": firstName, "lastName": lastName, "imageUrl": imageUrl])
+      public init(id: GraphQLID, imageUrl: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, name: String? = nil, handle: String? = nil, description: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "firstName": firstName, "lastName": lastName, "email": email, "name": name, "handle": handle, "description": description])
       }
 
       public var __typename: String {
@@ -2165,39 +2190,29 @@ public final class UpdateUserMutation: GraphQLMutation {
         }
       }
 
-      public var email: String? {
+      public var fragments: Fragments {
         get {
-          return resultMap["email"] as? String
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "email")
+          resultMap += newValue.resultMap
         }
       }
 
-      public var firstName: String? {
-        get {
-          return resultMap["firstName"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "firstName")
-        }
-      }
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
 
-      public var lastName: String? {
-        get {
-          return resultMap["lastName"] as? String
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
-        set {
-          resultMap.updateValue(newValue, forKey: "lastName")
-        }
-      }
 
-      public var imageUrl: String? {
-        get {
-          return resultMap["imageUrl"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "imageUrl")
+        public var graphQlUser: GraphQlUser {
+          get {
+            return GraphQlUser(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }
@@ -2438,7 +2453,11 @@ public struct GraphQlUser: GraphQLFragment {
       __typename
       id
       imageUrl
+      firstName
+      lastName
+      email
       name
+      handle
       description
     }
     """
@@ -2450,7 +2469,11 @@ public struct GraphQlUser: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
       GraphQLField("imageUrl", type: .scalar(String.self)),
+      GraphQLField("firstName", type: .scalar(String.self)),
+      GraphQLField("lastName", type: .scalar(String.self)),
+      GraphQLField("email", type: .scalar(String.self)),
       GraphQLField("name", type: .scalar(String.self)),
+      GraphQLField("handle", type: .scalar(String.self)),
       GraphQLField("description", type: .scalar(String.self)),
     ]
   }
@@ -2461,8 +2484,8 @@ public struct GraphQlUser: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID, imageUrl: String? = nil, name: String? = nil, description: String? = nil) {
-    self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "name": name, "description": description])
+  public init(id: GraphQLID, imageUrl: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, name: String? = nil, handle: String? = nil, description: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "firstName": firstName, "lastName": lastName, "email": email, "name": name, "handle": handle, "description": description])
   }
 
   public var __typename: String {
@@ -2492,12 +2515,48 @@ public struct GraphQlUser: GraphQLFragment {
     }
   }
 
+  public var firstName: String? {
+    get {
+      return resultMap["firstName"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "firstName")
+    }
+  }
+
+  public var lastName: String? {
+    get {
+      return resultMap["lastName"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "lastName")
+    }
+  }
+
+  public var email: String? {
+    get {
+      return resultMap["email"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "email")
+    }
+  }
+
   public var name: String? {
     get {
       return resultMap["name"] as? String
     }
     set {
       resultMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var handle: String? {
+    get {
+      return resultMap["handle"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "handle")
     }
   }
 
@@ -2632,8 +2691,8 @@ public struct GraphQlComment: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, imageUrl: String? = nil, name: String? = nil, description: String? = nil) {
-      self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "name": name, "description": description])
+    public init(id: GraphQLID, imageUrl: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, name: String? = nil, handle: String? = nil, description: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "firstName": firstName, "lastName": lastName, "email": email, "name": name, "handle": handle, "description": description])
     }
 
     public var __typename: String {
@@ -2673,6 +2732,87 @@ public struct GraphQlComment: GraphQLFragment {
   }
 }
 
+public struct GraphQlProductTag: GraphQLFragment {
+  /// The raw GraphQL definition of this fragment.
+  public static let fragmentDefinition: String =
+    """
+    fragment GraphQLProductTag on Tag {
+      __typename
+      id
+      rating
+      positionX
+      positionY
+    }
+    """
+
+  public static let possibleTypes: [String] = ["Tag"]
+
+  public static var selections: [GraphQLSelection] {
+    return [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      GraphQLField("rating", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("positionX", type: .nonNull(.scalar(Double.self))),
+      GraphQLField("positionY", type: .nonNull(.scalar(Double.self))),
+    ]
+  }
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(id: GraphQLID, rating: Int, positionX: Double, positionY: Double) {
+    self.init(unsafeResultMap: ["__typename": "Tag", "id": id, "rating": rating, "positionX": positionX, "positionY": positionY])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var id: GraphQLID {
+    get {
+      return resultMap["id"]! as! GraphQLID
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var rating: Int {
+    get {
+      return resultMap["rating"]! as! Int
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "rating")
+    }
+  }
+
+  public var positionX: Double {
+    get {
+      return resultMap["positionX"]! as! Double
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "positionX")
+    }
+  }
+
+  public var positionY: Double {
+    get {
+      return resultMap["positionY"]! as! Double
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "positionY")
+    }
+  }
+}
+
 public struct GraphQlCritique: GraphQLFragment {
   /// The raw GraphQL definition of this fragment.
   public static let fragmentDefinition: String =
@@ -2700,6 +2840,10 @@ public struct GraphQlCritique: GraphQLFragment {
         __typename
         ...GraphQLComment
       }
+      categories {
+        __typename
+        ...GraphQLCategory
+      }
       createdAt
     }
     """
@@ -2718,6 +2862,7 @@ public struct GraphQlCritique: GraphQLFragment {
       GraphQLField("media", type: .nonNull(.list(.nonNull(.object(Medium.selections))))),
       GraphQLField("defaultMedia", type: .nonNull(.object(DefaultMedium.selections))),
       GraphQLField("comments", type: .nonNull(.list(.nonNull(.object(Comment.selections))))),
+      GraphQLField("categories", type: .nonNull(.list(.nonNull(.object(Category.selections))))),
       GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
     ]
   }
@@ -2728,8 +2873,8 @@ public struct GraphQlCritique: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID, title: String, shortdescription: String? = nil, descriptionHtml: String, handle: String, author: Author, media: [Medium], defaultMedia: DefaultMedium, comments: [Comment], createdAt: String) {
-    self.init(unsafeResultMap: ["__typename": "Critique", "id": id, "title": title, "shortdescription": shortdescription, "descriptionHtml": descriptionHtml, "handle": handle, "author": author.resultMap, "media": media.map { (value: Medium) -> ResultMap in value.resultMap }, "defaultMedia": defaultMedia.resultMap, "comments": comments.map { (value: Comment) -> ResultMap in value.resultMap }, "createdAt": createdAt])
+  public init(id: GraphQLID, title: String, shortdescription: String? = nil, descriptionHtml: String, handle: String, author: Author, media: [Medium], defaultMedia: DefaultMedium, comments: [Comment], categories: [Category], createdAt: String) {
+    self.init(unsafeResultMap: ["__typename": "Critique", "id": id, "title": title, "shortdescription": shortdescription, "descriptionHtml": descriptionHtml, "handle": handle, "author": author.resultMap, "media": media.map { (value: Medium) -> ResultMap in value.resultMap }, "defaultMedia": defaultMedia.resultMap, "comments": comments.map { (value: Comment) -> ResultMap in value.resultMap }, "categories": categories.map { (value: Category) -> ResultMap in value.resultMap }, "createdAt": createdAt])
   }
 
   public var __typename: String {
@@ -2822,6 +2967,15 @@ public struct GraphQlCritique: GraphQLFragment {
     }
   }
 
+  public var categories: [Category] {
+    get {
+      return (resultMap["categories"] as! [ResultMap]).map { (value: ResultMap) -> Category in Category(unsafeResultMap: value) }
+    }
+    set {
+      resultMap.updateValue(newValue.map { (value: Category) -> ResultMap in value.resultMap }, forKey: "categories")
+    }
+  }
+
   public var createdAt: String {
     get {
       return resultMap["createdAt"]! as! String
@@ -2847,8 +3001,8 @@ public struct GraphQlCritique: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, imageUrl: String? = nil, name: String? = nil, description: String? = nil) {
-      self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "name": name, "description": description])
+    public init(id: GraphQLID, imageUrl: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, name: String? = nil, handle: String? = nil, description: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "User", "id": id, "imageUrl": imageUrl, "firstName": firstName, "lastName": lastName, "email": email, "name": name, "handle": handle, "description": description])
     }
 
     public var __typename: String {
@@ -3043,6 +3197,62 @@ public struct GraphQlCritique: GraphQLFragment {
       public var graphQlComment: GraphQlComment {
         get {
           return GraphQlComment(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+    }
+  }
+
+  public struct Category: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Category"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLFragmentSpread(GraphQlCategory.self),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: GraphQLID, title: String, imageUrl: String, updatedAt: String, createdAt: String) {
+      self.init(unsafeResultMap: ["__typename": "Category", "id": id, "title": title, "imageUrl": imageUrl, "updatedAt": updatedAt, "createdAt": createdAt])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var fragments: Fragments {
+      get {
+        return Fragments(unsafeResultMap: resultMap)
+      }
+      set {
+        resultMap += newValue.resultMap
+      }
+    }
+
+    public struct Fragments {
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public var graphQlCategory: GraphQlCategory {
+        get {
+          return GraphQlCategory(unsafeResultMap: resultMap)
         }
         set {
           resultMap += newValue.resultMap

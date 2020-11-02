@@ -22,5 +22,6 @@ target 'UrbaniOS' do
   pod 'FacebookShare'
   pod 'UITextView+Placeholder'
   pod 'PhoneNumberKit'
+  pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
 
 end

@@ -13,11 +13,11 @@ import CoreData
 
 public class Session: NSManagedObject {
     @discardableResult
-    class func createNewEntryWith(id: String, userId: String, userEmail: String?, firstName: String?, lastName: String?, userImage: URL?) -> Session {
-        return Session(id: id, userId: userId, userEmail: userEmail, firstName: firstName, lastName: lastName, userImage: userImage)
+    class func createNewEntryWith(id: String, userId: String, userEmail: String?, firstName: String?, lastName: String?, userImage: URL?, userHandle: String?) -> Session {
+        return Session(id: id, userId: userId, userEmail: userEmail, firstName: firstName, lastName: lastName, userImage: userImage, userHandle: userHandle)
     }
     
-    private convenience init(id: String, userId: String, userEmail: String?, firstName: String?, lastName: String?, userImage: URL? = nil) {
+    private convenience init(id: String, userId: String, userEmail: String?, firstName: String?, lastName: String?, userImage: URL? = nil, userHandle: String? = nil) {
         guard let entity = NSEntityDescription.entity(forEntityName: Session.entity().name!, in: mainContext) else { fatalError()  }
         
         self.init(entity: entity, insertInto: mainContext)
@@ -28,10 +28,11 @@ public class Session: NSManagedObject {
         self.userImgUrl = userImage
         self.userFirstName = firstName
         self.userLastName = lastName
+        self.userHandle = userHandle
     }
     
     var isProfileComplete: Bool {
-        return !((self.userFirstName ?? "").isEmpty || (self.userLastName ?? "").isEmpty)
+        return !((self.userFirstName ?? "").isEmpty || (self.userLastName ?? "").isEmpty || (self.userHandle ?? "").isEmpty)
     }
     
     var currentUser: User? {

@@ -13,6 +13,7 @@ class ProfileCompletionViewController: UIViewController {
     
     @IBOutlet private weak var firstNameField: UITextField!
     @IBOutlet private weak var lastNameField: UITextField!
+    @IBOutlet private weak var handleField: UITextField!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var userImage: CircleImageView!
@@ -49,6 +50,8 @@ class ProfileCompletionViewController: UIViewController {
         self.firstNameField.layer.borderWidth = 1
         self.lastNameField.layer.cornerRadius = 3
         self.lastNameField.layer.borderWidth = 1
+        self.handleField.layer.cornerRadius = 3
+        self.handleField.layer.borderWidth = 1
         
         self.firstNameField.text = self.loginManager.currentSession?.userFirstName
         self.lastNameField.text = self.loginManager.currentSession?.userLastName
@@ -58,6 +61,7 @@ class ProfileCompletionViewController: UIViewController {
         
         self.firstNameField.addTarget(self, action: #selector(self.textFieldDidChange(sender:)), for: .editingChanged)
         self.lastNameField.addTarget(self, action: #selector(self.textFieldDidChange(sender:)), for: .editingChanged)
+        self.handleField.addTarget(self, action: #selector(self.textFieldDidChange(sender:)), for: .editingChanged)
         
         let keyboardInputView: PhoneNumberKeyboardInputView = .fromNib()
         
@@ -67,10 +71,11 @@ class ProfileCompletionViewController: UIViewController {
             buttonAction: {
                 guard self.configureTextFields(),
                     let firstName = self.firstNameField.text,
-                    let lastName = self.lastNameField.text else { return }
+                    let lastName = self.lastNameField.text,
+                    let handle = self.handleField.text else { return }
                 
                 let hud = Utils.showMessageHud(onViewController: self)
-                self.loginManager.updateUserInfos(newFirstName: firstName, newLastName: lastName, completionHandler: { session in
+                self.loginManager.updateUserInfos(newFirstName: firstName, newHandle: handle, newLastName: lastName, completionHandler: { session in
                     Utils.dismissMessageHud(hud)
                     if session == nil {
                         self.showSimpleAlertPopup(message: localized("something.went.wrong.try.again"))
@@ -84,6 +89,7 @@ class ProfileCompletionViewController: UIViewController {
         
         self.firstNameField.inputAccessoryView = keyboardInputView
         self.lastNameField.inputAccessoryView = keyboardInputView
+        self.handleField.inputAccessoryView = keyboardInputView
     }
     
     deinit {
@@ -101,6 +107,7 @@ class ProfileCompletionViewController: UIViewController {
         
         self.firstNameField.resignFirstResponder()
         self.lastNameField.resignFirstResponder()
+        self.handleField.resignFirstResponder()
     }
     
     @objc private func textFieldDidChange(sender: UITextField) {
@@ -110,8 +117,10 @@ class ProfileCompletionViewController: UIViewController {
     @objc private func showKeyboard() {
         if (self.firstNameField.text ?? "").isEmpty {
             self.firstNameField.becomeFirstResponder()
-        } else {
+        } else if (self.lastNameField.text ?? "").isEmpty {
             self.lastNameField.becomeFirstResponder()
+        } else {
+            self.handleField.becomeFirstResponder()
         }
     }
     
@@ -123,11 +132,13 @@ class ProfileCompletionViewController: UIViewController {
     private func configureTextFields() -> Bool {
         let firstName = self.firstNameField.text ?? ""
         let lastName = self.lastNameField.text ?? ""
+        let handle = self.handleField.text ?? ""
 
         self.firstNameField.layer.borderColor = (firstName.isEmpty ? UIColor.red : UIColor.clear).cgColor
         self.lastNameField.layer.borderColor = (lastName.isEmpty ? UIColor.red : UIColor.clear).cgColor
-        self.errorLabel.isHidden = !((firstName.isEmpty) || (lastName.isEmpty))
-        return !(firstName.isEmpty || lastName.isEmpty)
+        self.handleField.layer.borderColor = (handle.isEmpty ? UIColor.red : UIColor.clear).cgColor
+        self.errorLabel.isHidden = !((firstName.isEmpty) || (lastName.isEmpty) || (handle.isEmpty))
+        return !(firstName.isEmpty || lastName.isEmpty || handle.isEmpty)
     }
 
     @IBAction func editProfilePictureButtonPressed(_ sender: Any) {

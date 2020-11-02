@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  UrbaniOS
+
+  Created by Bastien on 2020-10-30.
+  Copyright © 2020 Bastien Ravalet. All rights reserved.
+*/
+
+"something.went.wrong.try.again" = "Something went wrong, please try again!";
+
+//Login
+"login.phone.receiveSms" = "By continuing you will receive an SMS for verification";
+"login.keyboardInput.completeProfile" = "Please complete your profile so you can start shopping!";

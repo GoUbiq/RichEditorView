@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import UIScrollView_InfiniteScroll
 
 class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
@@ -22,6 +23,7 @@ class HomeViewController: UIViewController {
     private var critiqueManager: CritiqueManager {
         return .sharedInstance
     }
+    private var hasNextPage: Bool = false
     
     private lazy var refreshControl: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -40,6 +42,14 @@ class HomeViewController: UIViewController {
         
         self.collectionView.refreshControl = self.refreshControl
         self.setupLayout()
+        
+        self.collectionView.addInfiniteScroll() { _ in
+            self.loadContent()
+        }
+        
+        self.collectionView.setShouldShowInfiniteScrollHandler() { _ in
+            return true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,11 +74,24 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func loadContent() {
-        self.critiqueManager.getHomeCritiques() { result in
-            self.critiques = result ?? []
-            self.collectionView.collectionViewLayout.invalidateLayout()
-            self.collectionView.reloadData()
+    private func loadContent(shouldReload: Bool = false) {
+        let after = shouldReload ? nil : self.critiques.last?.id
+        self.critiqueManager.getHomeCritiques(after: after) { result, hasNextPage in
+            if self.critiques.isEmpty || shouldReload {
+                self.critiques = result ?? []
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.reloadData()
+            } else if let result = result, !result.isEmpty {
+                let endIdx = self.critiques.count
+                self.critiques.append(contentsOf: result)
+                let newResultsIdx = (endIdx...(self.critiques.count - 1)).map({ IndexPath(row: $0, section: 0) })
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.insertItems(at: newResultsIdx)
+                }, completion: { _ in
+                    self.collectionView.finishInfiniteScroll()
+                })
+            }
+            self.hasNextPage = hasNextPage
             self.refreshControl.endRefreshing()
         }
     }
@@ -96,7 +119,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func refreshTriggered(sender: UIRefreshControl) {
-        self.loadContent()
+        self.loadContent(shouldReload: true)
     }
 }
 

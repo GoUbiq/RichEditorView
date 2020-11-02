@@ -102,9 +102,9 @@ extension PostBodyTableViewCell: RichEditorToolbarDelegate {
 
     func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
         // Can only add links to selected text, so make sure there is a range selection first
-        if toolbar.editor?.hasRangeSelection == true {
-            toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
-        }
+//        if toolbar.editor?.hasRangeSelection == true {
+//            toolbar.editor?.insertLink(href: "http://github.com/cjwirth/RichEditorView", text: "Github Link")
+//        }
     }
 }
 

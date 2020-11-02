@@ -16,5 +16,6 @@ struct Product {
     init(product: GraphQlProduct) {
         self.id = product.id
         self.title = product.title
+        self.rating = 3
     }
 }

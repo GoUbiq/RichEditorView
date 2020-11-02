@@ -24,5 +24,6 @@ extension Session {
     @NSManaged public var userLastName: String?
     @NSManaged public var userAmountSaved: String?
     @NSManaged public var userCredit: String?
+    @NSManaged public var userHandle: String?
 
 }

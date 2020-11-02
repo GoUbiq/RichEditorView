@@ -60,6 +60,7 @@ PODS:
   - SDWebImage/Core (5.9.0)
   - SnapKit (5.0.1)
   - UICircularProgressRing (7.0.0)
+  - UIScrollView-InfiniteScroll (1.1.0)
   - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - SDWebImage
   - SnapKit (~> 5.0.0)
   - UICircularProgressRing
+  - UIScrollView-InfiniteScroll (~> 1.1.0)
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -99,6 +101,7 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - UICircularProgressRing
+    - UIScrollView-InfiniteScroll
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -119,8 +122,9 @@ SPEC CHECKSUMS:
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: a208effcf7a5cf8948eee869262e10d9228981ca
+PODFILE CHECKSUM: a34e0bda30969ceffc594b33e379aa2bae0d3c89
 
 COCOAPODS: 1.10.0

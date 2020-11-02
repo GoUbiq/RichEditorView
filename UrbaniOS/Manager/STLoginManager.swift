@@ -70,7 +70,7 @@ class STLoginManager {
 
             do {
                 try self.deleteAllSessions()
-                let user = data.user
+                let user = data.user.fragments.graphQlUser
                 
                 Session.createNewEntryWith(
                     id: data.sessionId,
@@ -78,7 +78,8 @@ class STLoginManager {
                     userEmail: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    userImage: URL(string: user.imageUrl ?? "")
+                    userImage: URL(string: user.imageUrl ?? ""),
+                    userHandle: user.handle
                 )
                 try? mainContext.save()
 
@@ -92,11 +93,11 @@ class STLoginManager {
         }
     }
     
-    func updateUserInfos(newEmail: String? = nil, newFirstName: String? = nil, newLastName: String? = nil, imageUrl: String? = nil, completionHandler: @escaping (Session?) -> ()) {
-        let updateUserInput = UserUpdateInput(firstName: newFirstName, lastName: newLastName, email: newEmail, imageUrl: imageUrl)
+    func updateUserInfos(newEmail: String? = nil, newFirstName: String? = nil, newHandle: String? = nil, newLastName: String? = nil, imageUrl: String? = nil, completionHandler: @escaping (Session?) -> ()) {
+        let updateUserInput = UserUpdateInput(firstName: newFirstName, lastName: newLastName, email: newEmail, imageUrl: imageUrl, handle: newHandle)
 
         apollo.perform(mutation: UpdateUserMutation(userInput: updateUserInput)) { result, error in
-            guard let user = result?.data?.updateUser else {
+            guard let user = result?.data?.updateUser.fragments.graphQlUser else {
                 completionHandler(nil)
                 return
             }
@@ -106,6 +107,7 @@ class STLoginManager {
                 session.userFirstName = user.firstName
                 session.userLastName = user.lastName
                 session.userImgUrl = URL(string: user.imageUrl ?? "")
+                session.userHandle = user.handle
                 try? mainContext.save()
                 completionHandler(session)
             } else {

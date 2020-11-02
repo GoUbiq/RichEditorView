@@ -17,7 +17,8 @@ class PostViewController: UIViewController {
     static let identifier = "PostViewController"
     
     @IBOutlet private weak var collectionView: UICollectionView!
-
+    @IBOutlet private weak var postLikes: UILabel!
+    
     class func newInstance(critique: Critique) -> PostViewController {
         let instance = postStoryboard.instantiateViewController(withIdentifier: self.identifier) as! PostViewController
         instance.critique = critique
@@ -56,12 +57,17 @@ class PostViewController: UIViewController {
             }
         }
     }
+    private var isLiking: Bool = false
+    private var critiqueManager: CritiqueManager {
+        return .sharedInstance
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupLayout()
         self.loadContent()
+        self.reloadLikes()
     }
     
     private func loadContent() {
@@ -71,6 +77,10 @@ class PostViewController: UIViewController {
         
         self.collectionView.collectionViewLayout.invalidateLayout()
         self.collectionView.reloadData()
+    }
+    
+    private func reloadLikes() {
+        self.postLikes.text = "1.3k"
     }
     
     private func setupLayout() {
@@ -121,6 +131,10 @@ class PostViewController: UIViewController {
     @IBAction func commentButtonPressed(_ sender: Any) {
         self.commentButtonPressed()
     }
+    
+    @IBAction func likeButtonPressed(_ sender: Any) {
+        
+    }
 }
 
 extension PostViewController: PinterestLayoutDelegate {
@@ -165,7 +179,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.configureCell(nbComment: self.comments.count, delegate: self)
             return cell
         } else if let cell = cell as? PostCommentCollectionViewCell {
-            cell.configureCell(comment: self.comments[indexPath.row - 1])
+            cell.configureCell(comment: self.comments[indexPath.row - 1], delegate: self)
             return cell
         }
         
@@ -190,5 +204,35 @@ extension PostViewController: PostCommentDelegate {
     func didPostComment(comment: Comment) {
         self.critique.comments.insert(comment, at: 0)
         self.loadContent()
+        self.collectionView.layoutIfNeeded()
+        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: [.centeredVertically, .centeredHorizontally], animated: false)
+    }
+}
+
+extension PostViewController: CommentDelegate {
+    func didPressLikeOn(comment: Comment) {
+        func complete(comment: Comment?) {
+            guard let comment = comment, let idx = self.critique.comments.firstIndex(where: { $0.id == comment.id }) else {
+                self.showSimpleAlertPopup(message: "something.went.wrong.try.again")
+                return
+            }
+            
+            self.critique.comments[idx] = comment
+            self.collectionView.reloadItems(at: [.init(row: idx + 1, section: 1)])
+            self.isLiking = false
+        }
+        
+        guard !self.isLiking else { return }
+        
+        self.isLiking = true
+        if comment.userHasLiked {
+            self.critiqueManager.unlikeComment(commentId: comment.id) {
+                complete(comment: $0)
+            }
+        } else {
+            self.critiqueManager.likeComment(commentId: comment.id) {
+                complete(comment: $0)
+            }
+        }
     }
 }
