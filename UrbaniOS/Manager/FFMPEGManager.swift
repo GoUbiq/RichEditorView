@@ -58,7 +58,7 @@ class FFMPEGManager: NSObject, LogDelegate {
     }
     
     private func generateContent(filter: String, options: String, inputs: [String], outputs: [String]) -> String {
-        let inputs = inputs.map({ "[\($0)]" }).joined()
+        let inputs = inputs.map({ "[\($0)]" }).joined() 
         let outputs = outputs.map({ "[\($0)]" }).joined()
         return "\(inputs)\(filter)=\(options)\(outputs)"
     }
