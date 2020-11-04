@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B4AD902255339000052CB58 /* devLocalSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B4AD901255339000052CB58 /* devLocalSettings.plist */; };
 		0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C319D2523AC60003497FB /* CreatePost.storyboard */; };
 		0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */; };
 		0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */; };
@@ -151,6 +152,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4AD901255339000052CB58 /* devLocalSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devLocalSettings.plist; sourceTree = "<group>"; };
 		0B7C319D2523AC60003497FB /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConfigurator.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		11714037B47EC3979B0F44D4 /* Pods-UrbaniOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbaniOS.debug.xcconfig"; path = "Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3136DEBC8C79DDAC37D14F /* Pods-UrbaniOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbaniOS.release.xcconfig"; path = "Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS.release.xcconfig"; sourceTree = "<group>"; };
 		C3B23FEB841045A39FF2C100 /* Pods_UrbaniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UrbaniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB8BA09501408E7C1AEF0C5E /* Pods-UrbaniOS.local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbaniOS.local.xcconfig"; path = "Target Support Files/Pods-UrbaniOS/Pods-UrbaniOS.local.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +584,7 @@
 				0BD43D252522961500177F79 /* Podfile */,
 				0B7C31E8253100E8003497FB /* index.html */,
 				0B7C31C32527B4A4003497FB /* devSettings.plist */,
+				0B4AD901255339000052CB58 /* devLocalSettings.plist */,
 			);
 			path = UrbaniOS;
 			sourceTree = "<group>";
@@ -698,6 +702,7 @@
 			children = (
 				11714037B47EC3979B0F44D4 /* Pods-UrbaniOS.debug.xcconfig */,
 				AD3136DEBC8C79DDAC37D14F /* Pods-UrbaniOS.release.xcconfig */,
+				CB8BA09501408E7C1AEF0C5E /* Pods-UrbaniOS.local.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BD2F29A25508EF1006283C6 /* justify_left@2x.png in Resources */,
+				0B4AD902255339000052CB58 /* devLocalSettings.plist in Resources */,
 				0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */,
 				0BD2F27325508EF1006283C6 /* Toolbar.gif in Resources */,
 				0BD43D1E2522955D00177F79 /* LaunchScreen.storyboard in Resources */,
@@ -995,6 +1001,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0B4AD904255339CB0052CB58 /* Local */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DLOCAL";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Local;
+		};
+		0B4AD905255339CB0052CB58 /* Local */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB8BA09501408E7C1AEF0C5E /* Pods-UrbaniOS.local.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = RB94U223YP;
+				INFOPLIST_FILE = UrbaniOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Local;
+		};
 		0BD43D202522955D00177F79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1049,6 +1138,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1102,6 +1192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1160,6 +1251,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BD43D202522955D00177F79 /* Debug */,
+				0B4AD904255339CB0052CB58 /* Local */,
 				0BD43D212522955D00177F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1169,6 +1261,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BD43D232522955D00177F79 /* Debug */,
+				0B4AD905255339CB0052CB58 /* Local */,
 				0BD43D242522955D00177F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

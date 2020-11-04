@@ -101,9 +101,9 @@ class MediaManager {
         
         content.enumerated().forEach { idx, content in
             guard let url = content.gifUrl else {
-//                if let img = content.textInfo.img, let url = self.saveImage(fileName: content.id.uuidString, image: img) {
-//                    result[idx] = url
-//                }
+                if let img = content.textInfo?.img, let url = self.saveImage(fileName: content.id.uuidString, image: img, ext: .png) {
+                    result[idx] = url
+                }
                 return
             }
             group.enter()
@@ -154,11 +154,19 @@ class MediaManager {
         return finalImage
     }
     
-    func saveImage(fileName: String, image: UIImage) -> URL? {
-        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+    func saveImage(fileName: String, image: UIImage, ext: MediaFileExtension = .jpeg) -> URL? {
+        func getData() -> Data? {
+            switch ext {
+            case .jpeg: return image.jpegData(compressionQuality: 1)
+            default: return image.pngData()
+            }
+        }
+        
+        guard let data = getData() else {
             return nil
         }
-        guard let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).jpg") else {
+        
+        guard let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).\(ext.extName)") else {
             return nil
         }
         do {
@@ -281,6 +289,15 @@ extension MediaType {
         case .image: return "image/jpeg"
         case .video: return "video/mp4"
         case .__unknown(_): return ""
+        }
+    }
+}
+
+extension MediaFileExtension {
+    var extName: String {
+        switch self {
+        case .jpeg: return "jpg"
+        default: return self.rawValue
         }
     }
 }

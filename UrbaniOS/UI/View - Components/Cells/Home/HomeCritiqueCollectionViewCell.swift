@@ -16,6 +16,8 @@ class HomeCritiqueCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var userImg: CircleImageView!
     @IBOutlet private weak var userName: UILabel!
     @IBOutlet private weak var preview: UIImageView!
+    @IBOutlet private weak var numberOfLikes: UILabel!
+    @IBOutlet private weak var likeIndicator: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,5 +32,8 @@ class HomeCritiqueCollectionViewCell: UICollectionViewCell {
         self.productTitle.text = critique.title
         self.userName.text = critique.author.name
         self.userImg.sd_setImage(with: URL(string: critique.author.imageUrl ?? ""))
+        self.numberOfLikes.text = critique.likeCountStr
+        self.numberOfLikes.textColor = critique.userHasLiked ? .red : .label
+        self.likeIndicator.tintColor = critique.userHasLiked ? .red : .label
     }
 }

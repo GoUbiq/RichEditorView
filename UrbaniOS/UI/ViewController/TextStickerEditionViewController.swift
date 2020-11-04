@@ -17,7 +17,7 @@ class TextStickerEditionViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
-    class func newInstance(stickerId: UUID, textInfo: DragScaleAndRotateView.TextInfo, delegate: TextStickerEditionDelegate) -> TextStickerEditionViewController {
+    class func newInstance(stickerId: UUID, textInfo: TextInfo, delegate: TextStickerEditionDelegate) -> TextStickerEditionViewController {
         let instance =  cameraStoryboard.instantiateViewController(withIdentifier: self.identifier) as! TextStickerEditionViewController
         
         instance.modalPresentationStyle = .overFullScreen
@@ -31,7 +31,7 @@ class TextStickerEditionViewController: UIViewController {
     
     private var delegate: TextStickerEditionDelegate!
     private var stickerId: UUID!
-    private var textInfo: DragScaleAndRotateView.TextInfo!
+    private var textInfo: TextInfo!
 
     override func viewDidLoad() {
         super.viewDidLoad()

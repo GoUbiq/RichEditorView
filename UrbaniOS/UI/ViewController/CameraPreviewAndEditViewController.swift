@@ -191,16 +191,15 @@ class CameraPreviewAndEditViewController: UIViewController {
 //                processDone()
 //            })
         }
+        
+        let stickers = self.contentViews.compactMap({ (dragView) -> MediaSticker in
+            return .init(dragView: dragView)
+        })
   
         switch self.media {
         case .video(let url):
-//            let content = self.contentViews.compactMap { (dragView) -> ReactionContent? in
-//                guard let mediaView = dragView.subviews.first as? GPHMediaView, let media = mediaView.media else { return nil }
-//                return ReactionContent(positionX: Double(dragView.positionXRatio), positionY: Double(dragView.positionYRatio), rotation: Double(dragView.degreeRotation), scale: Double(dragView.currentScale * (1920 / UIScreen.main.bounds.height)), content: media.images?.original?.gifUrl ?? "", type: .video)
-//            }
-
 //            let hud = Utils.showMessageHud(message: "Processing video", onViewController: self)
-            FFMPEGManager.sharedInstance.buildMedia(url: url, content: []) { vFile in
+            FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: true, content: stickers) { vFile in
                 let url = URL(fileURLWithPath: vFile)
                 self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: url.imageFromVideo(at: 0) ?? #imageLiteral(resourceName: "play-button"), mediaType: .video))
                 processDone()
@@ -208,8 +207,12 @@ class CameraPreviewAndEditViewController: UIViewController {
             }
         case .picture(let img):
             guard let url = self.mediaManager.saveImage(fileName: UUID().uuidString, image: img) else { return }
-            self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image))
-            processDone()
+            FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: false, content: stickers) { vFile in
+                let url = URL(fileURLWithPath: vFile)
+                guard let data = try? Data(contentsOf: url), let img = UIImage(data: data) else { return }
+                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image))
+                processDone()
+            }
         default: return
         }
     }

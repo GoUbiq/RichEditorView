@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
+        self.navigationItem.title = devEnvironment.homePageBarTitle
         
         self.collectionView.refreshControl = self.refreshControl
         self.setupLayout()

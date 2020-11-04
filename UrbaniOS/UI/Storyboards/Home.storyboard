@@ -126,6 +126,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="259" height="506"/>
                                         <connections>
+                                            <outlet property="likeIndicator" destination="y8b-HA-246" id="PSd-GS-I6l"/>
+                                            <outlet property="numberOfLikes" destination="wTv-KI-74v" id="NFT-nw-qxe"/>
                                             <outlet property="preview" destination="KAJ-AQ-F0R" id="UrI-Qm-1AQ"/>
                                             <outlet property="productTitle" destination="g4f-TC-w5C" id="YDq-qZ-cph"/>
                                             <outlet property="userImg" destination="wDB-RJ-hPG" id="PQt-Z7-uvc"/>

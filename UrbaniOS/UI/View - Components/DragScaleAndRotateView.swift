@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 enum DragScaleViewType {
-    case text(DragScaleAndRotateView.TextInfo)
+    case text(TextInfo)
     case gif
     case productTag
     
@@ -117,7 +117,6 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         guard case .text(let textInfo) = type, let img = self.imageWith(textInfo: TextInfo(text: newText, font: textInfo.font)) else { return }
         
         self.bounds.size = img.size
-        print(self.frame)
         self.subviews.forEach({ $0.removeFromSuperview() })
         let imgView = UIImageView(image: img)
         self.addSubview(imgView)
@@ -127,7 +126,6 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     
     private func imageWith(textInfo: TextInfo) -> UIImage? {
         let frame = CGRect(origin: .zero, size: textInfo.text.sizeOfString(usingFont: textInfo.font, maxWidth: UIScreen.main.bounds.width - 100, maxHeight: .infinity))
-        print(frame)
         let nameLabel = UILabel(frame: frame)
         nameLabel.textAlignment = .center
         nameLabel.backgroundColor = .clear
@@ -197,11 +195,11 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
 
 }
 
-extension DragScaleAndRotateView {
-    struct TextInfo {
-        var text: String
-        var font: UIFont = .systemFont(ofSize: 50)
-        var img: UIImage?
-        var isTitle: Bool = false
-    }
-}
+//extension DragScaleAndRotateView {
+//    struct TextInfo {
+//        var text: String
+//        var font: UIFont = .systemFont(ofSize: 50)
+//        var img: UIImage?
+//        var isTitle: Bool = false
+//    }
+//}

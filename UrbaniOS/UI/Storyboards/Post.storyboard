@@ -444,6 +444,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="cHT-zF-rVk" id="Lya-OY-sqQ"/>
+                        <outlet property="likeIndicator" destination="Row-gf-4MS" id="Go0-Nj-1oF"/>
                         <outlet property="postLikes" destination="Yaa-u2-gSH" id="jZZ-5d-1H4"/>
                     </connections>
                 </viewController>

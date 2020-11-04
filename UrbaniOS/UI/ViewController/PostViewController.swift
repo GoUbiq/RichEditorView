@@ -17,6 +17,7 @@ class PostViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var postLikes: UILabel!
+    @IBOutlet private weak var likeIndicator: UIImageView!
     
     class func newInstance(critique: Critique) -> PostViewController {
         let instance = postStoryboard.instantiateViewController(withIdentifier: self.identifier) as! PostViewController
@@ -79,7 +80,14 @@ class PostViewController: UIViewController {
     }
     
     private func reloadLikes() {
-        self.postLikes.text = "1.3k"
+        self.postLikes.text = self.critique.likeCountStr
+        if self.critique.userHasLiked {
+            self.postLikes.textColor = .red
+            self.likeIndicator.tintColor = .red
+        } else {
+            self.postLikes.textColor = .label
+            self.likeIndicator.tintColor = .label
+        }
     }
     
     private func setupLayout() {
@@ -132,7 +140,25 @@ class PostViewController: UIViewController {
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {
+        let hud = Utils.showMessageHud(onViewController: self)
+
+        func processDone(critique: Critique?) {
+            Utils.dismissMessageHud(hud)
+            guard let critq = critique else { return }
+
+            self.critique = critq
+            self.reloadLikes()
+        }
         
+        if self.critique.userHasLiked {
+            self.critiqueManager.unlikeCritique(critiqueId: self.critique.id) {
+                processDone(critique: $0)
+            }
+        } else {
+            self.critiqueManager.likeCritique(critiqueId: self.critique.id) {
+                processDone(critique: $0)
+            }
+        }
     }
 }
 
@@ -189,13 +215,12 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension PostViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, heightDidChange height: Int) {
         print("client height \(height)")
-        self.bodyHeight = CGFloat(height)
 //        editor.webView.layoutIfNeeded()
 //        print(editor.webView.scrollView.contentSize.height)
-//        Utils.delay(delay: 1) {
-//            self.bodyHeight = editor.webView.scrollView.contentSize.height
-////            print(editor.webView.scrollView.contentSize.height)
-//        }
+        Utils.delay(delay: 1) {
+            self.bodyHeight = editor.webView.scrollView.contentSize.height
+//            print(editor.webView.scrollView.contentSize.height)
+        }
     }
     
     func richEditor(_ editor: RichEditorView, handle action: String) {

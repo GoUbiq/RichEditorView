@@ -16,7 +16,7 @@ enum Environment {
     var associatedPlistFileName: String {
         switch self {
         case .localDebug:
-            return "devSettings"
+            return "devLocalSettings"
         case .remoteDebug:
             return "devSettings"
         case .production:
@@ -36,11 +36,11 @@ enum Environment {
     var homePageBarTitle: String {
         switch self {
         case .localDebug:
-            return "ST Local"
+            return "CRITQ Local"
         case .remoteDebug:
-            return "ST Staging"
+            return "CRITQ Staging"
         case .production:
-            return "Shop Together"
+            return "CRITQ"
         }
     }
 }

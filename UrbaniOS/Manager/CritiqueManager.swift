@@ -21,7 +21,22 @@ class CritiqueManager {
     func createCritique(title: String, descriptionHTML: String, mediaUrls: [String], defaultMediaUrl: String, completionHandler: @escaping (Critique?) -> ()) {
         let input: CritiqueCreateInput = .init(title: title, descriptionHtml: descriptionHTML, style: .review, mediaUrls: mediaUrls, defaultMediaUrl: defaultMediaUrl, tags: [], categories: [])
         apollo.perform(mutation: CreateCritiqueMutation(input: input)) { result, error in
+            print(result)
             guard let result = result?.data?.createCritique.fragments.graphQlCritique else { return completionHandler(nil) }
+            completionHandler(.init(critique: result))
+        }
+    }
+    
+    func likeCritique(critiqueId: String, completionHandler: @escaping (Critique?) -> ()) {
+        apollo.perform(mutation: LikeCritiqueMutation(id: critiqueId)) { result, error in
+            guard let result = result?.data?.likeCritique?.fragments.graphQlCritique else { return completionHandler(nil) }
+            completionHandler(.init(critique: result))
+        }
+    }
+    
+    func unlikeCritique(critiqueId: String, completionHandler: @escaping (Critique?) -> ()) {
+        apollo.perform(mutation: UnlikeCritiqueMutation(id: critiqueId)) { result, error in
+            guard let result = result?.data?.unlikeCritique?.fragments.graphQlCritique else { return completionHandler(nil) }
             completionHandler(.init(critique: result))
         }
     }
