@@ -13,6 +13,7 @@ class TemplateEditingViewController: UIViewController {
     
     @IBOutlet private weak var img: UIImageView!
     @IBOutlet private weak var overlayView: UIView!
+    @IBOutlet private weak var trashView: CircleImageView!
     
     class func newInstance(img: UIImage, delegate: MediaManagementDelegate) -> TemplateEditingViewController {
         let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! TemplateEditingViewController
@@ -32,12 +33,17 @@ class TemplateEditingViewController: UIViewController {
     private var image: UIImage!
     private var delegate: MediaManagementDelegate? = nil
     
-    private lazy var productPickerVC: ProductTagPickerViewController = {
-        return .newInstance(delegate: self)
+    private lazy var productPickerVC: UINavigationController = {
+        let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
+        return SearchViewController.newInstance(searchResultVC: vc)
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.trashView.layer.borderWidth = 1
+        self.trashView.layer.borderColor = UIColor.white.cgColor
+        self.trashView.isHidden = true
         
         self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
         self.img.image = self.image
@@ -68,16 +74,51 @@ class TemplateEditingViewController: UIViewController {
 }
 
 extension TemplateEditingViewController: ProductTagPickerDelegate {
-    func didSelect(product: Product) {
-        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .productTag, delegate: nil)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func didSelect(tag: ProductTag) {
+        self.productPickerVC.dismiss(animated: true)
+        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: tag.productTagViewHeight), currentScale: 1, type: .productTag, delegate: self)
         
         let productView: ProductTagView = .fromNib()
-        productView.configureView(product: product)
+        productView.configureView(tag: tag)
         view.addSubview(productView)
         productView.snp.makeConstraints({ $0.edges.equalToSuperview() } )
         
         self.overlayView.addSubview(view)
-        view.center = self.overlayView.center
+        view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.midY)
     }
 }
+
+extension TemplateEditingViewController: DragScalePositionDelegate {
+    func viewDragStarted(view: DragScaleAndRotateView) {
+        self.trashView.isHidden = false
+        self.contentViews.forEach({ $0.clearSelection() })
+    }
+    
+    func viewPositionChanged(view: DragScaleAndRotateView, touchPoint: CGPoint) {
+        if (self.view.convert(self.trashView.frame, to: self.overlayView).contains(touchPoint)) {
+            view.isHidden = true
+            self.trashView.tintColor = .gray
+            self.trashView.backgroundColor = .white
+        } else {
+            view.isHidden = false
+            self.trashView.tintColor = .white
+            self.trashView.backgroundColor = .clear
+        }
+    }
+    
+    func viewDragEnded(view: DragScaleAndRotateView) {
+        if view.isHidden == true {
+            view.removeFromSuperview()
+        }
+        self.trashView.isHidden = true
+    }
+    
+    func viewDidSelect(view: DragScaleAndRotateView) {
+//        switch view.type {
+//        case .text: self.editingTxtViewId = view.id
+//        default: break
+//        }
+//        self.contentViews.first(where: { $0 !== view && view.isSelected })?.clearSelection()
+    }
+}
+

@@ -45,6 +45,11 @@ class CameraPreviewAndEditViewController: UIViewController {
         return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
     }
     
+    private lazy var productPickerVC: UINavigationController = {
+        let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
+        return SearchViewController.newInstance(searchResultVC: vc)
+    }()
+    
     private var editingTxtViewId: UUID? = nil {
         didSet {
             if oldValue == nil, let id = self.editingTxtViewId, case .text(let textInfo) = self.contentViews.first(where: { $0.id == id })?.type {
@@ -55,10 +60,6 @@ class CameraPreviewAndEditViewController: UIViewController {
             self.contentViews.forEach({ $0.isHidden = $0.id == self.editingTxtViewId })
         }
     }
-    
-    private lazy var productPickerVC: ProductTagPickerViewController = {
-        return .newInstance(delegate: self)
-    }()
     
     private var mediaManager: MediaManager {
         return MediaManager.sharedInstance
@@ -192,7 +193,8 @@ class CameraPreviewAndEditViewController: UIViewController {
 //            })
         }
         
-        let stickers = self.contentViews.compactMap({ (dragView) -> MediaSticker in
+        let stickers = self.contentViews.compactMap({ (dragView) -> MediaSticker? in
+            guard dragView.type.isIncludedInFffmpeg else { return nil }
             return .init(dragView: dragView)
         })
   
@@ -234,12 +236,13 @@ extension CameraPreviewAndEditViewController: TextStickerEditionDelegate {
 }
 
 extension CameraPreviewAndEditViewController: ProductTagPickerDelegate {
-    func didSelect(product: Product) {
-        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: .zero), currentScale: 1, type: .productTag, delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func didSelect(tag: ProductTag) {
+        self.productPickerVC.dismiss(animated: true)
+
+        let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: tag.productTagViewHeight), currentScale: 1, type: .productTag, delegate: self)
         
         let productView: ProductTagView = .fromNib()
-        productView.configureView(product: product)
+        productView.configureView(tag: tag)
         view.addSubview(productView)
         productView.snp.makeConstraints({ $0.edges.equalToSuperview() } )
         

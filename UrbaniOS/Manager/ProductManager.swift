@@ -21,4 +21,12 @@ class ProductManager {
             completion(result.map({ Product(product: $0.node.fragments.graphQlProduct) }))
         }
     }
+    
+    func createProduct(title: String, url: String, completion: @escaping ((Product?) -> ())) {
+        let input: ProductCreateInput = .init(title: title, affiliateUrl: url)
+        apollo.perform(mutation:  CreateProductMutation(input: input)) { result, error in
+            guard let result = result?.data?.createProduct.fragments.graphQlProduct else { return completion(nil) }
+            completion(.init(product: result))
+        }
+    }
 }

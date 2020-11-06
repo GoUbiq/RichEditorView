@@ -91,7 +91,7 @@ class CreatePostViewController: UIViewController {
     
     private func configureCells() {
         self.cells = []
-
+    
         self.cells = [self.configuredMediaCell()]
         
         self.cells.append(TitleCell(item: ""))
@@ -136,7 +136,7 @@ class CreatePostViewController: UIViewController {
         
         let hud = Utils.showMessageHud(onViewController: self)
         let group = DispatchGroup()
-        var urls: [Int: String] = [:]
+        var urls: [Int: UploadedMedia] = [:]
         
         for (idx, media) in self.postingMedia.enumerated() {
             group.enter()
@@ -147,7 +147,7 @@ class CreatePostViewController: UIViewController {
                 
                 guard let url = url else { return }
                 
-                urls[idx] = url
+                urls[idx] = .init(url: url, productTags: media.productTags)
             })
         }
         
@@ -194,12 +194,12 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource {
 extension CreatePostViewController: PostBodyCellDelegate, ProductTagPickerDelegate {
     func didPressAddProductTag(cell: PostBodyTableViewCell) {
         self.selectingCell = cell
-        let vc = ProductTagPickerViewController.newInstance(delegate: self)
+        let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
         self.present(vc, animated: true)
     }
     
-    func didSelect(product: Product) {
-        self.selectingCell?.addProductTag(product: product)
+    func didSelect(tag: ProductTag) {
+        self.selectingCell?.addProductTag(tag: tag)
     }
 }
 

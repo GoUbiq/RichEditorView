@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B4AD902255339000052CB58 /* devLocalSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B4AD901255339000052CB58 /* devLocalSettings.plist */; };
+		0B4AD94925549AFC0052CB58 /* CreateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */; };
+		0B4B9B892555C69C00D249D8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9B882555C69C00D249D8 /* Search.storyboard */; };
+		0B4B9B8C2555C71C00D249D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */; };
 		0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C319D2523AC60003497FB /* CreatePost.storyboard */; };
 		0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */; };
 		0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */; };
@@ -20,7 +23,7 @@
 		0B7C31B225266292003497FB /* TextStickerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */; };
 		0B7C31B525268544003497FB /* ProductTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C31B425268544003497FB /* ProductTagView.xib */; };
 		0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B62526A050003497FB /* ProductTagView.swift */; };
-		0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */; };
+		0B7C31B92527AE47003497FB /* ProductTagPickerSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31B82527AE47003497FB /* ProductTagPickerSearchResultViewController.swift */; };
 		0B7C31BC2527AFC8003497FB /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BB2527AFC8003497FB /* Apollo */; };
 		0B7C31BE2527AFC8003497FB /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BD2527AFC8003497FB /* ApolloCore */; };
 		0B7C31C02527AFC8003497FB /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7C31BF2527AFC8003497FB /* ApolloWebSocket */; };
@@ -153,6 +156,9 @@
 
 /* Begin PBXFileReference section */
 		0B4AD901255339000052CB58 /* devLocalSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devLocalSettings.plist; sourceTree = "<group>"; };
+		0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductViewController.swift; sourceTree = "<group>"; };
+		0B4B9B882555C69C00D249D8 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B7C319D2523AC60003497FB /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConfigurator.swift; sourceTree = "<group>"; };
@@ -165,7 +171,7 @@
 		0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerEditionViewController.swift; sourceTree = "<group>"; };
 		0B7C31B425268544003497FB /* ProductTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTagView.xib; sourceTree = "<group>"; };
 		0B7C31B62526A050003497FB /* ProductTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagView.swift; sourceTree = "<group>"; };
-		0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerViewController.swift; sourceTree = "<group>"; };
+		0B7C31B82527AE47003497FB /* ProductTagPickerSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTagPickerSearchResultViewController.swift; sourceTree = "<group>"; };
 		0B7C31C32527B4A4003497FB /* devSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = devSettings.plist; sourceTree = "<group>"; };
 		0B7C31C52527B696003497FB /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		0B7C31C72527C034003497FB /* ApolloClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClientManager.swift; sourceTree = "<group>"; };
@@ -645,7 +651,7 @@
 				0BD43D3E2522ABD400177F79 /* CameraPreviewAndEditViewController.swift */,
 				0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */,
 				0B7C31B125266292003497FB /* TextStickerEditionViewController.swift */,
-				0B7C31B82527AE47003497FB /* ProductTagPickerViewController.swift */,
+				0B7C31B82527AE47003497FB /* ProductTagPickerSearchResultViewController.swift */,
 				0B7C31DD252CD43A003497FB /* TemplateMediaPickerViewController.swift */,
 				0B7C31E2252E7B5E003497FB /* TemplateEditingViewController.swift */,
 				0B7C31F4253A46AA003497FB /* HomeViewController.swift */,
@@ -655,6 +661,8 @@
 				0BD2EF5C254B356A006283C6 /* PhoneNumberLoginViewController.swift */,
 				0BD2EF7A254B3B30006283C6 /* PhoneOTPVerificationViewController.swift */,
 				0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */,
+				0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */,
+				0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -685,6 +693,7 @@
 				0B7C31EE253A3338003497FB /* Home.storyboard */,
 				0B7C31F62540D567003497FB /* Post.storyboard */,
 				0BD2EE362548C9A7006283C6 /* Login.storyboard */,
+				0B4B9B882555C69C00D249D8 /* Search.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -798,6 +807,7 @@
 				0B7C31C62527B696003497FB /* schema.json in Resources */,
 				0BD2F27425508EF1006283C6 /* Demo.gif in Resources */,
 				0BD2F2A125508EF1006283C6 /* rich_editor_tests.html in Resources */,
+				0B4B9B892555C69C00D249D8 /* Search.storyboard in Resources */,
 				0B7C31CE2527C6EF003497FB /* Fragment.graphql in Resources */,
 				0BD2F27D25508EF1006283C6 /* indent@3x.png in Resources */,
 				0B7C31E9253100E8003497FB /* index.html in Resources */,
@@ -925,7 +935,7 @@
 				0BD2EECA2548D607006283C6 /* Session+CoreDataProperties.swift in Sources */,
 				0BD2F27825508EF1006283C6 /* RichEditorToolbar.swift in Sources */,
 				0B7C31E3252E7B5E003497FB /* TemplateEditingViewController.swift in Sources */,
-				0B7C31B92527AE47003497FB /* ProductTagPickerViewController.swift in Sources */,
+				0B7C31B92527AE47003497FB /* ProductTagPickerSearchResultViewController.swift in Sources */,
 				0B7C31AA252503F3003497FB /* PostMedia.swift in Sources */,
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
@@ -953,6 +963,7 @@
 				0B7C31DA252B9230003497FB /* ProductRatingView.swift in Sources */,
 				0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */,
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
+				0B4B9B8C2555C71C00D249D8 /* SearchViewController.swift in Sources */,
 				0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */,
 				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,
 				0BD2EF7E254B3B7B006283C6 /* LoginNavigationBar.swift in Sources */,
@@ -981,6 +992,7 @@
 				0B7C31B72526A050003497FB /* ProductTagView.swift in Sources */,
 				0BD2EF84254B50D8006283C6 /* ImagePicker.swift in Sources */,
 				0B7C31F1253A4234003497FB /* Critique.swift in Sources */,
+				0B4AD94925549AFC0052CB58 /* CreateProductViewController.swift in Sources */,
 				0B7C320B25432EFB003497FB /* PostDateCollectionViewCell.swift in Sources */,
 				0BD2F27925508EF1006283C6 /* RichEditorOptionItem.swift in Sources */,
 				0BD2EF8A254B616A006283C6 /* ProductTag.swift in Sources */,
@@ -1068,7 +1080,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RB94U223YP;
 				INFOPLIST_FILE = UrbaniOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1076,7 +1088,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1206,7 +1218,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RB94U223YP;
 				INFOPLIST_FILE = UrbaniOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1214,7 +1226,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1228,7 +1240,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RB94U223YP;
 				INFOPLIST_FILE = UrbaniOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1236,7 +1248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

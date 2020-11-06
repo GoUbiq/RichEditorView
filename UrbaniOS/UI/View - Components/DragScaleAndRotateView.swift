@@ -27,6 +27,13 @@ enum DragScaleViewType {
         default: return true
         }
     }
+    
+    var isIncludedInFffmpeg: Bool {
+        switch self {
+        case .productTag: return false
+        default: return true
+        }
+    }
 }
 
 protocol DragScalePositionDelegate: class {

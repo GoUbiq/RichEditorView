@@ -15,7 +15,7 @@ struct Media {
     var width: Double
     var height: Double
     var type: MediaType
-    var productTags: [ProductTag] = [.init(productTag: .init(id: UUID().uuidString, rating: 3, positionX: 0.5, positionY: 0.5))]
+    var productTags: [ProductTag] = [.init(productTag: .init(id: UUID().uuidString, rating: 3, positionX: 0.5, positionY: 0.5, product: .init(id: UUID().uuidString, title: "title", affiliateUrl: "url")))]
     
     init(media: GraphQlMedia) {
         self.id = media.id
@@ -28,15 +28,19 @@ struct Media {
     }
 }
 
-
 struct PostMedia {
     var id: UUID = UUID()
     var url: URL
     var preview: UIImage
     var mediaType: MediaType
+    var productTags: [ProductTag] = []
     
     static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
+struct UploadedMedia {
+    var url: String
+    var productTags: [ProductTag]
+}

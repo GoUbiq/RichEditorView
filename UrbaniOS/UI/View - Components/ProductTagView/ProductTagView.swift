@@ -17,6 +17,7 @@ class ProductTagView: UIView {
     @IBOutlet private weak var productRatingView: ProductRatingView!
     
     private var product: Product!
+    private(set) var productTag: ProductTag!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,11 +35,11 @@ class ProductTagView: UIView {
         super.init(frame: .zero)
     }
     
-    func configureView(product: Product) {
-        self.product = product
-        self.productName.text = product.title
+    func configureView(tag: ProductTag) {
+        self.product = tag.product
+        self.productName.text = tag.product.title
         self.productRatingView.isHidden = true
-        if let rating = product.rating {
+        if let rating = tag.rating {
             self.productRatingView.isHidden = false
             self.productRatingView.configureView(rating: rating)
         }

@@ -21,7 +21,7 @@ class ProductTagPickerTableViewCell: UITableViewCell {
     
     func configureCell(product: Product, isExpended: Bool, delegate: ProductRatingDelegate) {
         self.delegate = delegate
-        self.productRatingView.configureView(rating: product.rating, selectedRateColor: .systemYellow, editingEnabled: true, delegate: delegate)
+        self.productRatingView.configureView(rating: 0, selectedRateColor: .systemYellow, editingEnabled: true, delegate: delegate)
         self.ratingView.isHidden = !isExpended
         self.productTitle.text = product.title
     }

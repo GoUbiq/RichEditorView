@@ -12,12 +12,10 @@ struct Product {
     let id: String
     let title: String
     let url: String
-    var rating: Int? = nil
     
     init(product: GraphQlProduct) {
         self.id = product.id
         self.title = product.title
-        self.rating = 3
         self.url = product.affiliateUrl
     }
 }

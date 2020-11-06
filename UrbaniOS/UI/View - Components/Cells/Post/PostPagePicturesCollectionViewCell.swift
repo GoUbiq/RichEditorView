@@ -43,10 +43,10 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
         
         for (idx, media) in self.medias.enumerated() {
             let startingX = viewWidth * CGFloat(idx + 1)
-            let views = media.productTags.map { (media) -> (ProductTagView)  in
+            let views = media.productTags.map { (tag) -> (ProductTagView)  in
                 let view: ProductTagView = .fromNib()
-                view.frame = .init(x: (startingX + viewWidth) / CGFloat(media.positionX), y: self.imageSlide.bounds.height / CGFloat(media.positionY), width: 200, height: 200)
-                view.configureView(product: .init(product: .init(id: "", title: "slt", affiliateUrl: "", tags: [])))
+                view.frame = .init(origin: .init(x: (startingX + viewWidth) / CGFloat(tag.positionX), y: self.imageSlide.bounds.height / CGFloat(tag.positionY)), size: tag.productTagViewHeight) //.init(x: (startingX + viewWidth) / CGFloat(tag.positionX), y: self.imageSlide.bounds.height / CGFloat(tag.positionY), width: 200, height: 200)
+                view.configureView(tag: tag)
                 return view
             }
             

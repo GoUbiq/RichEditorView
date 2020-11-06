@@ -261,14 +261,21 @@ public extension String {
     /**
      Calculates the best height of the text for available width and font used.
      */
-    public func heightForWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let rect = NSString(string: self).boundingRect(
-            with: CGSize(width: width, height: CGFloat(MAXFLOAT)),
-            options: .usesLineFragmentOrigin,
-            attributes: [NSAttributedString.Key.font: font],
-            context: nil
-        )
-        return ceil(rect.height)
+    public func heightForWidth(width: CGFloat, font: UIFont, nbOfLines: Int = 0) -> CGFloat {
+        let lbl = UILabel()
+        lbl.numberOfLines = nbOfLines
+        lbl.font = font
+        lbl.text = self
+        
+        return lbl.systemLayoutSizeFitting(.init(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
+        
+//        let rect = NSString(string: self).boundingRect(
+//            with: CGSize(width: width, height: CGFloat(MAXFLOAT)),
+//            options: .usesLineFragmentOrigin,
+//            attributes: [NSAttributedString.Key.font: font],
+//            context: nil
+//        )
+//        return ceil(rect.height)
     }
 }
 

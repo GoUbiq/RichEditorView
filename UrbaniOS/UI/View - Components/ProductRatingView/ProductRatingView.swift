@@ -50,7 +50,7 @@ class ProductRatingView: UIView {
         self.stars.forEach { $0.imageView?.contentMode = .scaleAspectFit }
     }
     
-    func configureView(rating: Int?, selectedRateColor: UIColor = .white, unselectedRateColor: UIColor = .systemGray4, editingEnabled: Bool = false, delegate: ProductRatingDelegate? = nil) {
+    func configureView(rating: Int?, selectedRateColor: UIColor = .systemYellow, unselectedRateColor: UIColor = .systemGray4, editingEnabled: Bool = false, delegate: ProductRatingDelegate? = nil) {
         self.selectedColor = selectedRateColor
         self.unselectedColor = unselectedRateColor
         self.isEditingEnabled = editingEnabled

@@ -51,8 +51,8 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
         self.richText.inputAccessoryView = toolBar
     }
     
-    func addProductTag(product: Product) {
-        self.richText.runJS("RE.insertProductTag(\"\(product.title)\", \"\(product.url)\", \"\(product.rating ?? 1)\");")
+    func addProductTag(tag: ProductTag) {
+        self.richText.runJS("RE.insertProductTag(\"\(tag.product.title)\", \"\(tag.product.url)\", \"\(tag.rating ?? 0)\");")
     }
 
     func configure(data: CellInfo) {

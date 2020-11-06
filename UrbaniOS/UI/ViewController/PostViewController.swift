@@ -215,16 +215,21 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension PostViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, heightDidChange height: Int) {
         print("client height \(height)")
-//        editor.webView.layoutIfNeeded()
+        self.bodyHeight = CGFloat(height)
 //        print(editor.webView.scrollView.contentSize.height)
-        Utils.delay(delay: 1) {
-            self.bodyHeight = editor.webView.scrollView.contentSize.height
-//            print(editor.webView.scrollView.contentSize.height)
-        }
+//        Utils.delay(delay: 1) {
+//            self.bodyHeight = editor.webView.scrollView.contentSize.height
+////            print(editor.webView.scrollView.contentSize.height)
+//        }
     }
     
-    func richEditor(_ editor: RichEditorView, handle action: String) {
-        print(editor.webView.scrollView.contentSize.height)
+    func richEditor(_ editor: RichEditorView, shouldInteractWith url: URL) -> Bool {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, completionHandler: nil)
+            return true
+        }
+        
+        return false
     }
 }
 
