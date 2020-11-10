@@ -174,7 +174,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69l-0S-SBY">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="128"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-camera" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-YA-3KE">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-YA-3KE">
                                                         <rect key="frame" x="47.5" y="10" width="30" height="30"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
@@ -291,6 +291,7 @@
     </scenes>
     <resources>
         <image name="add-camera" width="32" height="32"/>
+        <image name="bag" width="32" height="32"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

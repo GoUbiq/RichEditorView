@@ -36,6 +36,7 @@ class ProductTagView: UIView {
     }
     
     func configureView(tag: ProductTag) {
+        self.productTag = tag
         self.product = tag.product
         self.productName.text = tag.product.title
         self.productRatingView.isHidden = true

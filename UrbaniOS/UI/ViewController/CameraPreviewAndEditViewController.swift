@@ -45,6 +45,10 @@ class CameraPreviewAndEditViewController: UIViewController {
         return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
     }
     
+    private var productTags: [ProductTag] {
+        return self.contentViews.compactMap({ $0.getProductTag() })
+    }
+    
     private lazy var productPickerVC: UINavigationController = {
         let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
         return SearchViewController.newInstance(searchResultVC: vc)
@@ -212,7 +216,7 @@ class CameraPreviewAndEditViewController: UIViewController {
             FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: false, content: stickers) { vFile in
                 let url = URL(fileURLWithPath: vFile)
                 guard let data = try? Data(contentsOf: url), let img = UIImage(data: data) else { return }
-                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image))
+                self.cameraDelegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image, productTags: self.productTags))
                 processDone()
             }
         default: return

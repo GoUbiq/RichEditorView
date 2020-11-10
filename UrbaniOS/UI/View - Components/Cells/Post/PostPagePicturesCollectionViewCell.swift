@@ -24,6 +24,10 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private var tagViews: [UIView] {
+        return self.imageSlide.scrollView.subviews.compactMap({ $0 as? ProductTagView })
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -33,19 +37,22 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
         self.imageSlide.pageIndicatorPosition = .init(horizontal: .center, vertical: .customUnder(padding: 10))
         self.imageSlide.contentScaleMode = .scaleAspectFill
         self.imageSlide.pageIndicator = pageIndicator
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleTagsVisibility))
+        self.imageSlide.addGestureRecognizer(gestureRecognizer)
     }
 
     func insertProductTags() {
         self.imageSlide.scrollView.subviews.forEach({ ($0 as? ProductTagView)?.removeFromSuperview() })
 
         guard !(self.imageSlide.scrollView.subviews.contains(where: { $0 is ProductTagView })) else { return }
-        let viewWidth = UIScreen.main.bounds.width
+        let viewWidth = self.imageSlide.scrollView.bounds.width
         
         for (idx, media) in self.medias.enumerated() {
-            let startingX = viewWidth * CGFloat(idx + 1)
+            let startingX = viewWidth * CGFloat(idx)
             let views = media.productTags.map { (tag) -> (ProductTagView)  in
                 let view: ProductTagView = .fromNib()
-                view.frame = .init(origin: .init(x: (startingX + viewWidth) / CGFloat(tag.positionX), y: self.imageSlide.bounds.height / CGFloat(tag.positionY)), size: tag.productTagViewHeight) //.init(x: (startingX + viewWidth) / CGFloat(tag.positionX), y: self.imageSlide.bounds.height / CGFloat(tag.positionY), width: 200, height: 200)
+                view.frame = .init(origin: .init(x: (viewWidth * CGFloat(tag.positionX)) + startingX, y: self.imageSlide.frame.height * CGFloat(tag.positionY)), size: tag.productTagViewHeight)
                 view.configureView(tag: tag)
                 return view
             }
@@ -58,5 +65,9 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
     
     func configureCell(medias: [Media]) {
         self.medias = medias
+    }
+    
+    @objc private func toggleTagsVisibility() {
+        self.tagViews.forEach({ $0.isHidden.toggle() })
     }
 }

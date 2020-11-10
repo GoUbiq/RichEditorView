@@ -46,6 +46,7 @@ class CreatePostViewController: UIViewController {
     }
     
     private var createButton: UIBarButtonItem? = nil
+    private var downArrowButton: UIBarButtonItem? = nil
     
     //MARK: - VC Delegates
     override func viewDidLoad() {
@@ -54,6 +55,7 @@ class CreatePostViewController: UIViewController {
         self.navigationItem.title = "Create Post"
         
         self.createButton = .init(title: "Post", style: .done, target: self, action: #selector(self.createPost))
+        self.downArrowButton = .init(image: #imageLiteral(resourceName: "down-arrow"), style: .plain, target: self, action: #selector(self.hideKeyboard))
         self.navigationItem.rightBarButtonItem = self.createButton
         self.navigationItem.leftBarButtonItem = .init(image: #imageLiteral(resourceName: "nav-close"), style: .plain, target: self, action: #selector(self.dismissView))
         
@@ -111,6 +113,7 @@ class CreatePostViewController: UIViewController {
     
     // MARK: Notification
     @objc private func keyboardWillShowNotification(_ notification: Notification) {
+        self.navigationItem.rightBarButtonItem = self.downArrowButton
         if self.cells.first is MediaActionsCell {
             self.cells.remove(at: 0)
             self.tableView.beginUpdates()
@@ -120,12 +123,17 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc private func keyboardWillHideNotification(_ notification: NSNotification) {
+        self.navigationItem.rightBarButtonItem = self.createButton
         if !(self.cells.first is MediaActionsCell) {
             self.cells.insert(self.configuredMediaCell(), at: 0)
             self.tableView.beginUpdates()
             self.tableView.insertRows(at: [.zero], with: .automatic)
             self.tableView.endUpdates()
         }
+    }
+    
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     @objc private func createPost() {

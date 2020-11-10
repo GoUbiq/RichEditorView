@@ -103,7 +103,7 @@ class PostViewController: UIViewController {
             return layout
         }()
         layout.delegate = self
-        layout.cellPadding = 5
+        layout.cellPadding = 0
         layout.numberOfColumns = 1
     }
     

@@ -377,8 +377,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LEB-vS-a0v" secondAttribute="height" multiplier="1:1" id="fVC-o1-BgW"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <state key="normal" image="emoji"/>
+                                        <state key="normal" image="font"/>
                                         <connections>
                                             <action selector="addTextButtonPressed:" destination="xoS-UR-i6G" eventType="touchUpInside" id="tTM-cO-oSd"/>
                                         </connections>
@@ -388,8 +389,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8mj-pf-Jsy" secondAttribute="height" multiplier="1:1" id="Dvw-RY-hHh"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <state key="normal" image="emoji"/>
+                                        <state key="normal" image="bag"/>
                                         <connections>
                                             <action selector="emojiButtonPressed:" destination="xoS-UR-i6G" eventType="touchUpInside" id="t8d-BK-BWU"/>
                                         </connections>
@@ -939,10 +941,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bag" width="32" height="32"/>
         <image name="close" width="32" height="32"/>
-        <image name="emoji" width="64" height="64"/>
         <image name="flashOff" width="64" height="64"/>
         <image name="flip" width="64" height="64"/>
+        <image name="font" width="32" height="32"/>
         <image name="greenTriangle" width="41" height="38"/>
         <image name="instagramlogo" width="20" height="20"/>
         <image name="tiktoklogo" width="20" height="20"/>

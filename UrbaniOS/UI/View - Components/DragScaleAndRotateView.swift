@@ -199,14 +199,12 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.delegate?.viewDragEnded(view: self)
     }
+    
+    func getProductTag() -> ProductTag? {
+        guard case .productTag = self.type, var currentTag = (self.subviews.first as? ProductTagView)?.productTag else { return nil }
+        currentTag.positionX = Double(self.positionXRatio)
+        currentTag.positionY = Double(self.positionYRatio)
+        return currentTag
+    }
 
 }
-
-//extension DragScaleAndRotateView {
-//    struct TextInfo {
-//        var text: String
-//        var font: UIFont = .systemFont(ofSize: 50)
-//        var img: UIImage?
-//        var isTitle: Bool = false
-//    }
-//}

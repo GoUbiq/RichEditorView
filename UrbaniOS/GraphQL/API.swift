@@ -1018,7 +1018,7 @@ public final class HomeCritiqueQuery: GraphQLQuery {
 
   public let operationName: String = "HomeCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlProductTag.fragmentDefinition).appending("\n" + GraphQlProduct.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var after: GraphQLID?
 
@@ -1264,7 +1264,7 @@ public final class GetCritiqueByIdQuery: GraphQLQuery {
 
   public let operationName: String = "GetCritiqueById"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlProductTag.fragmentDefinition).appending("\n" + GraphQlProduct.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var id: GraphQLID
 
@@ -1372,7 +1372,7 @@ public final class CreateCritiqueMutation: GraphQLMutation {
 
   public let operationName: String = "CreateCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlProductTag.fragmentDefinition).appending("\n" + GraphQlProduct.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var input: CritiqueCreateInput
 
@@ -1480,7 +1480,7 @@ public final class LikeCritiqueMutation: GraphQLMutation {
 
   public let operationName: String = "LikeCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlProductTag.fragmentDefinition).appending("\n" + GraphQlProduct.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var id: GraphQLID
 
@@ -1588,7 +1588,7 @@ public final class UnlikeCritiqueMutation: GraphQLMutation {
 
   public let operationName: String = "UnlikeCritique"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + GraphQlCritique.fragmentDefinition).appending("\n" + GraphQlUser.fragmentDefinition).appending("\n" + GraphQlMedia.fragmentDefinition).appending("\n" + GraphQlProductTag.fragmentDefinition).appending("\n" + GraphQlProduct.fragmentDefinition).appending("\n" + GraphQlComment.fragmentDefinition).appending("\n" + GraphQlCategory.fragmentDefinition) }
 
   public var id: GraphQLID
 
@@ -2666,6 +2666,10 @@ public struct GraphQlMedia: GraphQLFragment {
       width
       height
       mediaType
+      tags {
+        __typename
+        ...GraphQLProductTag
+      }
     }
     """
 
@@ -2680,6 +2684,7 @@ public struct GraphQlMedia: GraphQLFragment {
       GraphQLField("width", type: .nonNull(.scalar(Double.self))),
       GraphQLField("height", type: .nonNull(.scalar(Double.self))),
       GraphQLField("mediaType", type: .nonNull(.scalar(MediaType.self))),
+      GraphQLField("tags", type: .nonNull(.list(.nonNull(.object(Tag.selections))))),
     ]
   }
 
@@ -2689,8 +2694,8 @@ public struct GraphQlMedia: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID, position: Int? = nil, srcUrl: String, width: Double, height: Double, mediaType: MediaType) {
-    self.init(unsafeResultMap: ["__typename": "Media", "id": id, "position": position, "srcUrl": srcUrl, "width": width, "height": height, "mediaType": mediaType])
+  public init(id: GraphQLID, position: Int? = nil, srcUrl: String, width: Double, height: Double, mediaType: MediaType, tags: [Tag]) {
+    self.init(unsafeResultMap: ["__typename": "Media", "id": id, "position": position, "srcUrl": srcUrl, "width": width, "height": height, "mediaType": mediaType, "tags": tags.map { (value: Tag) -> ResultMap in value.resultMap }])
   }
 
   public var __typename: String {
@@ -2753,6 +2758,67 @@ public struct GraphQlMedia: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "mediaType")
+    }
+  }
+
+  public var tags: [Tag] {
+    get {
+      return (resultMap["tags"] as! [ResultMap]).map { (value: ResultMap) -> Tag in Tag(unsafeResultMap: value) }
+    }
+    set {
+      resultMap.updateValue(newValue.map { (value: Tag) -> ResultMap in value.resultMap }, forKey: "tags")
+    }
+  }
+
+  public struct Tag: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Tag"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLFragmentSpread(GraphQlProductTag.self),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var fragments: Fragments {
+      get {
+        return Fragments(unsafeResultMap: resultMap)
+      }
+      set {
+        resultMap += newValue.resultMap
+      }
+    }
+
+    public struct Fragments {
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public var graphQlProductTag: GraphQlProductTag {
+        get {
+          return GraphQlProductTag(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
     }
   }
 }
@@ -3461,10 +3527,6 @@ public struct GraphQlCritique: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, position: Int? = nil, srcUrl: String, width: Double, height: Double, mediaType: MediaType) {
-      self.init(unsafeResultMap: ["__typename": "Media", "id": id, "position": position, "srcUrl": srcUrl, "width": width, "height": height, "mediaType": mediaType])
-    }
-
     public var __typename: String {
       get {
         return resultMap["__typename"]! as! String
@@ -3515,10 +3577,6 @@ public struct GraphQlCritique: GraphQLFragment {
 
     public init(unsafeResultMap: ResultMap) {
       self.resultMap = unsafeResultMap
-    }
-
-    public init(id: GraphQLID, position: Int? = nil, srcUrl: String, width: Double, height: Double, mediaType: MediaType) {
-      self.init(unsafeResultMap: ["__typename": "Media", "id": id, "position": position, "srcUrl": srcUrl, "width": width, "height": height, "mediaType": mediaType])
     }
 
     public var __typename: String {
