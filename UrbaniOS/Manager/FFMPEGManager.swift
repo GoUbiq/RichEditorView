@@ -22,7 +22,8 @@ class FFMPEGManager: NSObject, LogDelegate {
     
     private func getResultVideoPath(isVideo: Bool) -> String? {
         let docFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        return docFolder?.appending(isVideo ? "/video.mp4" : "/image.jpg")
+        let id = UUID().uuidString
+        return docFolder?.appending(isVideo ? "/video-\(id).mp4" : "/image-\(id).jpg")
     }
     
     
