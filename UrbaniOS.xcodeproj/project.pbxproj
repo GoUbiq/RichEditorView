@@ -15,6 +15,9 @@
 		0B4B9BE7255B4C3000D249D8 /* TextStickerColourPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9BE6255B4C3000D249D8 /* TextStickerColourPickerView.xib */; };
 		0B4B9BEA255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9BE9255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib */; };
 		0B4B9BED255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9BEC255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift */; };
+		0B4B9C05255C860300D249D8 /* MediaEditingEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9C04255C860300D249D8 /* MediaEditingEditorViewController.swift */; };
+		0B4B9C08255C8B6300D249D8 /* MediaEditingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9C07255C8B6300D249D8 /* MediaEditingPageViewController.swift */; };
+		0B4B9C0B255C8FF200D249D8 /* MediaEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9C0A255C8FF200D249D8 /* MediaEditingViewController.swift */; };
 		0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C319D2523AC60003497FB /* CreatePost.storyboard */; };
 		0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */; };
 		0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */; };
@@ -167,6 +170,9 @@
 		0B4B9BE6255B4C3000D249D8 /* TextStickerColourPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextStickerColourPickerView.xib; sourceTree = "<group>"; };
 		0B4B9BE9255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextStickerColourPickerCollectionViewCell.xib; sourceTree = "<group>"; };
 		0B4B9BEC255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerColourPickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B4B9C04255C860300D249D8 /* MediaEditingEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEditingEditorViewController.swift; sourceTree = "<group>"; };
+		0B4B9C07255C8B6300D249D8 /* MediaEditingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEditingPageViewController.swift; sourceTree = "<group>"; };
+		0B4B9C0A255C8FF200D249D8 /* MediaEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEditingViewController.swift; sourceTree = "<group>"; };
 		0B7C319D2523AC60003497FB /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConfigurator.swift; sourceTree = "<group>"; };
@@ -682,6 +688,9 @@
 				0BD2EF80254B50A8006283C6 /* ProfileCompletionViewController.swift */,
 				0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */,
 				0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */,
+				0B4B9C04255C860300D249D8 /* MediaEditingEditorViewController.swift */,
+				0B4B9C07255C8B6300D249D8 /* MediaEditingPageViewController.swift */,
+				0B4B9C0A255C8FF200D249D8 /* MediaEditingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -965,9 +974,11 @@
 				0BD2EE1B2548BE56006283C6 /* STLoginManager.swift in Sources */,
 				0B4B9BE3255B4C1000D249D8 /* TextStickerColourPickerView.swift in Sources */,
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
+				0B4B9C08255C8B6300D249D8 /* MediaEditingPageViewController.swift in Sources */,
 				0BD2EF07254A1083006283C6 /* PostCommentViewController.swift in Sources */,
 				0BD2EF5D254B356A006283C6 /* PhoneNumberLoginViewController.swift in Sources */,
 				0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */,
+				0B4B9C05255C860300D249D8 /* MediaEditingEditorViewController.swift in Sources */,
 				0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */,
 				0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */,
 				0B7C32042541E8D4003497FB /* PostViewController.swift in Sources */,
@@ -989,6 +1000,7 @@
 				0BD43D0F2522955900177F79 /* AppDelegate.swift in Sources */,
 				0B4B9B8C2555C71C00D249D8 /* SearchViewController.swift in Sources */,
 				0B7C31FD2540D99C003497FB /* PinterestLayout.swift in Sources */,
+				0B4B9C0B255C8FF200D249D8 /* MediaEditingViewController.swift in Sources */,
 				0B7C31E52530C68D003497FB /* PostBodyTableViewCell.swift in Sources */,
 				0BD2EF7E254B3B7B006283C6 /* LoginNavigationBar.swift in Sources */,
 				0B7C320625422EB6003497FB /* PostTitleCollectionViewCell.swift in Sources */,

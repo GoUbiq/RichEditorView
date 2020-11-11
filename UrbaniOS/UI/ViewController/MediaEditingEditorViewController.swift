@@ -1,47 +1,49 @@
 //
-//  TemplateEditingViewController.swift
+//  MediaEditingEditorViewController.swift
 //  UrbaniOS
 //
-//  Created by Bastien Ravalet on 2020-10-07.
+//  Created by Bastien on 2020-11-11.
 //  Copyright © 2020 Bastien Ravalet. All rights reserved.
 //
 
 import UIKit
 
-class TemplateEditingViewController: UIViewController {
-    static let identifier = "TemplateEditingViewController"
+class MediaEditingEditorViewController: UIViewController {
+    static let identifier = "MediaEditingEditorViewController"
     
-    @IBOutlet private weak var img: UIImageView!
     @IBOutlet private weak var overlayView: UIView!
+    @IBOutlet private weak var previewImage: UIImageView!
     @IBOutlet private weak var trashView: CircleImageView!
     
-    class func newInstance(img: UIImage, delegate: MediaManagementDelegate) -> TemplateEditingViewController {
-        let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! TemplateEditingViewController
-        instance.image = img
+    class func newInstance(img: UIImage, delegate: MediaPageControllerDelegate) -> MediaEditingEditorViewController {
+        let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! MediaEditingEditorViewController
+        instance.previewImg = img
         instance.delegate = delegate
         return instance
     }
     
+    private var previewImg: UIImage!
+    private var shouldSetTitle: Bool = true
+    private var delegate: MediaPageControllerDelegate? = nil
     private var contentViews: [DragScaleAndRotateView] {
         return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
     }
-
+    
     private var productTags: [ProductTag] {
         return self.contentViews.compactMap({ $0.getProductTag() })
     }
-
-    private var mediaManager: MediaManager {
-        return .sharedInstance
+    
+    private var editingTxtViewId: UUID? = nil {
+        didSet {
+            if oldValue == nil, let id = self.editingTxtViewId, case .text(let textInfo) = self.contentViews.first(where: { $0.id == id })?.type {
+                let vc = TextStickerEditionViewController.newInstance(stickerId: id, textInfo: textInfo, delegate: self)
+                self.present(vc, animated: true)
+            }
+            
+            self.contentViews.forEach({ $0.isHidden = $0.id == self.editingTxtViewId })
+        }
     }
-    private var shouldSetTitle: Bool = true
-    private var image: UIImage!
-    private var delegate: MediaManagementDelegate? = nil
-    
-    private lazy var productPickerVC: UINavigationController = {
-        let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
-        return SearchViewController.newInstance(searchResultVC: vc)
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,10 +51,13 @@ class TemplateEditingViewController: UIViewController {
         self.trashView.layer.borderColor = UIColor.white.cgColor
         self.trashView.isHidden = true
         
-        self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
-        self.img.image = self.image
+        self.previewImage.image = self.previewImg
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -66,31 +71,8 @@ class TemplateEditingViewController: UIViewController {
             self.shouldSetTitle = false
         }
     }
-
-    @IBAction func tagProductButtonPressed(_ sender: Any) {
-        self.present(self.productPickerVC, animated: true)
-    }
     
-    @objc func createButtonPressed() {
-        guard let url = self.mediaManager.saveImage(fileName: UUID().uuidString, image: self.image) else { return }
-        
-        let stickers = self.contentViews.compactMap({ (dragView) -> MediaSticker? in
-            guard dragView.type.isIncludedInFffmpeg else { return nil }
-            return .init(dragView: dragView)
-        })
-        
-        FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: false, content: stickers) { vFile in
-            let url = URL(fileURLWithPath: vFile)
-            guard let data = try? Data(contentsOf: url), let img = UIImage(data: data) else { return }
-            self.delegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image, productTags: self.productTags))
-            self.navigationController?.dismiss(animated: true)
-        }
-    }
-}
-
-extension TemplateEditingViewController: ProductTagPickerDelegate {
-    func didSelect(tag: ProductTag) {
-        self.productPickerVC.dismiss(animated: true)
+    func addProductTag(tag: ProductTag) {
         let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: tag.productTagViewHeight), currentScale: 1, type: .productTag, delegate: self)
         
         let productView: ProductTagView = .fromNib()
@@ -99,18 +81,34 @@ extension TemplateEditingViewController: ProductTagPickerDelegate {
         productView.snp.makeConstraints({ $0.edges.equalToSuperview() } )
         
         self.overlayView.addSubview(view)
-        view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.midY)
+        view.center = self.overlayView.center
+    }
+    
+    func addTextSticker() {
+        let view = DragScaleAndRotateView(frame: .zero, currentScale: 1, type: .text(.init(text: "Text")), delegate: self)
+        self.overlayView.addSubview(view)
+        view.center = self.view.center
+        self.editingTxtViewId = view.id
     }
 }
 
-extension TemplateEditingViewController: DragScalePositionDelegate {
+extension MediaEditingEditorViewController: TextStickerEditionDelegate {
+    func editingDoneWith(stickerId: UUID, newTextInfo: TextInfo) {
+        self.editingTxtViewId = nil
+        self.contentViews.first(where: { $0.id == stickerId })?.changeTextInfo(newTextInfo: newTextInfo)
+    }
+}
+
+
+extension MediaEditingEditorViewController: DragScalePositionDelegate {
     func viewDragStarted(view: DragScaleAndRotateView) {
         self.trashView.isHidden = false
         self.contentViews.forEach({ $0.clearSelection() })
+        self.delegate?.shouldSetScrollEnable(enable: false)
     }
     
     func viewPositionChanged(view: DragScaleAndRotateView, touchPoint: CGPoint) {
-        if (self.view.convert(self.trashView.frame, to: self.overlayView).contains(touchPoint)) {
+        if (self.trashView.frame.contains(touchPoint)) {
             view.isHidden = true
             self.trashView.tintColor = .gray
             self.trashView.backgroundColor = .white
@@ -126,6 +124,7 @@ extension TemplateEditingViewController: DragScalePositionDelegate {
             view.removeFromSuperview()
         }
         self.trashView.isHidden = true
+        self.delegate?.shouldSetScrollEnable(enable: true)
     }
     
     func viewDidSelect(view: DragScaleAndRotateView) {
@@ -134,10 +133,3 @@ extension TemplateEditingViewController: DragScalePositionDelegate {
         self.present(vc, animated: true)
     }
 }
-
-extension TemplateEditingViewController: TextStickerEditionDelegate {
-    func editingDoneWith(stickerId: UUID, newTextInfo: TextInfo) {
-        self.contentViews.first(where: { $0.id == stickerId })?.changeTextInfo(newTextInfo: newTextInfo)
-    }
-}
-

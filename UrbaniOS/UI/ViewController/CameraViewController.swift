@@ -66,6 +66,8 @@ class CameraViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.appForegrounded), name: UIApplication.didBecomeActiveNotification, object: nil)
         
+        
+        
         //Gestures
         self.configureCameraButtonGestureRecognizers()
         
@@ -392,12 +394,14 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             self.resetCameraButton()
             return
         }
-        let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: .right)
+        
+        let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: .right).cropToBoundsInCenter(width: self.previewHolderView.frame.width, height: self.previewHolderView.frame.height)
         
         let vc = CameraPreviewAndEditViewController.newInstance(media: .picture(image), cameraDelegate: self.delegate, delegate: self)
         self.present(vc, animated: true, completion: nil)
         self.resetCameraButton()
     }
+    
 }
 
 extension CameraViewController: CameraPreviewDelegate {
@@ -452,4 +456,3 @@ extension CameraViewController: UIGestureRecognizerDelegate {
         return true
     }
 }
-

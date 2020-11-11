@@ -54,7 +54,7 @@ class FFMPEGManager: NSObject, LogDelegate {
         }.joined()
 
         return "-i \(url) \(processedInputs) -filter_complex \"\(self.generateContent(filter: "transpose", options: "dir=1:passthrough=portrait", inputs: ["0:v"], outputs: ["root"]))" +
-            ";\(self.generateContent(filter: "scale", options: "w=-2:h=1920", inputs: ["root"], outputs: ["root"]))" +
+            ";\(self.generateContent(filter: "scale", options: "w=1080:h=1080", inputs: ["root"], outputs: ["root"]))" +
             "\(filers)\"" +
             " -map \"[root]\" \(isVideo ? "-map 0:a -c:a aac -c:v libx264 -preset ultrafast -crf 25 -b:v 1024k" : "") \(urlOutput)"
     }

@@ -20,7 +20,7 @@ class CritiqueManager {
     
     func createCritique(title: String, descriptionHTML: String, mediaUrls: [UploadedMedia], defaultMediaUrl: UploadedMedia, completionHandler: @escaping (Critique?) -> ()) {
         var tags: [TagCreateInput] = []
-        mediaUrls.forEach({ media in tags.append(contentsOf: media.productTags.compactMap({ TagCreateInput(rating: $0.rating ?? 0, mediaUrl: media.url, productId: $0.product.id, positionX: $0.positionX, positionY: $0.positionY) })) })
+        mediaUrls.forEach({ media in tags.append(contentsOf: media.productTags.compactMap({ TagCreateInput(rating: $0.rating ?? 0, mediaUrl: media.url, productId: $0.product.id, positionX: $0.positionX, positionY: $0.positionY  ) })) })
         
         let input: CritiqueCreateInput = .init(title: title, descriptionHtml: descriptionHTML, style: .review, mediaUrls: mediaUrls.map({ $0.url }), defaultMediaUrl: defaultMediaUrl.url, tags: tags, categories: [])
         
