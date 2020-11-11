@@ -29,6 +29,9 @@ class MediaEditingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? MediaEditingPageViewController {
             vc.images = self.images
+            vc.pageDidChangeHandler = {
+                self.configureNavTitle()
+            }
             self.imgPageControllerVC = vc
         }
     }
@@ -38,9 +41,11 @@ class MediaEditingViewController: UIViewController {
         return SearchViewController.newInstance(searchResultVC: vc)
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        self.configureNavTitle()
         self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
 //        self.img.image = self.image
     }
@@ -60,6 +65,10 @@ class MediaEditingViewController: UIViewController {
 //        }
     }
 
+    private func configureNavTitle() {
+        self.navigationItem.title = "\((self.imgPageControllerVC?.currentIndex ?? 0) + 1) / \(self.images.count)"
+    }
+    
     @IBAction func tagProductButtonPressed(_ sender: Any) {
         self.present(self.productPickerVC, animated: true)
     }
@@ -89,12 +98,6 @@ extension MediaEditingViewController: ProductTagPickerDelegate {
     func didSelect(tag: ProductTag) {
         self.productPickerVC.dismiss(animated: true)
         self.imgPageControllerVC?.addProductTagOnCurrent(tag: tag)
-    }
-}
-
-extension MediaEditingViewController: TextStickerEditionDelegate {
-    func editingDoneWith(stickerId: UUID, newTextInfo: TextInfo) {
-//        self.contentViews.first(where: { $0.id == stickerId })?.changeTextInfo(newTextInfo: newTextInfo)
     }
 }
 

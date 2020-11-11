@@ -12,11 +12,13 @@ protocol MediaPageControllerDelegate: class {
     func shouldSetScrollEnable(enable: Bool)
 }
 
+
 class MediaEditingPageViewController: UIPageViewController {
     
     fileprivate var items: [UIViewController] = []
 
     var images: [UIImage] = []
+    var pageDidChangeHandler: (() -> ())? = nil
     
     var currentIndex: Int {
         guard let vc = self.viewControllers?.first else { return 0 }
@@ -26,6 +28,7 @@ class MediaEditingPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
+        self.delegate = self
         
         self.items = self.images.compactMap({ MediaEditingEditorViewController.newInstance(img: $0, delegate: self) })
 
@@ -49,7 +52,7 @@ extension MediaEditingPageViewController: MediaPageControllerDelegate {
     }
 }
 
-extension MediaEditingPageViewController: UIPageViewControllerDataSource {
+extension MediaEditingPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = self.items.firstIndex(of: viewController) else {
             return nil
@@ -83,6 +86,10 @@ extension MediaEditingPageViewController: UIPageViewControllerDataSource {
         }
         
         return self.items[nextIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        self.pageDidChangeHandler?()
     }
 }
 
