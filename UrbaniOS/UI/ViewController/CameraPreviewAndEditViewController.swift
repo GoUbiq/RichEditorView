@@ -233,9 +233,9 @@ class CameraPreviewAndEditViewController: UIViewController {
 }
 
 extension CameraPreviewAndEditViewController: TextStickerEditionDelegate {
-    func editingDoneWith(stickerId: UUID, newText: String) {
+    func editingDoneWith(stickerId: UUID, newTextInfo: TextInfo) {
         self.editingTxtViewId = nil
-        self.contentViews.first(where: { $0.id == stickerId })?.changeTextAndLoadImg(newText: newText)
+        self.contentViews.first(where: { $0.id == stickerId })?.changeTextInfo(newTextInfo: newTextInfo)
     }
 }
 

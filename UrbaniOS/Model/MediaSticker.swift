@@ -18,6 +18,7 @@ enum StickerType {
 public struct TextInfo {
     var text: String
     var font: UIFont = .systemFont(ofSize: 50)
+    var textColour: UIColor = .white
     var img: UIImage?
     var isTitle: Bool = false
 }

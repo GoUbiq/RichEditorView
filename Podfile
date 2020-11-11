@@ -22,5 +22,6 @@ target 'UrbaniOS' do
   pod 'UITextView+Placeholder'
   pod 'PhoneNumberKit'
   pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
+  pod 'VerticalSlider'
 
 end

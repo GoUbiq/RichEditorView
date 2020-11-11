@@ -142,6 +142,7 @@ class CreatePostViewController: UIViewController {
             return
         }
         
+        self.createButton?.isEnabled = false
         let hud = Utils.showMessageHud(onViewController: self)
         let group = DispatchGroup()
         var urls: [Int: UploadedMedia] = [:]
@@ -161,6 +162,7 @@ class CreatePostViewController: UIViewController {
         
         group.notify(queue: .main) {
             guard !urls.isEmpty else {
+                self.createButton?.isEnabled = true
                 Utils.dismissMessageHud(hud)
                 return
             }
@@ -168,6 +170,7 @@ class CreatePostViewController: UIViewController {
             let sortedDict = urls.sorted(by: { $0.0 < $1.0 }).map({ $0.value })
 
             self.critiqueManager.createCritique(title: title, descriptionHTML: body, mediaUrls: sortedDict, defaultMediaUrl: sortedDict.first!) { result in
+                self.createButton?.isEnabled = true
                 Utils.dismissMessageHud(hud)
                 self.navigationController?.dismiss(animated: true)
             }

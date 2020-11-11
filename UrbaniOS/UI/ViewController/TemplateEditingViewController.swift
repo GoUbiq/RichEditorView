@@ -14,6 +14,7 @@ class TemplateEditingViewController: UIViewController {
     @IBOutlet private weak var img: UIImageView!
     @IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var trashView: CircleImageView!
+
     
     class func newInstance(img: UIImage, delegate: MediaManagementDelegate) -> TemplateEditingViewController {
         let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! TemplateEditingViewController
@@ -53,10 +54,11 @@ class TemplateEditingViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         if self.contentViews.isEmpty, self.shouldSetTitle {
-            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(.init(text: "VS", isTitle: true)), delegate: nil)
+            let textInfo: TextInfo = .init(text: "VS", isTitle: true)
+            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(textInfo), delegate: self)
             self.overlayView.addSubview(view)
 
-            view.changeTextAndLoadImg(newText: "VS")
+            view.changeTextInfo(newTextInfo: textInfo)
             view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.maxY - 40)
             self.shouldSetTitle = false
         }
@@ -114,11 +116,15 @@ extension TemplateEditingViewController: DragScalePositionDelegate {
     }
     
     func viewDidSelect(view: DragScaleAndRotateView) {
-//        switch view.type {
-//        case .text: self.editingTxtViewId = view.id
-//        default: break
-//        }
-//        self.contentViews.first(where: { $0 !== view && view.isSelected })?.clearSelection()
+        guard case .text(let textInfo) = view.type else { return }
+        let vc = TextStickerEditionViewController.newInstance(stickerId: view.id, textInfo: textInfo, delegate: self)
+        self.present(vc, animated: true)
+    }
+}
+
+extension TemplateEditingViewController: TextStickerEditionDelegate {
+    func editingDoneWith(stickerId: UUID, newTextInfo: TextInfo) {
+        self.contentViews.first(where: { $0.id == stickerId })?.changeTextInfo(newTextInfo: newTextInfo)
     }
 }
 

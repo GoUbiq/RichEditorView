@@ -216,20 +216,30 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jew-2T-eWt" customClass="RichEditorView" customModule="UrbaniOS" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="0.0" width="394" height="441"/>
-                                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="J07-4s-pjf"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your thoughts about product you liked or didn't like!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOr-dL-tFg">
+                                                    <rect key="frame" x="15" y="5" width="389" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" systemColor="systemGray4Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="oOr-dL-tFg" firstAttribute="trailing" secondItem="Jew-2T-eWt" secondAttribute="trailing" id="6mV-N8-Zab"/>
+                                                <constraint firstItem="oOr-dL-tFg" firstAttribute="leading" secondItem="Jew-2T-eWt" secondAttribute="leading" constant="5" id="7wV-yU-UZH"/>
                                                 <constraint firstAttribute="bottom" secondItem="Jew-2T-eWt" secondAttribute="bottom" id="C8Y-9o-dLi"/>
                                                 <constraint firstItem="Jew-2T-eWt" firstAttribute="top" secondItem="5et-5t-iX2" secondAttribute="top" id="LDQ-HD-rVL"/>
+                                                <constraint firstItem="oOr-dL-tFg" firstAttribute="top" secondItem="Jew-2T-eWt" secondAttribute="top" constant="5" id="LWn-Lf-bG4"/>
                                                 <constraint firstItem="Jew-2T-eWt" firstAttribute="leading" secondItem="5et-5t-iX2" secondAttribute="leading" constant="10" id="QtM-PW-umW"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jew-2T-eWt" secondAttribute="trailing" constant="10" id="T0e-A3-e6O"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="placeHolder" destination="oOr-dL-tFg" id="3XT-G6-xGy"/>
                                             <outlet property="richText" destination="Jew-2T-eWt" id="zmO-in-c3x"/>
                                         </connections>
                                     </tableViewCell>
@@ -273,11 +283,11 @@
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

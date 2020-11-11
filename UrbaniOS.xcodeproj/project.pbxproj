@@ -11,6 +11,10 @@
 		0B4AD94925549AFC0052CB58 /* CreateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */; };
 		0B4B9B892555C69C00D249D8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9B882555C69C00D249D8 /* Search.storyboard */; };
 		0B4B9B8C2555C71C00D249D8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */; };
+		0B4B9BE3255B4C1000D249D8 /* TextStickerColourPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9BE2255B4C1000D249D8 /* TextStickerColourPickerView.swift */; };
+		0B4B9BE7255B4C3000D249D8 /* TextStickerColourPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9BE6255B4C3000D249D8 /* TextStickerColourPickerView.xib */; };
+		0B4B9BEA255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B9BE9255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib */; };
+		0B4B9BED255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B9BEC255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift */; };
 		0B7C319E2523AC60003497FB /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7C319D2523AC60003497FB /* CreatePost.storyboard */; };
 		0B7C31A02523B6AE003497FB /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */; };
 		0B7C31A22523BAD6003497FB /* GenericCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */; };
@@ -159,6 +163,10 @@
 		0B4AD94825549AFC0052CB58 /* CreateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductViewController.swift; sourceTree = "<group>"; };
 		0B4B9B882555C69C00D249D8 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		0B4B9B8B2555C71C00D249D8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0B4B9BE2255B4C1000D249D8 /* TextStickerColourPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerColourPickerView.swift; sourceTree = "<group>"; };
+		0B4B9BE6255B4C3000D249D8 /* TextStickerColourPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextStickerColourPickerView.xib; sourceTree = "<group>"; };
+		0B4B9BE9255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextStickerColourPickerCollectionViewCell.xib; sourceTree = "<group>"; };
+		0B4B9BEC255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStickerColourPickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C319D2523AC60003497FB /* CreatePost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
 		0B7C319F2523B6AE003497FB /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		0B7C31A12523BAD6003497FB /* GenericCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConfigurator.swift; sourceTree = "<group>"; };
@@ -321,6 +329,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4B9BE1255B4BFB00D249D8 /* TextColorPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				0B4B9BE2255B4C1000D249D8 /* TextStickerColourPickerView.swift */,
+				0B4B9BE6255B4C3000D249D8 /* TextStickerColourPickerView.xib */,
+				0B4B9BE9255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib */,
+				0B4B9BEC255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift */,
+			);
+			path = TextColorPickerView;
+			sourceTree = "<group>";
+		};
 		0B7C31A32523BB68003497FB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +689,7 @@
 		0BD43D2C2522981900177F79 /* View - Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B4B9BE1255B4BFB00D249D8 /* TextColorPickerView */,
 				0BD2EF73254B36B9006283C6 /* PhoneNumberKeyboardInputView */,
 				0B7C31FB2540D983003497FB /* PinterestLayout */,
 				0B7C31D8252B9084003497FB /* ProductRatingView */,
@@ -789,6 +809,7 @@
 				0B4AD902255339000052CB58 /* devLocalSettings.plist in Resources */,
 				0B7C31DC252BD0D3003497FB /* Template.storyboard in Resources */,
 				0BD2F27325508EF1006283C6 /* Toolbar.gif in Resources */,
+				0B4B9BE7255B4C3000D249D8 /* TextStickerColourPickerView.xib in Resources */,
 				0BD43D1E2522955D00177F79 /* LaunchScreen.storyboard in Resources */,
 				0BD2F27F25508EF1006283C6 /* unordered_list@2x.png in Resources */,
 				0BD2F28E25508EF1006283C6 /* undo@2x.png in Resources */,
@@ -823,6 +844,7 @@
 				0BD2F28F25508EF1006283C6 /* h1@2x.png in Resources */,
 				0BD2EFB8254C82CB006283C6 /* Localizable.strings in Resources */,
 				0B7C31CF2527C6EF003497FB /* Product.graphql in Resources */,
+				0B4B9BEA255B4C9000D249D8 /* TextStickerColourPickerCollectionViewCell.xib in Resources */,
 				0BD2F29325508EF1006283C6 /* italic@2x.png in Resources */,
 				0BD2F29425508EF1006283C6 /* h5@2x.png in Resources */,
 				0BD2F27C25508EF1006283C6 /* text_color@2x.png in Resources */,
@@ -929,6 +951,7 @@
 			files = (
 				0B7C31AC25251366003497FB /* PostMediaCollectionViewCell.swift in Sources */,
 				0B7C320F25435145003497FB /* Comment.swift in Sources */,
+				0B4B9BED255B4CBB00D249D8 /* TextStickerColourPickerCollectionViewCell.swift in Sources */,
 				0BD2EEC72548D5E3006283C6 /* Session+CoreDataClass.swift in Sources */,
 				0B7C320025410547003497FB /* PostPagePicturesCollectionViewCell.swift in Sources */,
 				0BD2EF7B254B3B30006283C6 /* PhoneOTPVerificationViewController.swift in Sources */,
@@ -940,6 +963,7 @@
 				0B7C31A82523E8A3003497FB /* CreatePostActionCollectionViewCell.swift in Sources */,
 				0BD43D192522955900177F79 /* UrbaniOS.xcdatamodeld in Sources */,
 				0BD2EE1B2548BE56006283C6 /* STLoginManager.swift in Sources */,
+				0B4B9BE3255B4C1000D249D8 /* TextStickerColourPickerView.swift in Sources */,
 				0BD43D412522AD7400177F79 /* DragScaleAndRotateView.swift in Sources */,
 				0BD2EF07254A1083006283C6 /* PostCommentViewController.swift in Sources */,
 				0BD2EF5D254B356A006283C6 /* PhoneNumberLoginViewController.swift in Sources */,
@@ -1088,7 +1112,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1226,7 +1250,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1248,7 +1272,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiq.UrbaniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -61,6 +61,7 @@ PODS:
   - UICircularProgressRing (7.0.0)
   - UIScrollView-InfiniteScroll (1.1.0)
   - "UITextView+Placeholder (1.4.0)"
+  - VerticalSlider (2.0.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -79,6 +80,7 @@ DEPENDENCIES:
   - UICircularProgressRing
   - UIScrollView-InfiniteScroll (~> 1.1.0)
   - "UITextView+Placeholder"
+  - VerticalSlider
 
 SPEC REPOS:
   trunk:
@@ -100,6 +102,7 @@ SPEC REPOS:
     - UICircularProgressRing
     - UIScrollView-InfiniteScroll
     - "UITextView+Placeholder"
+    - VerticalSlider
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -120,7 +123,8 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
   UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+  VerticalSlider: 655f2bc3ed062bac13e21c174f5ff93b8308571d
 
-PODFILE CHECKSUM: 6622d7e2b0f657e9c15599857b9d439dbe765b61
+PODFILE CHECKSUM: 66d4cd6303a1cca2840a738e93b07cffc2229384
 
 COCOAPODS: 1.10.0

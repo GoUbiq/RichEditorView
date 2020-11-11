@@ -17,6 +17,7 @@ class PostBodyTableViewCell: UITableViewCell, ConfigurableCell {
     static let identifier = "PostBodyTableViewCell"
     
     @IBOutlet private(set) weak var richText: RichEditorView!
+    @IBOutlet private weak var placeHolder: UILabel!
     
     private var info: CellInfo!
     
@@ -81,7 +82,8 @@ extension PostBodyTableViewCell: RichEditorDelegate {
     }
     
     func richEditor(_ editor: RichEditorView, contentDidChange content: String) {
-        print(editor.contentHTML)
+        print(content)
+        self.placeHolder.isHidden = !(content.isEmpty || content == "<br>")
     }
     
     func richEditorTookFocus(_ editor: RichEditorView) {

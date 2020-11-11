@@ -91,6 +91,10 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func configureGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.detectTap(_:)))
+        tap.delegate = self
+        self.addGestureRecognizer(tap)
+        
         guard self.type.isGestureEnabled else { return }
         
         if self.type.canRotateAndScale {
@@ -106,10 +110,6 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.detectPan))
         pan.delegate = self
         self.addGestureRecognizer(pan)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.detectTap(_:)))
-        tap.delegate = self
-        self.addGestureRecognizer(tap)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -120,15 +120,18 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         self.isSelected = false
     }
     
-    func changeTextAndLoadImg(newText: String) {
-        guard case .text(let textInfo) = type, let img = self.imageWith(textInfo: TextInfo(text: newText, font: textInfo.font)) else { return }
+    func changeTextInfo(newTextInfo: TextInfo) {
+        var info = newTextInfo
+    
+        guard case .text(_) = type, let img = self.imageWith(textInfo: info) else { return }
         
         self.bounds.size = img.size
         self.subviews.forEach({ $0.removeFromSuperview() })
         let imgView = UIImageView(image: img)
         self.addSubview(imgView)
         imgView.snp.makeConstraints({ $0.edges.equalToSuperview() })
-        self.type = .text(TextInfo(text: newText, font: textInfo.font, img: img, isTitle: textInfo.isTitle))
+        info.img = img
+        self.type = .text(info)
     }
     
     private func imageWith(textInfo: TextInfo) -> UIImage? {
@@ -140,6 +143,7 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
         nameLabel.numberOfLines = 0
         nameLabel.font = textInfo.font
         nameLabel.text = textInfo.text
+        nameLabel.textColor = textInfo.textColour
         UIGraphicsBeginImageContext(frame.size)
         if let currentContext = UIGraphicsGetCurrentContext() {
             nameLabel.layer.render(in: currentContext)
