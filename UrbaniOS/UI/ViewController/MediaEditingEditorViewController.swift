@@ -15,22 +15,28 @@ class MediaEditingEditorViewController: UIViewController {
     @IBOutlet private weak var previewImage: UIImageView!
     @IBOutlet private weak var trashView: CircleImageView!
     
-    class func newInstance(img: UIImage, delegate: MediaPageControllerDelegate) -> MediaEditingEditorViewController {
+    class func newInstance(img: UIImage, shouldRotate: Bool, delegate: MediaPageControllerDelegate) -> MediaEditingEditorViewController {
         let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! MediaEditingEditorViewController
         instance.previewImg = img
         instance.delegate = delegate
+        instance.shouldRotate = shouldRotate
         return instance
     }
     
+    private var shouldRotate: Bool = false
     private var previewImg: UIImage!
     private var shouldSetTitle: Bool = true
     private var delegate: MediaPageControllerDelegate? = nil
     private var contentViews: [DragScaleAndRotateView] {
-        return self.overlayView.subviews.compactMap({ $0 as? DragScaleAndRotateView })
+        return self.overlayView?.subviews.compactMap({ $0 as? DragScaleAndRotateView }) ?? []
     }
     
     private var productTags: [ProductTag] {
         return self.contentViews.compactMap({ $0.getProductTag() })
+    }
+    
+    private var mediaManager: MediaManager {
+        return .sharedInstance
     }
     
     private var editingTxtViewId: UUID? = nil {
@@ -58,19 +64,19 @@ class MediaEditingEditorViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if self.contentViews.isEmpty, self.shouldSetTitle {
-            let textInfo: TextInfo = .init(text: "VS", isTitle: true)
-            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(textInfo), delegate: self)
-            self.overlayView.addSubview(view)
-
-            view.changeTextInfo(newTextInfo: textInfo)
-            view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.maxY - 40)
-            self.shouldSetTitle = false
-        }
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        
+//        if self.contentViews.isEmpty, self.shouldSetTitle {
+//            let textInfo: TextInfo = .init(text: "VS", isTitle: true)
+//            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(textInfo), delegate: self)
+//            self.overlayView.addSubview(view)
+//
+//            view.changeTextInfo(newTextInfo: textInfo)
+//            view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.maxY - 40)
+//            self.shouldSetTitle = false
+//        }
+//    }
     
     func addProductTag(tag: ProductTag) {
         let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: tag.productTagViewHeight), currentScale: 1, type: .productTag, delegate: self)
@@ -89,6 +95,22 @@ class MediaEditingEditorViewController: UIViewController {
         self.overlayView.addSubview(view)
         view.center = self.view.center
         self.editingTxtViewId = view.id
+    }
+    
+    func processAndCreatePostMedia(completion: @escaping (PostMedia?) -> ()) {
+        guard let url = self.mediaManager.saveImage(fileName: UUID().uuidString, image: self.previewImg) else { return completion(nil) }
+        
+        let stickers: [MediaSticker] = self.contentViews.compactMap({ (dragView) -> MediaSticker? in
+            guard dragView.type.isIncludedInFffmpeg else { return nil }
+            return .init(dragView: dragView)
+        })
+        
+        FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: false, content: stickers, shouldRotate: self.shouldRotate) { vFile in
+            let url = URL(fileURLWithPath: vFile)
+            guard let data = try? Data(contentsOf: url), let img = UIImage(data: data) else { return }
+            
+            completion(.init(url: url, preview: img, mediaType: .image, productTags: self.productTags))
+        }
     }
 }
 

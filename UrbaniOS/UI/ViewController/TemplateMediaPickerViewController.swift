@@ -101,7 +101,7 @@ class TemplateMediaPickerViewController: UIViewController {
     //MARK: - IBActions
     @objc func nextButtonPressed() {
         guard let img = self.mergeImages() else { return }
-        let vc = MediaEditingViewController.newInstance(imgs: [img, img, img], delegate: self.delegate!)
+        let vc = MediaEditingViewController.newInstance(imgs: [img], delegate: self.delegate!)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

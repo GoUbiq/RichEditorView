@@ -5066,7 +5066,7 @@
         "description": "",
         "fields": [
           {
-            "name": "feedItems",
+            "name": "items",
             "description": "",
             "args": [],
             "type": {
@@ -5090,7 +5090,7 @@
             "deprecationReason": null
           },
           {
-            "name": "feedItemIndex",
+            "name": "itemIndex",
             "description": "",
             "args": [],
             "type": {
@@ -5414,8 +5414,53 @@
             "deprecationReason": null
           },
           {
+            "name": "botFollow",
+            "description": "",
+            "args": [
+              {
+                "name": "targetUserId",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "followerId",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "FollowPayload",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "unfollow",
-            "description": "botFollow(targetUserId: ID!, followerId: ID!): FollowPayload!",
+            "description": "",
             "args": [
               {
                 "name": "id",
@@ -6243,8 +6288,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
+                    "kind": "INPUT_OBJECT",
+                    "name": "MediaCreateInput",
                     "ofType": null
                   }
                 }
@@ -6306,6 +6351,45 @@
                     "ofType": null
                   }
                 }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MediaCreateInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "srcUrl",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "position",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               }
             },
             "defaultValue": null

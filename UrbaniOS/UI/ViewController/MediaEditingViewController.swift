@@ -11,10 +11,11 @@ import UIKit
 class MediaEditingViewController: UIViewController {
     static let identifier = "MediaEditingViewController"
 
-    class func newInstance(imgs: [UIImage], delegate: MediaManagementDelegate) -> MediaEditingViewController {
+    class func newInstance(imgs: [UIImage], shouldRotate: Bool = false, delegate: MediaManagementDelegate) -> MediaEditingViewController {
         let instance = templateStoryboard.instantiateViewController(withIdentifier: self.identifier) as! MediaEditingViewController
         instance.images = imgs
         instance.delegate = delegate
+        instance.shouldRotate = shouldRotate
         return instance
     }
 
@@ -25,10 +26,12 @@ class MediaEditingViewController: UIViewController {
     private var images: [UIImage]!
     private var delegate: MediaManagementDelegate? = nil
     private var imgPageControllerVC: MediaEditingPageViewController?
+    private var shouldRotate: Bool = false
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? MediaEditingPageViewController {
             vc.images = self.images
+            vc.shouldRotate = self.shouldRotate
             vc.pageDidChangeHandler = {
                 self.configureNavTitle()
             }
@@ -40,11 +43,12 @@ class MediaEditingViewController: UIViewController {
         let vc = ProductTagPickerSearchResultViewController.newInstance(delegate: self)
         return SearchViewController.newInstance(searchResultVC: vc)
     }()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
         self.configureNavTitle()
         self.navigationItem.rightBarButtonItem = .init(title: "Create", style: .plain, target: self, action: #selector(self.createButtonPressed))
 //        self.img.image = self.image
@@ -52,17 +56,6 @@ class MediaEditingViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        if self.contentViews.isEmpty, self.shouldSetTitle {
-//            let textInfo: TextInfo = .init(text: "VS", isTitle: true)
-//            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(textInfo), delegate: self)
-//            self.overlayView.addSubview(view)
-//
-//            view.changeTextInfo(newTextInfo: textInfo)
-//            view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.maxY - 40)
-//            view.configurePositionRatio()
-//            self.shouldSetTitle = false
-//        }
     }
 
     private func configureNavTitle() {
@@ -78,19 +71,13 @@ class MediaEditingViewController: UIViewController {
     }
 
     @objc func createButtonPressed() {
-//        guard let url = self.mediaManager.saveImage(fileName: UUID().uuidString, image: self.image) else { return }
-//
-//        let stickers = self.contentViews.compactMap({ (dragView) -> MediaSticker? in
-//            guard dragView.type.isIncludedInFffmpeg else { return nil }
-//            return .init(dragView: dragView)
-//        })
-//
-//        FFMPEGManager.sharedInstance.buildMedia(url: url, isVideo: false, content: stickers) { vFile in
-//            let url = URL(fileURLWithPath: vFile)
-//            guard let data = try? Data(contentsOf: url), let img = UIImage(data: data) else { return }
-//            self.delegate?.didCreateMedia(media: .init(url: url, preview: img, mediaType: .image, productTags: self.productTags))
-//            self.navigationController?.dismiss(animated: true)
-//        }
+        let hud = Utils.showMessageHud(onViewController: self)
+        self.imgPageControllerVC?.processAllMedias() { medias in
+            Utils.dismissMessageHud(hud)
+            medias.forEach({ self.delegate?.didCreateMedia(media: $0) })
+            self.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: false)
+        }
     }
 }
 

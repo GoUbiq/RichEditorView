@@ -27,13 +27,13 @@ class FFMPEGManager: NSObject, LogDelegate {
     }
     
     
-    func buildMedia(url: URL, isVideo: Bool, content: [MediaSticker], completionHandler: @escaping (String) -> ()) {
+    func buildMedia(url: URL, isVideo: Bool, content: [MediaSticker], shouldRotate: Bool = false, completionHandler: @escaping (String) -> ()) {
         guard let videoPath = self.getResultVideoPath(isVideo: isVideo) else { return }
 
         try? FileManager.default.removeItem(atPath: videoPath)
 
         self.mediaManager.downloadReactionContentMedias(content: content, completionHandler: { inputs in
-            let cmd = self.getFfmpegCmd(url: url, urlOutput: videoPath, content: content, isVideo: isVideo, inputs: inputs)
+            let cmd = self.getFfmpegCmd(url: url, urlOutput: videoPath, content: content, isVideo: isVideo, shouldRotate: shouldRotate, inputs: inputs)
 
             print("starts ffmpeg \(cmd) \(Date().timeIntervalSince1970)")
             let result = MobileFFmpeg.execute(cmd)
@@ -43,7 +43,7 @@ class FFMPEGManager: NSObject, LogDelegate {
         })
     }
     
-    private func getFfmpegCmd(url: URL, urlOutput: String, content: [MediaSticker], isVideo: Bool, inputs: [URL]) -> String {
+    private func getFfmpegCmd(url: URL, urlOutput: String, content: [MediaSticker], isVideo: Bool, shouldRotate: Bool, inputs: [URL]) -> String {
         var processedInputs: String = ""// inputs.map({ "-ignore_loop 0 -i \($0.absoluteString) " }).joined()
         let filers = content.enumerated().map() { idx, content in
             processedInputs.append("\(content.ffmpegInputOptions) -i \(inputs[idx].absoluteString) ")
@@ -53,7 +53,7 @@ class FFMPEGManager: NSObject, LogDelegate {
             ";\(self.generateContent(filter: "overlay", options: "x=(W*\(content.positionX))-(w/2):y=(H*\(content.positionY))-(h/2)\(content.ffmpegScalingoptions)", inputs: ["root", "\(idx)"], outputs: ["root"]))"
         }.joined()
 
-        return "-i \(url) \(processedInputs) -filter_complex \"\(self.generateContent(filter: "transpose", options: "dir=1:passthrough=portrait", inputs: ["0:v"], outputs: ["root"]))" +
+        return " -i \(url) \(processedInputs) -filter_complex \"\(self.generateContent(filter: "transpose", options: "\(shouldRotate ? "1" : "dir=1:passthrough=portrait")", inputs: ["0:v"], outputs: ["root"]))" +
             ";\(self.generateContent(filter: "scale", options: "w=1080:h=1080", inputs: ["root"], outputs: ["root"]))" +
             "\(filers)\"" +
             " -map \"[root]\" \(isVideo ? "-map 0:a -c:a aac -c:v libx264 -preset ultrafast -crf 25 -b:v 1024k" : "") \(urlOutput)"

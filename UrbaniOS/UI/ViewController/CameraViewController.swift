@@ -38,11 +38,15 @@ class CameraViewController: UIViewController {
     @IBOutlet private weak var cameraPermButton: ConfigurableEnabilityButton!
     @IBOutlet private weak var micPermButton: ConfigurableEnabilityButton!
 
-    class func newInstance(delegate: MediaManagementDelegate) -> CameraViewController {
+    class func newInstance(delegate: MediaManagementDelegate) -> UINavigationController {
         let instance = cameraStoryboard.instantiateViewController(withIdentifier: self.identifier) as! CameraViewController
-        instance.modalPresentationStyle = .fullScreen
+        let navigationController = UINavigationController()
+//        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.navigationBar.tintColor = .darkGray
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.setViewControllers([instance], animated: false)
         instance.delegate = delegate
-        return instance
+        return navigationController
     }
     
     private var animationLongPress: UILongPressGestureRecognizer!
@@ -65,8 +69,6 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.appForegrounded), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
-        
         
         //Gestures
         self.configureCameraButtonGestureRecognizers()
@@ -99,6 +101,12 @@ class CameraViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -397,11 +405,10 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         
         let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: .right).cropToBoundsInCenter(width: self.previewHolderView.frame.width, height: self.previewHolderView.frame.height)
         
-        let vc = CameraPreviewAndEditViewController.newInstance(media: .picture(image), cameraDelegate: self.delegate, delegate: self)
-        self.present(vc, animated: true, completion: nil)
+        let vc = MediaEditingViewController.newInstance(imgs: [image], shouldRotate: true, delegate: self.delegate)
+        self.navigationController?.pushViewController(vc, animated: true)
         self.resetCameraButton()
     }
-    
 }
 
 extension CameraViewController: CameraPreviewDelegate {

@@ -52,7 +52,8 @@ class PostPagePicturesCollectionViewCell: UICollectionViewCell {
             let startingX = viewWidth * CGFloat(idx)
             let views = media.productTags.map { (tag) -> (ProductTagView)  in
                 let view: ProductTagView = .fromNib()
-                view.frame = .init(origin: .init(x: (viewWidth * CGFloat(tag.positionX)) + startingX, y: self.imageSlide.frame.height * CGFloat(tag.positionY)), size: tag.productTagViewHeight)
+                view.frame.size = tag.productTagViewHeight
+                view.center = .init(x: (viewWidth * CGFloat(tag.positionX)) + startingX, y: ((self.imageSlide.scrollView.bounds.height * CGFloat(tag.positionY)) + tag.productTagViewHeight.height))
                 view.configureView(tag: tag)
                 return view
             }

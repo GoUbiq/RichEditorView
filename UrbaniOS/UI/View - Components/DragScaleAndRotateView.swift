@@ -178,8 +178,15 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
             self.delegate?.viewDragStarted(view: self)
         }
 
-        self.center = CGPoint(x: self.lastLocation.x + translation.x, y: self.lastLocation.y + translation.y)
         let screen = self.superview!
+        let newX = self.lastLocation.x + translation.x
+        let newY = self.lastLocation.y + translation.y
+        
+        let newPos = CGPoint(x: newX, y: newY)
+
+        guard screen.bounds.contains(newPos) else { return }
+
+        self.center = newPos
         self.positionXRatio = self.center.x / screen.bounds.width
         self.positionYRatio = self.center.y / screen.bounds.height
         self.delegate?.viewPositionChanged(view: self, touchPoint: recognizer.location(in: self.superview))

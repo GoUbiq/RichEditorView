@@ -19,6 +19,7 @@ class MediaEditingPageViewController: UIPageViewController {
 
     var images: [UIImage] = []
     var pageDidChangeHandler: (() -> ())? = nil
+    var shouldRotate: Bool = false
     
     var currentIndex: Int {
         guard let vc = self.viewControllers?.first else { return 0 }
@@ -30,11 +31,13 @@ class MediaEditingPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         
-        self.items = self.images.compactMap({ MediaEditingEditorViewController.newInstance(img: $0, delegate: self) })
+        self.items = self.images.compactMap({ MediaEditingEditorViewController.newInstance(img: $0, shouldRotate: self.shouldRotate, delegate: self) })
 
         if let firstViewController = self.items.first {
             self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        
+        self.configureScroll(enable: true)
     }
     
     func addProductTagOnCurrent(tag: ProductTag) {
@@ -44,11 +47,37 @@ class MediaEditingPageViewController: UIPageViewController {
     func addTextSticker() {
         (self.items[safe: self.currentIndex] as? MediaEditingEditorViewController)?.addTextSticker()
     }
+    
+    func processAllMedias(completion: @escaping ([PostMedia]) -> ()) {
+        let group = DispatchGroup()
+        var postMedias = [Int: PostMedia]()
+        
+        self.items.compactMap({ $0 as? MediaEditingEditorViewController }).enumerated().forEach { idx, value in
+            group.enter()
+            value.processAndCreatePostMedia() { postMedia in
+                guard let media = postMedia else {
+                    group.leave()
+                    return
+                }
+                postMedias[idx] = media
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(postMedias.sorted(by: { $0.0 < $1.0 }).map({ $0.1 }))
+        }
+    }
+    
+    private func configureScroll(enable: Bool) {
+        let enable = (enable && self.items.count > 1) ? true : false
+        self.isScrollEnabled = enable
+    }
 }
 
 extension MediaEditingPageViewController: MediaPageControllerDelegate {
     func shouldSetScrollEnable(enable: Bool) {
-        self.isScrollEnabled = enable
+        self.configureScroll(enable: enable)
     }
 }
 
