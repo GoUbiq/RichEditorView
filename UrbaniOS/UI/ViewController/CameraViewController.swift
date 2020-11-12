@@ -61,7 +61,7 @@ class CameraViewController: UIViewController {
     private lazy var mediaPicker: UIImagePickerController = {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.mediaTypes = ["public.image", "public.movie"]
+        picker.mediaTypes = ["public.image"]
         return picker
     }()
     
@@ -436,10 +436,10 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
     private func pickerController(_ controller: UIImagePickerController, didSelect media: CapturedMedia?) {
         controller.dismiss(animated: true, completion: nil)
         
-        guard let media = media else { return }
+        guard let media = media, case .picture(let img) = media else { return }
         
-        let vc = CameraPreviewAndEditViewController.newInstance(media: media, cameraDelegate: self.delegate, delegate: self)
-        self.present(vc, animated: true, completion: nil)
+        let vc = MediaEditingViewController.newInstance(imgs: [img], delegate: self.delegate)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -449,7 +449,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         if let image = info[.originalImage] as? UIImage {
-            self.pickerController(picker, didSelect: .picture(image))
+            self.pickerController(picker, didSelect: .picture(image.cropToBoundsInCenter(width: self.previewHolderView.frame.width, height: self.previewHolderView.frame.height)))
         } else if let videoUrl = info[.mediaURL] as? URL {
             self.pickerController(picker, didSelect: .video(videoUrl))
         } else {
