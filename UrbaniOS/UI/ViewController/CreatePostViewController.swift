@@ -30,6 +30,7 @@ class CreatePostViewController: UIViewController {
     private var selectingCell: PostBodyTableViewCell? = nil
     private var cells: [CellConfigurator] = []
     private var postingMedia: [PostMedia] = []
+//    private var currentTitle: String = ""
     private lazy var cameraVC: UINavigationController = {
         return CameraViewController.newInstance(delegate: self)
     }()

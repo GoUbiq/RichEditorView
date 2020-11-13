@@ -72,6 +72,7 @@ let postStoryboard = UIStoryboard(name: "Post", bundle: nil)
 let createPostStoryboard = UIStoryboard(name: "CreatePost", bundle: nil)
 let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
 let searchStoryboard = UIStoryboard(name: "Search", bundle: nil)
+let mediaStoryboard = UIStoryboard(name: "Media", bundle: nil)
 
 let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 

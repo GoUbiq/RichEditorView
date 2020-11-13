@@ -213,8 +213,8 @@ class DragScaleAndRotateView: UIView, UIGestureRecognizerDelegate {
     
     func getProductTag() -> ProductTag? {
         guard case .productTag = self.type, var currentTag = (self.subviews.first as? ProductTagView)?.productTag else { return nil }
-        currentTag.positionX = Double(self.positionXRatio)
-        currentTag.positionY = Double(self.positionYRatio)
+        currentTag.positionX = Double(self.frame.origin.x / self.superview!.frame.width)
+        currentTag.positionY = Double(self.frame.origin.y / self.superview!.frame.height)
         return currentTag
     }
     

@@ -20,7 +20,7 @@ class PostTitleTableViewCell: UITableViewCell, ConfigurableCell {
     }
     
     func configure(data: String) {
-        self.textField.text = data
+
     }
 }
 

@@ -109,7 +109,7 @@ class PostViewController: UIViewController {
     
     private func getCellHeight(cell: PostCells, indexPath: IndexPath, withWidth: CGFloat) -> CGFloat {
         switch cell {
-        case .images: return withWidth + 20
+        case .images: return withWidth + (((self.critique.media.count > 1)) ? 20 : 0)
         case .body: return self.bodyHeight ?? withWidth
         case .title: return self.critique.title.heightForWidth(width: withWidth - 20, font: .systemFont(ofSize: 17, weight: .semibold)) + 10
         case .date: return self.critique.createdAt.timeAgoDisplay().heightForWidth(width: withWidth - 30, font: .systemFont(ofSize: 15)) + 10
@@ -226,7 +226,7 @@ extension PostViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, shouldInteractWith url: URL) -> Bool {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, completionHandler: nil)
-            return true
+            return false
         }
         
         return false

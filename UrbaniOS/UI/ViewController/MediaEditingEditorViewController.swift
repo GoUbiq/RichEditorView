@@ -59,25 +59,7 @@ class MediaEditingEditorViewController: UIViewController {
         
         self.previewImage.image = self.previewImg
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        
-//        if self.contentViews.isEmpty, self.shouldSetTitle {
-//            let textInfo: TextInfo = .init(text: "VS", isTitle: true)
-//            let view = DragScaleAndRotateView.init(frame: .zero, currentScale: 1, type: .text(textInfo), delegate: self)
-//            self.overlayView.addSubview(view)
-//
-//            view.changeTextInfo(newTextInfo: textInfo)
-//            view.center = .init(x: self.overlayView.bounds.midX, y: self.overlayView.bounds.maxY - 40)
-//            self.shouldSetTitle = false
-//        }
-//    }
-    
+
     func addProductTag(tag: ProductTag) {
         let view = DragScaleAndRotateView(frame: CGRect(origin: self.overlayView.center, size: tag.productTagViewHeight), currentScale: 1, type: .productTag, delegate: self)
         

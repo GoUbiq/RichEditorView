@@ -12,63 +12,51 @@ import ImageSlideshow
 class PostPagePicturesCollectionViewCell: UICollectionViewCell {
     static let identifier = "PostPagePicturesCollectionViewCell"
     
-    @IBOutlet private weak var imageSlide: ImageSlideshow!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var pageControl: UIPageControl!
     
     private var medias: [Media] = [] {
         didSet {
-            if self.medias.count != oldValue.count {
-                self.imageSlide.setImageInputs(self.medias.compactMap({ SDWebImageSource(urlString: $0.url) }))
-                self.imageSlide.layoutSubviews()
-                self.insertProductTags()
-            }
+            self.pageControl.numberOfPages = self.medias.count
         }
-    }
-    
-    private var tagViews: [UIView] {
-        return self.imageSlide.scrollView.subviews.compactMap({ $0 as? ProductTagView })
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let pageIndicator = UIPageControl()
-        pageIndicator.pageIndicatorTintColor = UIColor.systemGray3
-        pageIndicator.currentPageIndicatorTintColor = UIColor.label
-        self.imageSlide.pageIndicatorPosition = .init(horizontal: .center, vertical: .customUnder(padding: 10))
-        self.imageSlide.contentScaleMode = .scaleAspectFill
-        self.imageSlide.pageIndicator = pageIndicator
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleTagsVisibility))
-        self.imageSlide.addGestureRecognizer(gestureRecognizer)
+        self.pageControl.currentPage = 0
+        self.pageControl.pageIndicatorTintColor = UIColor.systemGray3
+        self.pageControl.currentPageIndicatorTintColor = UIColor.label
     }
 
-    func insertProductTags() {
-        self.imageSlide.scrollView.subviews.forEach({ ($0 as? ProductTagView)?.removeFromSuperview() })
-
-        guard !(self.imageSlide.scrollView.subviews.contains(where: { $0 is ProductTagView })) else { return }
-        let viewWidth = self.imageSlide.scrollView.bounds.width
-        
-        for (idx, media) in self.medias.enumerated() {
-            let startingX = viewWidth * CGFloat(idx)
-            let views = media.productTags.map { (tag) -> (ProductTagView)  in
-                let view: ProductTagView = .fromNib()
-                view.frame.size = tag.productTagViewHeight
-                view.center = .init(x: (viewWidth * CGFloat(tag.positionX)) + startingX, y: ((self.imageSlide.scrollView.bounds.height * CGFloat(tag.positionY)) + tag.productTagViewHeight.height))
-                view.configureView(tag: tag)
-                return view
-            }
-            
-            views.forEach {
-                self.imageSlide.scrollView.addSubview($0)
-            }
-        }
-    }
-    
     func configureCell(medias: [Media]) {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         self.medias = medias
+        self.collectionView.reloadData()
+    }
+}
+
+extension PostPagePicturesCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.medias.count
     }
     
-    @objc private func toggleTagsVisibility() {
-        self.tagViews.forEach({ $0.isHidden.toggle() })
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaViewingCollectionViewCell.identifier, for: indexPath) as! MediaViewingCollectionViewCell
+        cell.configureCell(media: self.medias[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: self.bounds.width, height: self.bounds.width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        self.pageControl.currentPage = indexPath.row
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
 }

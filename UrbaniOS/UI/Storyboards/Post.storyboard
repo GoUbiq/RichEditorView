@@ -29,31 +29,72 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostPagePicturesCollectionViewCell" id="Bnx-uV-VNt" customClass="PostPagePicturesCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="0.0" width="413" height="322"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="413" height="455"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M8n-cH-W1h">
-                                            <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="413" height="455"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XxH-0a-aSX" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                                    <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-Bg-GeP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="413" height="413"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="pjJ-Bg-GeP" secondAttribute="height" multiplier="1:1" id="zBf-uu-iVL"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="acT-za-p5a">
+                                                        <size key="itemSize" width="409" height="412"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaViewingCollectionViewCell" id="lxQ-i3-xsM" customClass="MediaViewingCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="31.5" width="409" height="350"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gj1-39-piF">
+                                                                <rect key="frame" x="0.0" y="0.0" width="409" height="350"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-SN-OmQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="409" height="350"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="rRh-SN-OmQ" secondAttribute="bottom" id="QBK-Qx-fLI"/>
+                                                                    <constraint firstItem="rRh-SN-OmQ" firstAttribute="top" secondItem="Gj1-39-piF" secondAttribute="top" id="Tvu-6M-yLY"/>
+                                                                    <constraint firstItem="rRh-SN-OmQ" firstAttribute="leading" secondItem="Gj1-39-piF" secondAttribute="leading" id="him-mh-rIo"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="rRh-SN-OmQ" secondAttribute="trailing" id="jJM-cq-hxS"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <size key="customSize" width="409" height="350"/>
+                                                            <connections>
+                                                                <outlet property="imgView" destination="rRh-SN-OmQ" id="UNc-Iw-aSn"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WwC-yT-xmb">
+                                                    <rect key="frame" x="145.5" y="413" width="122.5" height="27.5"/>
+                                                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </pageControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="XxH-0a-aSX" secondAttribute="trailing" id="6uy-6g-dcd"/>
-                                                <constraint firstItem="XxH-0a-aSX" firstAttribute="top" secondItem="M8n-cH-W1h" secondAttribute="top" id="EsG-Fc-jIt"/>
-                                                <constraint firstItem="XxH-0a-aSX" firstAttribute="leading" secondItem="M8n-cH-W1h" secondAttribute="leading" id="mNb-ed-QJs"/>
-                                                <constraint firstAttribute="bottom" secondItem="XxH-0a-aSX" secondAttribute="bottom" id="uuP-c2-5pM"/>
+                                                <constraint firstAttribute="trailing" secondItem="pjJ-Bg-GeP" secondAttribute="trailing" id="NAO-Ih-FmW"/>
+                                                <constraint firstItem="pjJ-Bg-GeP" firstAttribute="top" secondItem="M8n-cH-W1h" secondAttribute="top" id="PfY-md-xyO"/>
+                                                <constraint firstItem="WwC-yT-xmb" firstAttribute="top" secondItem="pjJ-Bg-GeP" secondAttribute="bottom" id="W0P-N4-vMi"/>
+                                                <constraint firstItem="WwC-yT-xmb" firstAttribute="centerX" secondItem="M8n-cH-W1h" secondAttribute="centerX" id="gCI-Pb-hai"/>
+                                                <constraint firstItem="pjJ-Bg-GeP" firstAttribute="leading" secondItem="M8n-cH-W1h" secondAttribute="leading" id="rXo-Ne-ARz"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="413" height="322"/>
+                                        <size key="customSize" width="413" height="455"/>
                                         <connections>
-                                            <outlet property="imageSlide" destination="XxH-0a-aSX" id="7nz-N1-fmi"/>
+                                            <outlet property="collectionView" destination="pjJ-Bg-GeP" id="QfZ-2q-Jb5"/>
+                                            <outlet property="pageControl" destination="WwC-yT-xmb" id="xRv-Ms-Lk8"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostTitleCollectionViewCell" id="C1k-9f-s2Y" customClass="PostTitleCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="332" width="413" height="57"/>
+                                        <rect key="frame" x="0.5" y="465" width="413" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OW3-yl-g8x">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="57"/>
@@ -79,7 +120,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostBodyCollectionViewCell" id="21W-ur-pdh" customClass="PostBodyCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="399" width="413" height="322"/>
+                                        <rect key="frame" x="0.5" y="532" width="413" height="322"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qbu-Ie-OqX">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
@@ -103,7 +144,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostDateCollectionViewCell" id="e0s-Xk-p8K" customClass="PostDateCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="731" width="413" height="322"/>
+                                        <rect key="frame" x="0.5" y="864" width="413" height="322"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xhG-wp-Niq">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="322"/>
@@ -129,7 +170,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentCountAndPostCommentCollectionViewCell" id="BAh-yy-1uQ" customClass="CommentCountAndPostCommentCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="4.5" y="1063" width="405" height="98"/>
+                                        <rect key="frame" x="4.5" y="1196" width="405" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="NTe-Cw-kWH">
                                             <rect key="frame" x="0.0" y="0.0" width="405" height="98"/>
@@ -216,7 +257,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostCommentCollectionViewCell" id="vMD-gy-Uq1" customClass="PostCommentCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
-                                        <rect key="frame" x="4.5" y="1171" width="405" height="98"/>
+                                        <rect key="frame" x="4.5" y="1304" width="405" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="IGL-Oe-QhG">
                                             <rect key="frame" x="0.0" y="0.0" width="405" height="98"/>
@@ -450,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NmN-bc-VE6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-523" y="95"/>
+            <point key="canvasLocation" x="-523.1884057971015" y="478.79464285714283"/>
         </scene>
         <!--Post Comment View Controller-->
         <scene sceneID="Xmb-gv-lx3">
@@ -537,6 +578,20 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="230" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4ep-uP-YbX">
+            <objects>
+                <viewController id="0zE-9i-lvy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZuQ-r1-p7M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T35-tI-eCf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-923" y="-321"/>
         </scene>
     </scenes>
     <resources>

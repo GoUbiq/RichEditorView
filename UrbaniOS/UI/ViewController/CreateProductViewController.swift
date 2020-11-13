@@ -56,10 +56,13 @@ class CreateProductViewController: UIViewController {
     }
     
     @objc func nextButtonPressed() {
-        guard let title = self.productNameField.text, !title.isEmpty, let url = URL(string: self.productUrlField.text ?? "") else { return }
+        guard let title = self.productNameField.text, !title.isEmpty else {
+            self.showSimpleAlertPopup(message: "A product title is required!")
+            return
+        }
         
         let hud = Utils.showMessageHud(onViewController: self)
-        self.productManager.createProduct(title: title, url: url.absoluteString) { product in
+        self.productManager.createProduct(title: title, url: URL(string: self.productUrlField.text ?? "")?.absoluteString ?? "") { product in
             Utils.dismissMessageHud(hud)
             guard let product = product else { return }
             self.dismissView()
