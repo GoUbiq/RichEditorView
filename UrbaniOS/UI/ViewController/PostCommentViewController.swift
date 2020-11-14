@@ -49,8 +49,13 @@ class PostCommentViewController: UIViewController {
     }
     
     @IBAction private func postButtonPressed(_ sender: Any) {
+        guard let text = self.textView.text, !text.isEmpty else {
+            self.showSimpleAlertPopup(message: "You can't post an empty comment. Please write something!")
+            return
+        }
+        
         let hud = Utils.showMessageHud(onViewController: self)
-        self.critiqueManager.postComment(critiqueId: self.critiqueId, text: self.textView.text) { comment in
+        self.critiqueManager.postComment(critiqueId: self.critiqueId, text: text) { comment in
             guard let comment = comment else {
                 Utils.dismissMessageHud(hud)
                 self.showSimpleAlertPopup(message: "Something wen't wrong, please try again!")

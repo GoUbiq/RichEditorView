@@ -44,6 +44,8 @@ class HomeViewController: UIViewController {
         self.collectionView.refreshControl = self.refreshControl
         self.setupLayout()
         
+        self.loadContent()
+        
         self.collectionView.addInfiniteScroll() { _ in
             self.loadContent()
         }
@@ -62,8 +64,6 @@ class HomeViewController: UIViewController {
         } else {
             self.checkIfProfileComplete()
         }
-        
-        self.loadContent()
     }
     
     private func checkIfProfileComplete() {
@@ -115,7 +115,7 @@ class HomeViewController: UIViewController {
     
     //MARK: - IBAction
     @objc private func createButtonPressed() {
-        let vc = CreatePostViewController.newInstance()
+        let vc = CreatePostViewController.newInstance(delegate: self)
         self.present(vc, animated: true)
     }
     
@@ -153,8 +153,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc: PostViewController = .newInstance(critique: self.critiques[indexPath.row])
+        let vc: PostViewController = .newInstance(critique: self.critiques[indexPath.row], delegate: self)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension HomeViewController: CritiqueDelegate {
+    func critiqueDidUpdate(critique: Critique) {
+        guard let idx = self.critiques.firstIndex(where: { critique.id == $0.id }) else { return }
+        self.critiques[idx] = critique
+        self.collectionView.reloadItems(at: [IndexPath(row: idx, section: 0)])
+    }
+    
+    func didCreateCritique(critique: Critique) {
+        self.critiques.insert(critique, at: 0)
+        self.collectionView.reloadData()
     }
 }
 

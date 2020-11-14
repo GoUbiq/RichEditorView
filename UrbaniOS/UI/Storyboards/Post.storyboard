@@ -31,11 +31,11 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostPagePicturesCollectionViewCell" id="Bnx-uV-VNt" customClass="PostPagePicturesCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="413" height="455"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M8n-cH-W1h">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="M8n-cH-W1h">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="455"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-Bg-GeP">
+                                                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-Bg-GeP">
                                                     <rect key="frame" x="0.0" y="0.0" width="413" height="413"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
@@ -48,10 +48,10 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaViewingCollectionViewCell" id="lxQ-i3-xsM" customClass="MediaViewingCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaViewingCollectionViewCell" id="lxQ-i3-xsM" customClass="MediaViewingCollectionViewCell" customModule="UrbaniOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="31.5" width="409" height="350"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gj1-39-piF">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gj1-39-piF">
                                                                 <rect key="frame" x="0.0" y="0.0" width="409" height="350"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
@@ -505,10 +505,10 @@
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hK9-0x-pj8">
-                                        <rect key="frame" x="10" y="10" width="353" height="30"/>
+                                        <rect key="frame" x="10" y="10" width="343" height="30"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZ8-RH-Xt4">
-                                                <rect key="frame" x="10" y="0.0" width="333" height="30"/>
+                                                <rect key="frame" x="10" y="0.0" width="323" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -533,38 +533,47 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNr-Vb-ftG">
-                                        <rect key="frame" x="373" y="0.0" width="31" height="50"/>
-                                        <state key="normal" title="Post"/>
-                                        <connections>
-                                            <action selector="postButtonPressed:" destination="Jbl-vK-9BL" eventType="touchUpInside" id="F22-WL-Jhs"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="hK9-0x-pj8" firstAttribute="leading" secondItem="1CS-xL-3Ea" secondAttribute="leading" constant="10" id="BBL-MM-PVb"/>
-                                    <constraint firstAttribute="trailing" secondItem="RNr-Vb-ftG" secondAttribute="trailing" constant="10" id="Bfs-hB-o2L"/>
                                     <constraint firstAttribute="height" constant="50" id="BvR-Hh-5sc"/>
                                     <constraint firstItem="hK9-0x-pj8" firstAttribute="top" secondItem="1CS-xL-3Ea" secondAttribute="top" constant="10" id="OgR-vV-8fO"/>
                                     <constraint firstItem="hK9-0x-pj8" firstAttribute="centerY" secondItem="1CS-xL-3Ea" secondAttribute="centerY" id="qEI-XL-KMn"/>
-                                    <constraint firstItem="RNr-Vb-ftG" firstAttribute="centerY" secondItem="hK9-0x-pj8" secondAttribute="centerY" id="qnj-hs-Q1c"/>
-                                    <constraint firstItem="RNr-Vb-ftG" firstAttribute="top" secondItem="1CS-xL-3Ea" secondAttribute="top" id="t5X-eA-QGs"/>
-                                    <constraint firstItem="RNr-Vb-ftG" firstAttribute="leading" secondItem="hK9-0x-pj8" secondAttribute="trailing" constant="10" id="tO9-YD-V4l"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM8-bu-djf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="792"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="D9v-rg-Vgc" appends="YES" id="h31-TD-jis"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNr-Vb-ftG">
+                                <rect key="frame" x="353" y="792" width="61" height="90"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="Jbl-vK-9BL" eventType="touchUpInside" id="F22-WL-Jhs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hAJ-JE-W31"/>
                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1CS-xL-3Ea" firstAttribute="centerX" secondItem="hAJ-JE-W31" secondAttribute="centerX" id="1Yl-70-AAk"/>
+                            <constraint firstItem="RNr-Vb-ftG" firstAttribute="centerY" secondItem="1CS-xL-3Ea" secondAttribute="centerY" id="25i-fF-fCD"/>
+                            <constraint firstItem="hAJ-JE-W31" firstAttribute="trailing" secondItem="vM8-bu-djf" secondAttribute="trailing" id="3eO-3G-VQZ"/>
+                            <constraint firstItem="RNr-Vb-ftG" firstAttribute="top" secondItem="1CS-xL-3Ea" secondAttribute="top" constant="-20" id="CDu-zj-sQ1"/>
                             <constraint firstItem="1CS-xL-3Ea" firstAttribute="leading" secondItem="hAJ-JE-W31" secondAttribute="leading" id="LLQ-fw-Jlo"/>
+                            <constraint firstItem="vM8-bu-djf" firstAttribute="top" secondItem="ahD-IR-mcL" secondAttribute="top" id="LNO-aJ-I3X"/>
+                            <constraint firstItem="vM8-bu-djf" firstAttribute="leading" secondItem="hAJ-JE-W31" secondAttribute="leading" id="TaM-It-hSt"/>
+                            <constraint firstItem="RNr-Vb-ftG" firstAttribute="leading" secondItem="hK9-0x-pj8" secondAttribute="trailing" id="Wnd-hX-Hyd"/>
+                            <constraint firstItem="RNr-Vb-ftG" firstAttribute="top" secondItem="vM8-bu-djf" secondAttribute="bottom" id="dg7-tc-TcF"/>
                             <constraint firstItem="hAJ-JE-W31" firstAttribute="bottom" secondItem="1CS-xL-3Ea" secondAttribute="bottom" id="iEJ-Vl-Sdc" customClass="KeyboardLayoutConstraint" customModule="UrbaniOS" customModuleProvider="target"/>
+                            <constraint firstItem="RNr-Vb-ftG" firstAttribute="trailing" secondItem="1CS-xL-3Ea" secondAttribute="trailing" id="wwL-pw-TSF"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="D9v-rg-Vgc" appends="YES" id="48Y-r4-XVN"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="textView" destination="kZ8-RH-Xt4" id="NZB-iU-tS2"/>

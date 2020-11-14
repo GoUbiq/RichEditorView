@@ -438,7 +438,7 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         guard let media = media, case .picture(let img) = media else { return }
         
-        let vc = MediaEditingViewController.newInstance(imgs: [img], delegate: self.delegate)
+        let vc = MediaEditingViewController.newInstance(imgs: [img], shouldRotate: true, delegate: self.delegate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

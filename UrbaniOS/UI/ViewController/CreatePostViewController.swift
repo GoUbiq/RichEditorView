@@ -14,9 +14,10 @@ class CreatePostViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     
-    class func newInstance() -> UINavigationController {
+    class func newInstance(delegate: CritiqueDelegate) -> UINavigationController {
         let navigation = UINavigationController()
-        let instance = createPostStoryboard.instantiateViewController(withIdentifier: self.identifier)
+        let instance = createPostStoryboard.instantiateViewController(withIdentifier: self.identifier) as! CreatePostViewController
+        instance.delegate = delegate
         navigation.modalPresentationStyle = .overFullScreen
         navigation.navigationBar.tintColor = .darkGray
         navigation.setViewControllers([instance], animated: false)
@@ -27,6 +28,7 @@ class CreatePostViewController: UIViewController {
     private var critiqueManager: CritiqueManager {
         return .sharedInstance
     }
+    private var delegate: CritiqueDelegate!
     private var selectingCell: PostBodyTableViewCell? = nil
     private var cells: [CellConfigurator] = []
     private var postingMedia: [PostMedia] = []
@@ -173,13 +175,20 @@ class CreatePostViewController: UIViewController {
             self.critiqueManager.createCritique(title: title, descriptionHTML: body, mediaUrls: sortedDict, defaultMediaUrl: sortedDict.first!) { result in
                 self.createButton?.isEnabled = true
                 Utils.dismissMessageHud(hud)
+
+                guard let critq = result else {
+                    self.showSimpleAlertPopup(message: localized("something.went.wrong.try.again"))
+                    return
+                }
+                
+                self.delegate.didCreateCritique(critique: critq)
                 self.navigationController?.dismiss(animated: true)
             }
         }
     }
     
     @objc private func dismissView() {
-        self.navigationController?.dismiss(animated: true)
+        self.showTwoOptionAlertPopup(withText: "Are you sure you want to leave? You would have to recreate your critique once you've left!", firstButtonText: "Leave", firstButtonAction: { self.navigationController?.dismiss(animated: true) }, secondButtonText: "Stay", secondButtonAction: {})
     }
 }
 

@@ -24,6 +24,25 @@ class Utils {
         vc.present(alertContoller, animated: true, completion: nil)
     }
     
+    static func showTwoOptionAlertView(
+        withTitle title: String? = nil,
+        withText text: String,
+        firstButtonText: String,
+        firstButtonStyle: UIAlertAction.Style = .destructive,
+        firstButtonAction: @escaping DefaultBlock,
+        secondButtonText: String,
+        secondButtonStyle: UIAlertAction.Style = .default,
+        secondButtonAction: @escaping DefaultBlock,
+        onViewController vc: UIViewController) {
+        
+        let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: firstButtonText, style: firstButtonStyle, handler: {_ in firstButtonAction() }))
+        alertController.addAction(UIAlertAction(title: secondButtonText, style: secondButtonStyle, handler: {_ in secondButtonAction() }))
+        
+        vc.present(alertController, animated: true, completion: nil)
+    }
+    
     static func delay(delay: Double, block: @escaping DefaultBlock) {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             block()

@@ -12,6 +12,11 @@ protocol CommentCellsDelegate: class {
     func commentButtonPressed()
 }
 
+protocol CritiqueDelegate {
+    func didCreateCritique(critique: Critique)
+    func critiqueDidUpdate(critique: Critique)
+}
+
 class PostViewController: UIViewController {
     static let identifier = "PostViewController"
     
@@ -19,9 +24,10 @@ class PostViewController: UIViewController {
     @IBOutlet private weak var postLikes: UILabel!
     @IBOutlet private weak var likeIndicator: UIImageView!
     
-    class func newInstance(critique: Critique) -> PostViewController {
+    class func newInstance(critique: Critique, delegate: CritiqueDelegate) -> PostViewController {
         let instance = postStoryboard.instantiateViewController(withIdentifier: self.identifier) as! PostViewController
         instance.critique = critique
+        instance.delegate = delegate
         return instance
     }
     
@@ -45,8 +51,13 @@ class PostViewController: UIViewController {
         }
     }
     
+    private var delegate: CritiqueDelegate!
     private var cells: [[PostCells]] = [[.images, .title, .body, .date]]
-    private var critique: Critique!
+    private var critique: Critique! {
+        didSet {
+            self.delegate?.critiqueDidUpdate(critique: self.critique)
+        }
+    }
     private var comments: [Comment] {
         return self.critique.comments
     }

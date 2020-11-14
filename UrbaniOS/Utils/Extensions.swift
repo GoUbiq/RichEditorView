@@ -193,6 +193,17 @@ extension UIViewController {
     func showSimpleAlertPopup(title: String? = nil, message: String, buttonTitle: String = "Ok", buttonAction: (DefaultBlock)? = nil) {
         Utils.showSimpleAlertView(withTitle: title, withText: message, withButtonTitle: buttonTitle, buttonAction: buttonAction, onViewController: self)
     }
+    
+    func showTwoOptionAlertPopup(withTitle title: String? = nil,
+                                withText text: String,
+                                firstButtonText: String,
+                                firstButtonStyle: UIAlertAction.Style = .destructive,
+                                firstButtonAction: @escaping DefaultBlock,
+                                secondButtonText: String,
+                                secondButtonStyle: UIAlertAction.Style = .default,
+                                secondButtonAction: @escaping DefaultBlock) {
+        Utils.showTwoOptionAlertView(withTitle: title, withText: text, firstButtonText: firstButtonText, firstButtonStyle: firstButtonStyle, firstButtonAction: firstButtonAction, secondButtonText: secondButtonText, secondButtonStyle: secondButtonStyle, secondButtonAction: secondButtonAction, onViewController: self)
+    }
 }
 
 extension UITableView {

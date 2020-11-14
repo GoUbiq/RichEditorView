@@ -18,7 +18,7 @@ struct ProductTag {
 
     init(productTag: GraphQlProductTag) {
         self.id = productTag.id
-        self.rating = productTag.rating
+        self.rating = (productTag.rating == 0) ? nil : productTag.rating
         self.positionX = productTag.positionX
         self.positionY = productTag.positionY
         self.product = .init(product: productTag.product.fragments.graphQlProduct)
