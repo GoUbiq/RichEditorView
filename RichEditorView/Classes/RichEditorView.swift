@@ -490,6 +490,7 @@ private let DefaultInnerLineHeight: Int = 21
         runJS("document.getElementById('editor').clientHeight") { heightString in
             let height = Int(heightString) ?? 0
             if self.editorHeight != height {
+                print("LIB HEIGHT \(height)")
                 self.editorHeight = height
             }
         }
