@@ -71,6 +71,8 @@
 		0B7C320D25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */; };
 		0B7C320F25435145003497FB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C320E25435145003497FB /* Comment.swift */; };
 		0B7C32122543753E003497FB /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */; };
+		0BB0C955256D7723003CB0C6 /* Search.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BB0C953256D7723003CB0C6 /* Search.graphql */; };
+		0BB0C956256D7723003CB0C6 /* Category.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BB0C954256D7723003CB0C6 /* Category.graphql */; };
 		0BD2EDF725473C64006283C6 /* Critique.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF625473C64006283C6 /* Critique.graphql */; };
 		0BD2EDFA2547458E006283C6 /* CritiqueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2EDF92547458E006283C6 /* CritiqueManager.swift */; };
 		0BD2EE002548829E006283C6 /* Media.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0BD2EDFF2548829E006283C6 /* Media.graphql */; };
@@ -227,6 +229,8 @@
 		0B7C320C25434A91003497FB /* CommentCountAndPostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountAndPostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B7C320E25435145003497FB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0B7C32112543753E003497FB /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BB0C953256D7723003CB0C6 /* Search.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Search.graphql; sourceTree = "<group>"; };
+		0BB0C954256D7723003CB0C6 /* Category.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Category.graphql; sourceTree = "<group>"; };
 		0BD2EDF625473C64006283C6 /* Critique.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Critique.graphql; sourceTree = "<group>"; };
 		0BD2EDF92547458E006283C6 /* CritiqueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CritiqueManager.swift; sourceTree = "<group>"; };
 		0BD2EDFF2548829E006283C6 /* Media.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Media.graphql; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 			children = (
 				0B7C31CA2527C6EF003497FB /* Login.graphql */,
 				0B7C31CB2527C6EF003497FB /* Fragment.graphql */,
+				0BB0C954256D7723003CB0C6 /* Category.graphql */,
+				0BB0C953256D7723003CB0C6 /* Search.graphql */,
 				0B7C31CC2527C6EF003497FB /* Product.graphql */,
 				0BD2EDF625473C64006283C6 /* Critique.graphql */,
 				0BD2EDFF2548829E006283C6 /* Media.graphql */,
@@ -889,8 +895,10 @@
 				0BD2F2A725508EF1006283C6 /* LICENSE.md in Resources */,
 				0BD2F2AA25508EF1006283C6 /* README.md in Resources */,
 				0BD2F28C25508EF1006283C6 /* undo@3x.png in Resources */,
+				0BB0C956256D7723003CB0C6 /* Category.graphql in Resources */,
 				0B7C31D7252B907E003497FB /* ProductRatingView.xib in Resources */,
 				0BD2F28A25508EF1006283C6 /* superscript@2x.png in Resources */,
+				0BB0C955256D7723003CB0C6 /* Search.graphql in Resources */,
 				0BD2F29625508EF1006283C6 /* subscript@2x.png in Resources */,
 				0B7C320925432EB8003497FB /* Localizable.stringsdict in Resources */,
 				0BD2EDF725473C64006283C6 /* Critique.graphql in Resources */,
