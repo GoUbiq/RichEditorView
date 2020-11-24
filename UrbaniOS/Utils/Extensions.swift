@@ -90,7 +90,7 @@ extension Collection where Iterator.Element == UIImage {
 
 extension UIImage {
     func crop(rect: CGRect) -> UIImage? {
-        guard let cgImage = self.cgImage, let ref = cgImage.cropping(to: rect) else { return nil }
+        guard let cgImage = self.fixOrientation().cgImage, let ref = cgImage.cropping(to: rect) else { return nil }
         return UIImage(cgImage: ref)
     }
     
@@ -112,7 +112,7 @@ extension UIImage {
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
 
         // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, self.scale)
         self.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -153,6 +153,19 @@ extension UIImage {
         let resultImage: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
         
         return resultImage
+    }
+    
+    func fixOrientation() -> UIImage {
+        guard self.imageOrientation != .up else { return self }
+
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+        self.draw(in: rect)
+
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return normalizedImage
     }
 }
 

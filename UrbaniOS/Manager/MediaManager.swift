@@ -156,9 +156,11 @@ class MediaManager {
     
     func saveImage(fileName: String, image: UIImage, ext: MediaFileExtension = .jpeg) -> URL? {
         func getData() -> Data? {
+            let finalImg = image.fixOrientation()
+
             switch ext {
-            case .jpeg: return image.jpegData(compressionQuality: 1)
-            default: return image.pngData()
+            case .jpeg: return finalImg.jpegData(compressionQuality: 1)
+            default: return finalImg.pngData()
             }
         }
         

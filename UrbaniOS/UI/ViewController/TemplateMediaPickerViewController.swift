@@ -79,7 +79,7 @@ class TemplateMediaPickerViewController: UIViewController {
     private func mergeImages() -> UIImage? {
         guard self.selectedMedia.count == 2 else { return nil }
         
-        let images = self.imgPreviews.compactMap({ $0.zoomView?.image?.crop(rect: $0.visibleRect)?.resizeImage(targetSize: .init(width: 500, height: 500)) })
+        let images = self.imgPreviews.compactMap({ $0.zoomView?.image?.crop(rect: $0.visibleRect)?.resizeImage(targetSize: .init(width: 1080, height: 1080)) })
         
         return images.combineLeftToRight()
     }

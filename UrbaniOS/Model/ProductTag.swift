@@ -34,7 +34,7 @@ struct ProductTag {
     
     var productTagViewHeight: CGSize {
         let appplicableWidth: CGFloat = 140
-        let initialHeight = 40 + ((self.rating == nil) ? 0 : 25)
+        let initialHeight = 20 + ((self.rating == nil) ? 0 : 25)
         return .init(width: 200, height: self.product.title.heightForWidth(width: appplicableWidth, font: .systemFont(ofSize: 13), nbOfLines: 2) + CGFloat(initialHeight))
     }
 }

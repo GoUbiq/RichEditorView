@@ -226,7 +226,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension PostViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, heightDidChange height: Int) {
         print("client height \(height)")
-        self.bodyHeight = CGFloat(height)
+        self.bodyHeight = CGFloat(height) + 50
 //        print(editor.webView.scrollView.contentSize.height)
 //        Utils.delay(delay: 1) {
 //            self.bodyHeight = editor.webView.scrollView.contentSize.height
