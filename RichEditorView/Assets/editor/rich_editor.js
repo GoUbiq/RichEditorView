@@ -228,15 +228,86 @@ RE.setLineHeight = function(height) {
     RE.editor.style.lineHeight = height;
 };
 
-RE.insertImage = function(url, alt) {
-    var img = document.createElement('img');
-    img.setAttribute("src", url);
-    img.setAttribute("alt", alt);
-    img.onload = RE.updateHeight;
+RE.insertImage = function(url, textTags, alt) {
+//    var img = document.createElement('img');
+//    img.setAttribute("src", url);
+//    img.setAttribute("alt", alt);
+//    img.setAttribute('width', RE.editor.clientWidth - 20)
+//    img.onload = RE.updateHeight;
+    
+    var width = RE.editor.clientWidth - 20
+    var textTags = addTextTags(false, [{"fontSize":15,"positionX":0.27053140096618356,"anchorSide":"LEFT","id":"","textFont":"ok","boxBackgroundColor":"#ffffff","positionY":0.46014492753623187,"text":"Qfqqwfgqw","textColor":"#000000"}]).join();
+    var html = '<div class="dkfTmI"><div class="jeDXud"><img src="' + url + '" alt="' + alt + '" width=' + width + 'px></div>' + textTags + '</div>';
 
-    RE.insertHTML(img.outerHTML);
+//    RE.getAnchorTags(textTags)
+    
+    RE.insertHTML(html);
     RE.callback("input");
 };
+
+RE.insertVideo = function(url, alt) {
+//    var vid = document.createElement('video');
+//    vid.setAttribute("src", url)
+//    vid.setAttribute("alt", alt)
+//    vid.setAttribute('playsinline', true)
+//    vid.setAttribute('webkit-playsinline', true)
+//    vid.setAttribute('autoplay', true)
+//    vid.setAttribute('loop', true)
+//    vid.setAttribute('muted', true)
+//    vid.setAttribute('width', RE.editor.clientWidth - 20)
+
+    
+    var html = '<div class="dkfTmI"><div class="jeDXud"><video src="' + url + '" alt="' + alt + '" width=' + (RE.editor.clientWidth - 20) + 'px playsinline webkit-playsinline autoplay loop muted></div>' + '</div>';
+    
+//    vid.onload = RE.updateHeight;
+    
+    RE.insertHTML(html);
+    RE.callback("input");
+}
+
+function addTextTags(hideMe, textTags) {
+    return(
+       textTags.map(tag => {
+          const { text, anchorUrl, boxBackgroundColor,
+          textColor, fontSize, anchorSide } = tag;
+          let dotLeft = "2px";
+          let dotRight = "auto";
+          let dotLeftPosn = `calc(${tag.positionX * 100}%)`;
+          let dotRightPosn = 'auto';
+          let boxLeft = "10px";
+          let boxRight = "auto";
+          let transformOrigin = "left top";
+          if (anchorSide === "RIGHT") {
+             dotLeft = "auto";
+             dotRight = "2px";
+             dotLeftPosn = 'auto';
+             dotRightPosn =`calc(${(1-tag.positionX) * 100}%)`;
+             boxLeft = "auto";
+             boxRight = "10px";
+             transformOrigin = "right top";
+          }
+          const outerDiv = `style="top: calc(${tag.positionY * 100}%)}; left: ${dotLeftPosn}; right: ${dotRightPosn};`;
+          const dotDiv = `style="left: ${dotLeft}; right: ${dotRight};`;
+          const dotDiv2 = `style="left: ${dotLeft}; right: ${dotRight};`;
+          return`
+             <div class="gXPAyA">
+                <div class="gQyvwo" ${outerDiv}>
+                   <div class="jBnbzw" ${dotDiv}></div>
+                   <div class="kumRIm" ${dotDiv2}></div>
+                   <a href="#">
+                      <div class="bntKdk" style="background: ${boxBackgroundColor}; left: ${boxLeft}; right: ${boxRight}; transform-origin:${transformOrigin};">
+                         <div class="fngueF" style="overflow: inherit; height: auto; max-height: inherit; display: block; color: ${textColor}; font-size: ${fontSize};">${text}</div>
+                      </div>
+                   </a>
+                </div>
+             </div>`;
+       })
+    );
+}
+
+RE.insertTag = function(textTags) {
+    
+}
 
 RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
@@ -435,3 +506,4 @@ RE.insertProductTag = function(name, url, star) {
     var html = '<a href="'+ url +'"> <span class="iipeUt"> '+ name +' <div class="bOvYHH"></div> <ul class="gvdZSq LnxYN" style="height: 12px; line-height: 1;"> '+ finalStar +' </ul> </span> </a><br>';
     RE.insertHTML(html);
 }
+

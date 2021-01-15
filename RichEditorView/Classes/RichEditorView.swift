@@ -123,13 +123,17 @@ private let DefaultInnerLineHeight: Int = 21
     // MARK: Initialization
     
     public override init(frame: CGRect) {
-        webView = RichEditorWebView()
+        let option: WKWebViewConfiguration = .init()
+        option.allowsInlineMediaPlayback = true
+        webView = RichEditorWebView(frame: .zero, configuration: option)
         super.init(frame: frame)
         setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        webView = RichEditorWebView()
+        let option: WKWebViewConfiguration = .init()
+        option.allowsInlineMediaPlayback = true
+        webView = RichEditorWebView(frame: .zero, configuration: option)
         super.init(coder: aDecoder)
         setup()
     }
@@ -141,16 +145,30 @@ private let DefaultInnerLineHeight: Int = 21
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if #available(iOS 10.0, *) {
             webView.configuration.dataDetectorTypes = WKDataDetectorTypes()
+            webView.configuration.allowsInlineMediaPlayback = true
         }
         webView.scrollView.isScrollEnabled = isScrollEnabled
         webView.scrollView.bounces = true
         webView.scrollView.delegate = self
         webView.scrollView.clipsToBounds = false
         addSubview(webView)
+
         
-        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
-            let url = URL(fileURLWithPath: filePath, isDirectory: false)
-            webView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
+        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html"), let jsFilePath = Bundle.main.path(forResource: "rich_editor", ofType: "js") {
+            guard let newUrl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("rich_editor.html"), let newJSUrl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("rich_editor.js") else {
+                return
+            }
+            
+            do {
+                let js = try String(contentsOfFile: URL(fileURLWithPath: jsFilePath, isDirectory: false).path).data(using: .utf8)
+                let html = try String(contentsOfFile: URL(fileURLWithPath: filePath, isDirectory: false).path).data(using: .utf8)
+                try js?.write(to: newJSUrl)
+                try html?.write(to: newUrl)
+            } catch {
+                print("it wen't terribly wrong")
+            }
+
+            webView.loadFileURL(newUrl, allowingReadAccessTo: newUrl.deletingLastPathComponent())
         }
     }
     
@@ -339,6 +357,11 @@ private let DefaultInnerLineHeight: Int = 21
     public func insertImage(_ url: String, alt: String) {
         runJS("RE.prepareInsert()")
         runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)')")
+    }
+    
+    public func insertVideo(_ url: String, alt: String) {
+        runJS("RE.prepareInsert()")
+        runJS("RE.insertVideo('\(url.escaped)', '\(alt.escaped)')")
     }
     
     public func insertLink(_ href: String, title: String) {
