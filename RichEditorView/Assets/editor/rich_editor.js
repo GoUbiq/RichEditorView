@@ -229,17 +229,19 @@ RE.setLineHeight = function(height) {
 };
 
 RE.insertImage = function(url, textTags, alt) {
-//    var img = document.createElement('img');
-//    img.setAttribute("src", url);
-//    img.setAttribute("alt", alt);
-//    img.setAttribute('width', RE.editor.clientWidth - 20)
-//    img.onload = RE.updateHeight;
-    
+    var tagJson = JSON.parse(textTags);
     var width = RE.editor.clientWidth - 20
-    var textTags = addTextTags(false, [{"fontSize":15,"positionX":0.27053140096618356,"anchorSide":"LEFT","id":"","textFont":"ok","boxBackgroundColor":"#ffffff","positionY":0.46014492753623187,"text":"Qfqqwfgqw","textColor":"#000000"}]).join();
-    var html = '<div class="dkfTmI"><div class="jeDXud"><img src="' + url + '" alt="' + alt + '" width=' + width + 'px></div>' + textTags + '</div>';
+    var finalTT = addTextTags(false, tagJson.textTags).join();
+    var html = `<div>
+                    <div class="dkfTmI" contenteditable="false">
+                        <div class="jeDXud">
+                            <img src="${url}" alt="${alt}" width=${width}px>
+                        </div>
+                        ${finalTT}
+                    </div>
+                </div>
+                <br><br><br>`;
 
-//    RE.getAnchorTags(textTags)
     
     RE.insertHTML(html);
     RE.callback("input");
@@ -286,9 +288,9 @@ function addTextTags(hideMe, textTags) {
              boxRight = "10px";
              transformOrigin = "right top";
           }
-          const outerDiv = `style="top: calc(${tag.positionY * 100}%)}; left: ${dotLeftPosn}; right: ${dotRightPosn};`;
-          const dotDiv = `style="left: ${dotLeft}; right: ${dotRight};`;
-          const dotDiv2 = `style="left: ${dotLeft}; right: ${dotRight};`;
+          const outerDiv = `style="top: calc(${tag.positionY * 100}%)}; left: ${dotLeftPosn}; right: ${dotRightPosn};"`;
+          const dotDiv = `style="left: ${dotLeft}; right: ${dotRight};"`;
+          const dotDiv2 = `style="left: ${dotLeft}; right: ${dotRight};"`;
           return`
              <div class="gXPAyA">
                 <div class="gQyvwo" ${outerDiv}>
